@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>C05 — Fórmulas · UFCD 0778</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+  <link rel="stylesheet" href="conteudo.css">
+</head>
+<body data-page="conteudo-estatico">
+    <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <aside class="sidebar" aria-label="Menu principal">
+      <a class="brand" href="../index.html#inicio"><span class="brand-mark">0778</span><span><strong>Folha de Cálculo</strong></span></a>
+      <nav class="side-nav">
+        <a href="../index.html#inicio">Início</a>
+        <a href="../index.html#objetivos">Objetivos</a>
+        <a href="../index.html#metodologia">Metodologia</a>
+        <button class="nav-parent" type="button" aria-expanded="true" aria-controls="submenu-conteudos">Conteúdos <span class="nav-parent-arrow" aria-hidden="true">▾</span></button>
+        <div class="submenu open" id="submenu-conteudos"></div>
+        <button class="nav-parent" type="button" aria-expanded="false" aria-controls="submenu-atividades">Atividades <span class="nav-parent-arrow" aria-hidden="true">▾</span></button>
+        <div class="submenu activity-submenu" id="submenu-atividades"></div>
+        <button class="nav-parent" type="button" aria-expanded="false" aria-controls="submenu-avaliacao">Avaliação <span class="nav-parent-arrow" aria-hidden="true">▾</span></button>
+        <div class="submenu evaluation-submenu" id="submenu-avaliacao"></div>
+        <button class="nav-parent" type="button" aria-expanded="false" aria-controls="submenu-recursos">Recursos <span class="nav-parent-arrow" aria-hidden="true">▾</span></button>
+        <div class="submenu resource-submenu" id="submenu-recursos"></div>
+      </nav>
+    </aside>
+  <main class="page-shell">
+<div class="page-layout">
+<aside class="content-sidebar">
+<div class="sidebar-card">
+<div class="sidebar-card-header">📋 Neste Conteúdo</div>
+<div class="sidebar-card-body">
+<ul class="toc-list">
+<li><a href="#conceitos"><span class="toc-num">1</span> Conceitos básicos</a></li>
+<li><a href="#operadores"><span class="toc-num">2</span> Operadores</a></li>
+<li><a href="#referencias"><span class="toc-num">3</span> Referências relativas e absolutas</a></li>
+<li><a href="#erros"><span class="toc-num">4</span> Erros frequentes</a></li>
+<li><a href="#auditoria"><span class="toc-num">5</span> Auditoria de fórmulas</a></li>
+<li><a href="#competencias"><span class="toc-num">6</span> Aptidões e atitudes</a></li>
+</ul>
+</div>
+</div>
+</aside>
+<div class="content">
+<div class="content-hero">
+<div class="hero-icon">🧮</div>
+<div>
+<h2>Fórmulas — Referências e Cálculos</h2>
+<p>As fórmulas são a essência de uma folha de cálculo. Aprenda a construir fórmulas com operadores aritméticos, a utilizar referências relativas, absolutas e mistas, e a diagnosticar e corrigir erros.</p>
+
+</div>
+</div>
+<!-- Secção 1 -->
+<div class="section-block" id="conceitos">
+<div class="section-block-header"><span class="s-icon">📝</span><h3>1. Conceitos Básicos de Fórmulas</h3></div>
+<div class="section-block-body">
+<p>Uma <strong>fórmula</strong> é uma expressão que realiza cálculos automáticos com base nos dados das células. <strong>Todas as fórmulas começam com o sinal de igual (=).</strong></p>
+<div class="subsec">
+<h4>Estrutura de uma Fórmula</h4>
+<div class="formula-block">
+            = <span class="comment">sinal de igual (obrigatório)</span><br/>
+            =A1 + B1          <span class="comment">→ soma os valores de A1 e B1</span><br/>
+            =A1 * B1 - C1     <span class="comment">→ multiplica A1 por B1 e subtrai C1</span><br/>
+            =(A1 + B1) / 2    <span class="comment">→ usa parênteses para controlar a ordem</span><br/>
+            =B4 * $C$1        <span class="comment">→ referência relativa + referência absoluta</span>
+</div>
+</div>
+<div class="subsec">
+<h4>Criar uma Fórmula</h4>
+<ol class="steps">
+<li>Clique na célula onde pretende o resultado.</li>
+<li>Escreva <code>=</code> (sinal de igual).</li>
+<li>Clique nas células ou escreva as referências e operadores.</li>
+<li>Prima <kbd>Enter</kbd> para confirmar.</li>
+</ol>
+<div class="box box-tip">
+<span class="box-icon">💡</span>
+<div class="box-content"><p>Em vez de escrever as referências manualmente, clique nas células durante a introdução da fórmula. O Excel insere automaticamente a referência correta.</p></div>
+</div>
+</div>
+<div class="subsec">
+<h4>Copiar Fórmulas</h4>
+<p>Após criar uma fórmula, pode copiá-la para outras células usando a alça de preenchimento ou <kbd>Ctrl+C</kbd> / <kbd>Ctrl+V</kbd>. As referências relativas ajustam-se automaticamente.</p>
+<div class="formula-block">
+<span class="comment">// Fórmula em D4:</span><br/>
+            =B4 * C4<br/><br/>
+<span class="comment">// Ao copiar para D5, D6, D7... o Excel ajusta:</span><br/>
+            D5: =B5 * C5<br/>
+            D6: =B6 * C6<br/>
+            D7: =B7 * C7
+          </div>
+</div>
+</div>
+</div>
+<!-- Secção 2 -->
+<div class="section-block" id="operadores">
+<div class="section-block-header"><span class="s-icon">➕</span><h3>2. Operadores</h3></div>
+<div class="section-block-body">
+<div class="subsec">
+<h4>Operadores Aritméticos</h4>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Operador</th><th>Operação</th><th>Exemplo</th><th>Resultado (A1=10, B1=3)</th></tr></thead>
+<tbody>
+<tr><td><code>+</code></td><td>Adição</td><td><code>=A1+B1</code></td><td>13</td></tr>
+<tr><td><code>-</code></td><td>Subtração</td><td><code>=A1-B1</code></td><td>7</td></tr>
+<tr><td><code>*</code></td><td>Multiplicação</td><td><code>=A1*B1</code></td><td>30</td></tr>
+<tr><td><code>/</code></td><td>Divisão</td><td><code>=A1/B1</code></td><td>3,333...</td></tr>
+<tr><td><code>^</code></td><td>Potência</td><td><code>=A1^2</code></td><td>100</td></tr>
+<tr><td><code>%</code></td><td>Percentagem</td><td><code>=A1*20%</code></td><td>2</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="subsec">
+<h4>Operadores de Comparação</h4>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Operador</th><th>Significado</th><th>Exemplo</th></tr></thead>
+<tbody>
+<tr><td><code>=</code></td><td>Igual a</td><td><code>=A1=B1</code> → VERDADEIRO ou FALSO</td></tr>
+<tr><td><code>&lt;&gt;</code></td><td>Diferente de</td><td><code>=A1&lt;&gt;B1</code></td></tr>
+<tr><td><code>&gt;</code></td><td>Maior que</td><td><code>=A1&gt;10</code></td></tr>
+<tr><td><code>&lt;</code></td><td>Menor que</td><td><code>=A1&lt;10</code></td></tr>
+<tr><td><code>&gt;=</code></td><td>Maior ou igual a</td><td><code>=A1&gt;=10</code></td></tr>
+<tr><td><code>&lt;=</code></td><td>Menor ou igual a</td><td><code>=A1&lt;=10</code></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="subsec">
+<h4>Ordem de Operações (Precedência)</h4>
+<p>O Excel respeita a ordem matemática padrão:</p>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Prioridade</th><th>Operação</th><th>Exemplo</th></tr></thead>
+<tbody>
+<tr><td>1 (maior)</td><td>Parênteses <code>()</code></td><td><code>=(2+3)*4</code> → 20</td></tr>
+<tr><td>2</td><td>Potência <code>^</code></td><td><code>=2^3</code> → 8</td></tr>
+<tr><td>3</td><td>Multiplicação <code>*</code> e Divisão <code>/</code></td><td><code>=2+3*4</code> → 14 (não 20!)</td></tr>
+<tr><td>4 (menor)</td><td>Adição <code>+</code> e Subtração <code>-</code></td><td><code>=10-2+3</code> → 11</td></tr>
+</tbody>
+</table>
+</div>
+<div class="box box-warning">
+<span class="box-icon">⚠️</span>
+<div class="box-content"><p>Use <strong>parênteses</strong> sempre que quiser garantir a ordem de cálculo. <code>=2+3*4</code> dá 14 (multiplica primeiro), mas <code>=(2+3)*4</code> dá 20 (soma primeiro).</p></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Secção 3 -->
+<div class="section-block" id="referencias">
+<div class="section-block-header"><span class="s-icon">🔗</span><h3>3. Referências Relativas, Absolutas e Mistas</h3></div>
+<div class="section-block-body">
+<p>Quando se copia uma fórmula para outras células, as referências podem ajustar-se automaticamente (<strong>relativas</strong>) ou manter-se fixas (<strong>absolutas</strong>).</p>
+<div class="subsec">
+<h4>Tipos de Referências</h4>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Tipo</th><th>Sintaxe</th><th>Comportamento ao copiar</th><th>Quando usar</th></tr></thead>
+<tbody>
+<tr><td><strong>Relativa</strong></td><td><code>A1</code></td><td>Ajusta linha e coluna automaticamente</td><td>Cálculos que se repetem linha a linha</td></tr>
+<tr><td><strong>Absoluta</strong></td><td><code>$A$1</code></td><td>Mantém sempre a mesma célula</td><td>Constantes, taxas, valores fixos</td></tr>
+<tr><td><strong>Mista (coluna fixa)</strong></td><td><code>$A1</code></td><td>Coluna fixa, linha ajusta</td><td>Tabelas de multiplicação (coluna fixa)</td></tr>
+<tr><td><strong>Mista (linha fixa)</strong></td><td><code>A$1</code></td><td>Linha fixa, coluna ajusta</td><td>Tabelas de multiplicação (linha fixa)</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="subsec">
+<h4>Exemplo Prático — Referência Absoluta</h4>
+<p>Calcular o valor com IVA (23%) para vários produtos, onde a taxa está numa célula fixa:</p>
+<div class="formula-block">
+<span class="comment">// C1 contém a taxa de IVA: 23%</span><br/>
+<span class="comment">// B4 contém o preço do produto</span><br/><br/>
+            D4: =B4 * (1 + $C$1)   <span class="comment">→ $C$1 é absoluta (não muda ao copiar)</span><br/>
+            D5: =B5 * (1 + $C$1)   <span class="comment">→ B5 ajustou, $C$1 manteve-se</span><br/>
+            D6: =B6 * (1 + $C$1)   <span class="comment">→ B6 ajustou, $C$1 manteve-se</span>
+</div>
+</div>
+<div class="subsec">
+<h4>Exemplo Prático — Referência Mista (Tabela de Multiplicação)</h4>
+<div class="formula-block">
+<span class="comment">// Linha 1: 1, 2, 3, 4... (cabeçalhos de coluna)</span><br/>
+<span class="comment">// Coluna A: 1, 2, 3, 4... (cabeçalhos de linha)</span><br/><br/>
+            B2: =$A2 * B$1   <span class="comment">→ $A2: coluna A fixa, linha ajusta</span><br/>
+<span class="comment">   B$1: linha 1 fixa, coluna ajusta</span><br/><br/>
+<span class="comment">// Ao copiar B2 para toda a tabela, cada célula</span><br/>
+<span class="comment">// multiplica o valor da coluna A pelo da linha 1</span>
+</div>
+</div>
+<div class="subsec">
+<h4>Como Inserir o Símbolo $</h4>
+<ul class="styled">
+<li>Escreva manualmente o <code>$</code> antes da letra da coluna e/ou do número da linha.</li>
+<li>Ou, durante a edição da fórmula, clique na referência e prima <kbd>F4</kbd> para alternar entre os 4 tipos: <code>A1</code> → <code>$A$1</code> → <code>A$1</code> → <code>$A1</code> → <code>A1</code>.</li>
+</ul>
+</div>
+</div>
+</div>
+<!-- Secção 4 -->
+<div class="section-block" id="erros">
+<div class="section-block-header"><span class="s-icon">⚠️</span><h3>4. Erros Frequentes em Fórmulas</h3></div>
+<div class="section-block-body">
+<div class="table-wrap">
+<table>
+<thead><tr><th>Erro</th><th>Causa</th><th>Como corrigir</th></tr></thead>
+<tbody>
+<tr>
+<td><code style="color:#c62828;font-size:1rem;">#####</code></td>
+<td>A coluna é demasiado estreita para mostrar o valor (ou data/hora negativa)</td>
+<td>Alargar a coluna (duplo clique na linha divisória do cabeçalho)</td>
+</tr>
+<tr>
+<td><code style="color:#c62828;">#DIV/0!</code></td>
+<td>A fórmula divide por zero ou por uma célula vazia</td>
+<td>Verificar o divisor; usar <code>=SE(B1=0;"";A1/B1)</code> para evitar o erro</td>
+</tr>
+<tr>
+<td><code style="color:#c62828;">#NOME?</code></td>
+<td>O Excel não reconhece o nome da função (erro de ortografia)</td>
+<td>Verificar a ortografia da função; usar o assistente de funções</td>
+</tr>
+<tr>
+<td><code style="color:#c62828;">#VALOR!</code></td>
+<td>Tipo de dado incorreto (ex.: texto onde se espera número)</td>
+<td>Verificar os dados de entrada; converter texto em número se necessário</td>
+</tr>
+<tr>
+<td><code style="color:#c62828;">#REF!</code></td>
+<td>A referência aponta para uma célula que já não existe (foi eliminada)</td>
+<td>Corrigir a referência na fórmula; desfazer a eliminação com <kbd>Ctrl+Z</kbd></td>
+</tr>
+<tr>
+<td><code style="color:#c62828;">#N/D</code></td>
+<td>Valor não disponível (comum em PROCV/PROCX quando não encontra o valor)</td>
+<td>Verificar o valor de pesquisa e o intervalo de dados</td>
+</tr>
+<tr>
+<td><code style="color:#c62828;">#NÚM!</code></td>
+<td>Valor numérico inválido (ex.: raiz quadrada de número negativo)</td>
+<td>Verificar os argumentos numéricos da fórmula</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="box box-info" style="margin-top:14px;">
+<span class="box-icon">ℹ️</span>
+<div class="box-content"><p><code>#####</code> <strong>não é um erro de fórmula</strong> — é apenas um problema de largura de coluna. Os erros de fórmula reais são: <code>#DIV/0!</code>, <code>#NOME?</code>, <code>#VALOR!</code>, <code>#REF!</code>, <code>#N/D</code> e <code>#NÚM!</code>.</p></div>
+</div>
+</div>
+</div>
+<!-- Secção 5 -->
+<div class="section-block" id="auditoria">
+<div class="section-block-header"><span class="s-icon">🔍</span><h3>5. Auditoria de Fórmulas</h3></div>
+<div class="section-block-body">
+<p>As ferramentas de auditoria ajudam a compreender e verificar as fórmulas numa folha de cálculo. Encontram-se no separador <strong>Fórmulas &gt; Auditoria de Fórmulas</strong>.</p>
+<div class="subsec">
+<h4>Ferramentas de Auditoria</h4>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Ferramenta</th><th>O que faz</th></tr></thead>
+<tbody>
+<tr><td><strong>Mostrar Fórmulas</strong></td><td>Exibe as fórmulas em vez dos resultados em todas as células (<kbd>Ctrl + `</kbd>)</td></tr>
+<tr><td><strong>Rastrear Precedentes</strong></td><td>Mostra setas para as células que alimentam a fórmula selecionada</td></tr>
+<tr><td><strong>Rastrear Dependentes</strong></td><td>Mostra setas para as células que dependem da célula selecionada</td></tr>
+<tr><td><strong>Remover Setas</strong></td><td>Remove as setas de auditoria do ecrã</td></tr>
+<tr><td><strong>Verificar Erros</strong></td><td>Percorre as células com erros e sugere correções</td></tr>
+<tr><td><strong>Avaliar Fórmula</strong></td><td>Executa a fórmula passo a passo para identificar onde ocorre o erro</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="subsec">
+<h4>Boas Práticas na Construção de Fórmulas</h4>
+<ul class="styled">
+<li>Use <strong>referências de células</strong> em vez de valores fixos nas fórmulas (facilita a atualização).</li>
+<li>Coloque as <strong>constantes e taxas</strong> em células separadas com etiqueta (ex.: "Taxa IVA: 23%").</li>
+<li>Use <strong>parênteses</strong> para tornar a ordem de cálculo explícita e evitar erros.</li>
+<li>Verifique sempre os resultados com cálculos manuais simples para confirmar que a fórmula está correta.</li>
+<li>Evite fórmulas demasiado longas — divida em etapas intermédias se necessário.</li>
+</ul>
+</div>
+</div>
+</div>
+<!-- Secção 6 -->
+<div class="section-block" id="competencias">
+<div class="section-block-header"><span class="s-icon">🎓</span><h3>6. Aptidões e Atitudes a Desenvolver</h3></div>
+<div class="section-block-body">
+<div class="competencias-grid">
+<div class="comp-card aptidoes">
+<h5>✅ Aptidões</h5>
+<ul>
+<li>Construir fórmulas com operadores aritméticos</li>
+<li>Usar parênteses para controlar a ordem de cálculo</li>
+<li>Distinguir e aplicar referências relativas, absolutas e mistas</li>
+<li>Copiar fórmulas e verificar o ajuste das referências</li>
+<li>Identificar e corrigir erros de fórmula</li>
+<li>Usar as ferramentas de auditoria de fórmulas</li>
+</ul>
+</div>
+<div class="comp-card atitudes">
+<h5>🌟 Atitudes</h5>
+<ul>
+<li>Raciocínio lógico na construção dos cálculos</li>
+<li>Rigor na verificação dos resultados</li>
+<li>Persistência na resolução de erros</li>
+<li>Método na organização das fórmulas</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<!-- Secção 7 -->
+
+<div class="content-nav">
+<a class="prev" href="formatacao_linhas_colunas.html">
+<span>←</span>
+<div><span class="nav-label">Anterior</span><span class="nav-title">C04 — Formatação de Linhas e Colunas</span></div>
+</a>
+<a class="next" href="impressao.html">
+<div><span class="nav-label">Próximo</span><span class="nav-title">C06 — Impressão</span></div>
+<span>→</span>
+</a>
+</div>
+</div>
+</div>
+  </main>
+  <div class="floating-actions" aria-label="Ações rápidas">
+    <a href="../index.html#inicio" aria-label="Página inicial" title="Página inicial"><span class="float-icon icon-home" aria-hidden="true"></span></a>
+    <button type="button" data-action="top" aria-label="Voltar ao topo" title="Voltar ao topo"><span class="float-icon icon-top" aria-hidden="true"></span></button>
+    <button type="button" data-action="print" aria-label="Imprimir" title="Imprimir"><span class="float-icon icon-print" aria-hidden="true"></span></button>
+  </div>
+  <script src="../assets/config.js"></script>
+  <script src="../assets/app.js?v=20260803-conteudos-0778"></script>
+</body>
+</html>

@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>C07 — Funções · UFCD 0778</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+  <link rel="stylesheet" href="conteudo.css">
+</head>
+<body data-page="conteudo-estatico">
+    <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <aside class="sidebar" aria-label="Menu principal">
+      <a class="brand" href="../index.html#inicio"><span class="brand-mark">0778</span><span><strong>Folha de Cálculo</strong></span></a>
+      <nav class="side-nav">
+        <a href="../index.html#inicio">Início</a>
+        <a href="../index.html#objetivos">Objetivos</a>
+        <a href="../index.html#metodologia">Metodologia</a>
+        <button class="nav-parent" type="button" aria-expanded="true" aria-controls="submenu-conteudos">Conteúdos <span class="nav-parent-arrow" aria-hidden="true">▾</span></button>
+        <div class="submenu open" id="submenu-conteudos"></div>
+        <button class="nav-parent" type="button" aria-expanded="false" aria-controls="submenu-atividades">Atividades <span class="nav-parent-arrow" aria-hidden="true">▾</span></button>
+        <div class="submenu activity-submenu" id="submenu-atividades"></div>
+        <button class="nav-parent" type="button" aria-expanded="false" aria-controls="submenu-avaliacao">Avaliação <span class="nav-parent-arrow" aria-hidden="true">▾</span></button>
+        <div class="submenu evaluation-submenu" id="submenu-avaliacao"></div>
+        <button class="nav-parent" type="button" aria-expanded="false" aria-controls="submenu-recursos">Recursos <span class="nav-parent-arrow" aria-hidden="true">▾</span></button>
+        <div class="submenu resource-submenu" id="submenu-recursos"></div>
+      </nav>
+    </aside>
+  <main class="page-shell">
+<div class="page-layout">
+<aside class="content-sidebar">
+<div class="sidebar-card">
+<div class="sidebar-card-header">📋 Neste Conteúdo</div>
+<div class="sidebar-card-body">
+<ul class="toc-list">
+<li><a href="#conceito"><span class="toc-num">1</span> O que é uma função?</a></li>
+<li><a href="#estatisticas"><span class="toc-num">2</span> Funções estatísticas</a></li>
+<li><a href="#contagem"><span class="toc-num">3</span> Funções de contagem e lógica</a></li>
+<li><a href="#financeiras"><span class="toc-num">4</span> Funções financeiras</a></li>
+<li><a href="#inserir"><span class="toc-num">5</span> Inserir funções</a></li>
+<li><a href="#competencias"><span class="toc-num">6</span> Aptidões e atitudes</a></li>
+</ul>
+</div>
+</div>
+</aside>
+<div class="content">
+<div class="content-hero">
+<div class="hero-icon">⚙️</div>
+<div>
+<h2>Funções — Estatísticas, Contagem e Financeiras</h2>
+<p>As funções são fórmulas predefinidas que realizam cálculos específicos. Aprenda a aplicar funções estatísticas (SOMA, MÉDIA), de contagem (CONTAR, CONTARA, SE) e financeiras (PGTO, VF).</p>
+
+</div>
+</div>
+<!-- Secção 1 -->
+<div class="section-block" id="conceito">
+<div class="section-block-header"><span class="s-icon">📝</span><h3>1. O que é uma Função?</h3></div>
+<div class="section-block-body">
+<p>Uma <strong>função</strong> é uma fórmula predefinida que realiza um cálculo específico. A sintaxe geral é:</p>
+<div class="formula-block">
+          =NOME_DA_FUNÇÃO(argumento1; argumento2; ...)<br/><br/>
+<span class="comment">// Exemplos:</span><br/>
+          =SOMA(A1:A10)           <span class="comment">→ soma os valores de A1 a A10</span><br/>
+          =MÉDIA(B1:B10)          <span class="comment">→ calcula a média de B1 a B10</span><br/>
+          =SE(A1&gt;10;"Sim";"Não")  <span class="comment">→ devolve "Sim" se A1&gt;10, senão "Não"</span>
+</div>
+<div class="box box-info" style="margin-top:12px;">
+<span class="box-icon">ℹ️</span>
+<div class="box-content"><p>Em Portugal, o separador de argumentos nas funções é o <strong>ponto e vírgula (;)</strong>. Em versões internacionais usa-se a vírgula (,). Verifique a configuração regional do seu Excel.</p></div>
+</div>
+</div>
+</div>
+<!-- Secção 2 -->
+<div class="section-block" id="estatisticas">
+<div class="section-block-header"><span class="s-icon">📊</span><h3>2. Funções Estatísticas</h3></div>
+<div class="section-block-body">
+<div class="table-wrap">
+<table>
+<thead><tr><th>Função</th><th>Descrição</th><th>Sintaxe</th><th>Exemplo</th></tr></thead>
+<tbody>
+<tr><td><code>=SOMA()</code></td><td>Soma os valores de um intervalo</td><td><code>=SOMA(intervalo)</code></td><td><code>=SOMA(A1:A10)</code></td></tr>
+<tr><td><code>=MÉDIA()</code></td><td>Calcula a média aritmética</td><td><code>=MÉDIA(intervalo)</code></td><td><code>=MÉDIA(B1:B10)</code></td></tr>
+<tr><td><code>=MÁXIMO()</code></td><td>Devolve o valor mais alto</td><td><code>=MÁXIMO(intervalo)</code></td><td><code>=MÁXIMO(C1:C10)</code></td></tr>
+<tr><td><code>=MÍNIMO()</code></td><td>Devolve o valor mais baixo</td><td><code>=MÍNIMO(intervalo)</code></td><td><code>=MÍNIMO(C1:C10)</code></td></tr>
+<tr><td><code>=MED()</code></td><td>Devolve a mediana (valor central)</td><td><code>=MED(intervalo)</code></td><td><code>=MED(A1:A20)</code></td></tr>
+<tr><td><code>=DESVPAD()</code></td><td>Calcula o desvio padrão</td><td><code>=DESVPAD(intervalo)</code></td><td><code>=DESVPAD(A1:A20)</code></td></tr>
+</tbody>
+</table>
+</div>
+<div class="subsec" style="margin-top:16px;">
+<h4>Exemplos Práticos</h4>
+<div class="formula-block">
+<span class="comment">// Dados em A1:A5: 10, 20, 30, 40, 50</span><br/><br/>
+            =SOMA(A1:A5)    <span class="result">→ 150</span><br/>
+            =MÉDIA(A1:A5)   <span class="result">→ 30</span><br/>
+            =MÁXIMO(A1:A5)  <span class="result">→ 50</span><br/>
+            =MÍNIMO(A1:A5)  <span class="result">→ 10</span><br/>
+            =MED(A1:A5)     <span class="result">→ 30 (valor central)</span>
+</div>
+</div>
+<div class="subsec">
+<h4>SOMA com Múltiplos Intervalos</h4>
+<div class="formula-block">
+<span class="comment">// Somar intervalos não contíguos:</span><br/>
+            =SOMA(A1:A5; C1:C5; E1:E5)<br/><br/>
+<span class="comment">// Somar com critério (SOMA.SE):</span><br/>
+            =SOMA.SE(A1:A10;"Lisboa";B1:B10)
+            <span class="comment">→ soma B onde A="Lisboa"</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Secção 3 -->
+<div class="section-block" id="contagem">
+<div class="section-block-header"><span class="s-icon">🔢</span><h3>3. Funções de Contagem e Lógica</h3></div>
+<div class="section-block-body">
+<div class="subsec">
+<h4>Funções de Contagem</h4>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Função</th><th>O que conta</th><th>Exemplo</th></tr></thead>
+<tbody>
+<tr><td><code>=CONTAR()</code></td><td>Células com <strong>valores numéricos</strong></td><td><code>=CONTAR(A1:A20)</code></td></tr>
+<tr><td><code>=CONTARA()</code></td><td>Células <strong>não vazias</strong> (qualquer tipo: texto, número, data)</td><td><code>=CONTARA(A1:A20)</code></td></tr>
+<tr><td><code>=CONTAR.VAZIO()</code></td><td>Células <strong>vazias</strong></td><td><code>=CONTAR.VAZIO(A1:A20)</code></td></tr>
+<tr><td><code>=CONTAR.SE()</code></td><td>Células que cumprem <strong>um critério</strong></td><td><code>=CONTAR.SE(A1:A20;"Lisboa")</code></td></tr>
+<tr><td><code>=CONTAR.SE.S()</code></td><td>Células que cumprem <strong>vários critérios</strong></td><td><code>=CONTAR.SE.S(A1:A20;"Lisboa";B1:B20;"&gt;"&amp;100)</code></td></tr>
+</tbody>
+</table>
+</div>
+<div class="box box-tip">
+<span class="box-icon">💡</span>
+<div class="box-content"><p>Use <code>CONTARA</code> para contar células com texto (ex.: nomes de produtos). Use <code>CONTAR</code> apenas para células com valores numéricos. A diferença é importante quando os dados incluem texto.</p></div>
+</div>
+</div>
+<div class="subsec">
+<h4>Função SE — Lógica Condicional</h4>
+<p>A função <code>=SE()</code> devolve um valor diferente consoante uma condição seja verdadeira ou falsa:</p>
+<div class="formula-block">
+            =SE(teste_lógico; valor_se_verdadeiro; valor_se_falso)<br/><br/>
+<span class="comment">// Exemplos:</span><br/>
+            =SE(A1&gt;10;"Aprovado";"Reprovado")<br/>
+            =SE(B1="";"Sem dados";B1*1,23)<br/>
+            =SE(C1&gt;=18;"Adulto";"Menor")<br/><br/>
+<span class="comment">// SE aninhado (múltiplas condições):</span><br/>
+            =SE(A1&gt;=18;"Excelente";SE(A1&gt;=14;"Bom";SE(A1&gt;=10;"Suficiente";"Insuficiente")))
+          </div>
+<div class="box box-info">
+<span class="box-icon">ℹ️</span>
+<div class="box-content"><p>O texto nos argumentos da função SE deve estar entre aspas: <code>"Aprovado"</code>. Os números não precisam de aspas: <code>SE(A1&gt;10;1;0)</code>.</p></div>
+</div>
+</div>
+<div class="subsec">
+<h4>Exemplos de CONTAR.SE</h4>
+<div class="formula-block">
+<span class="comment">// Contar células com texto específico:</span><br/>
+            =CONTAR.SE(A1:A20;"Lisboa")    <span class="result">→ nº de células com "Lisboa"</span><br/><br/>
+<span class="comment">// Contar células com valor maior que 100:</span><br/>
+            =CONTAR.SE(B1:B20;"&gt;"&amp;100)     <span class="result">→ nº de células &gt; 100</span><br/><br/>
+<span class="comment">// Contar células não vazias (alternativa a CONTARA):</span><br/>
+            =CONTAR.SE(A1:A20;"&lt;&gt;")       <span class="result">→ nº de células não vazias</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Secção 4 -->
+<div class="section-block" id="financeiras">
+<div class="section-block-header"><span class="s-icon">💰</span><h3>4. Funções Financeiras</h3></div>
+<div class="section-block-body">
+<p>As funções financeiras são úteis em contextos de gestão, contabilidade e análise de investimentos. Os argumentos principais são:</p>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Argumento</th><th>Significado</th><th>Nota</th></tr></thead>
+<tbody>
+<tr><td><strong>taxa</strong></td><td>Taxa de juro por período</td><td>Taxa anual ÷ nº de períodos por ano (ex.: 5%/12 para mensal)</td></tr>
+<tr><td><strong>nper</strong></td><td>Número total de períodos de pagamento</td><td>Anos × períodos por ano (ex.: 5×12=60 para 5 anos mensais)</td></tr>
+<tr><td><strong>va</strong></td><td>Valor atual (capital em dívida ou investido)</td><td>Valor positivo para empréstimos recebidos</td></tr>
+<tr><td><strong>vf</strong></td><td>Valor futuro (saldo final pretendido)</td><td>Normalmente 0 nos empréstimos</td></tr>
+<tr><td><strong>tipo</strong></td><td>0 = pagamento no fim do período; 1 = início</td><td>Opcional; 0 por defeito</td></tr>
+</tbody>
+</table>
+</div>
+<div class="subsec" style="margin-top:16px;">
+<h4>Funções Financeiras Principais</h4>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Função</th><th>Descrição</th><th>Exemplo</th></tr></thead>
+<tbody>
+<tr><td><code>=PGTO()</code></td><td>Prestação periódica de um empréstimo</td><td><code>=PGTO(5%/12;60;10000)</code></td></tr>
+<tr><td><code>=VA()</code></td><td>Valor atual de uma série de pagamentos</td><td><code>=VA(5%/12;60;-200)</code></td></tr>
+<tr><td><code>=VF()</code></td><td>Valor futuro de um investimento</td><td><code>=VF(3%/12;24;-100)</code></td></tr>
+<tr><td><code>=TAXA()</code></td><td>Taxa de juro por período</td><td><code>=TAXA(60;-200;10000)</code></td></tr>
+<tr><td><code>=NPER()</code></td><td>Número de períodos de um investimento</td><td><code>=NPER(5%/12;-200;10000)</code></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="subsec">
+<h4>Exemplo Prático — PGTO (Prestação de Empréstimo)</h4>
+<p>Calcular a prestação mensal de um empréstimo de <strong>10 000 €</strong>, taxa anual de <strong>5%</strong>, prazo de <strong>5 anos</strong> (60 meses):</p>
+<div class="formula-block">
+<span class="comment">// Dados:</span><br/>
+            Taxa anual: 5%  →  Taxa mensal: 5%/12<br/>
+            Prazo: 5 anos   →  Nper: 5×12 = 60 meses<br/>
+            Capital: 10 000 €<br/><br/>
+            =PGTO(5%/12; 60; 10000)<br/>
+<span class="result">→ -188,71 € por mês (negativo = saída de dinheiro)</span><br/><br/>
+<span class="comment">// Para obter o valor positivo:</span><br/>
+            =-PGTO(5%/12; 60; 10000)<br/>
+<span class="result">→ 188,71 €</span>
+</div>
+<div class="box box-warning">
+<span class="box-icon">⚠️</span>
+<div class="box-content"><strong>Atenção à periodicidade!</strong><p>A taxa e o prazo devem ter a mesma periodicidade. Se os pagamentos são mensais: taxa mensal = taxa anual ÷ 12; nper = anos × 12. O resultado de PGTO é negativo porque representa uma saída de dinheiro.</p></div>
+</div>
+</div>
+<div class="subsec">
+<h4>Exemplo Prático — VF (Valor Futuro de Poupança)</h4>
+<p>Calcular o valor acumulado ao depositar <strong>100 €/mês</strong> durante <strong>2 anos</strong> a uma taxa anual de <strong>3%</strong>:</p>
+<div class="formula-block">
+            =VF(3%/12; 24; -100)<br/>
+<span class="result">→ 2 468,00 € (valor acumulado ao fim de 2 anos)</span><br/><br/>
+<span class="comment">// O pagamento (-100) é negativo porque é uma saída de dinheiro</span><br/>
+<span class="comment">// O resultado é positivo porque é o valor que recebemos</span>
+</div>
+</div>
+<div class="subsec">
+<h4>Comparação de Cenários</h4>
+<p>Uma das grandes vantagens das funções financeiras é poder comparar cenários alterando apenas os dados de entrada:</p>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Cenário</th><th>Capital</th><th>Taxa anual</th><th>Prazo</th><th>Prestação mensal</th></tr></thead>
+<tbody>
+<tr><td>Base</td><td>10 000 €</td><td>5%</td><td>5 anos</td><td><code>=PGTO(5%/12;60;10000)</code> → 188,71 €</td></tr>
+<tr><td>Taxa mais baixa</td><td>10 000 €</td><td>3%</td><td>5 anos</td><td><code>=PGTO(3%/12;60;10000)</code> → 179,69 €</td></tr>
+<tr><td>Prazo mais longo</td><td>10 000 €</td><td>5%</td><td>10 anos</td><td><code>=PGTO(5%/12;120;10000)</code> → 106,07 €</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<!-- Secção 5 -->
+<div class="section-block" id="inserir">
+<div class="section-block-header"><span class="s-icon">🔧</span><h3>5. Inserir Funções</h3></div>
+<div class="section-block-body">
+<div class="subsec">
+<h4>Método 1 — Escrita Direta</h4>
+<ol class="steps">
+<li>Clique na célula de destino.</li>
+<li>Escreva <code>=</code> seguido do nome da função (ex.: <code>=SOMA</code>).</li>
+<li>O Excel sugere funções automaticamente — selecione a pretendida e prima <kbd>Tab</kbd>.</li>
+<li>Introduza os argumentos separados por <code>;</code>.</li>
+<li>Feche o parêntese e prima <kbd>Enter</kbd>.</li>
+</ol>
+</div>
+<div class="subsec">
+<h4>Método 2 — Assistente de Funções</h4>
+<ol class="steps">
+<li>Selecione a célula de destino.</li>
+<li>No separador <strong>Fórmulas</strong>, clique em <strong>Inserir Função</strong> (ou clique no ícone <strong>fx</strong> na barra de fórmulas).</li>
+<li>Pesquise ou escolha a categoria e a função pretendida.</li>
+<li>Preencha os argumentos no assistente (com descrição de cada um).</li>
+<li>Clique em <strong>OK</strong>.</li>
+</ol>
+<div class="box box-tip">
+<span class="box-icon">💡</span>
+<div class="box-content"><p>O assistente de funções é especialmente útil para funções financeiras, pois mostra a descrição de cada argumento e o resultado em tempo real enquanto preenche os campos.</p></div>
+</div>
+</div>
+<div class="subsec">
+<h4>Método 3 — Botões Rápidos no Friso</h4>
+<p>No separador <strong>Início</strong>, o botão <strong>Soma Automática (Σ)</strong> permite inserir rapidamente as funções mais comuns:</p>
+<ul class="styled">
+<li>Clique na célula abaixo ou à direita dos dados.</li>
+<li>Clique na seta junto ao botão <strong>Σ</strong>.</li>
+<li>Escolha: Soma, Média, Contar Números, Máx, Mín.</li>
+</ul>
+</div>
+</div>
+</div>
+<!-- Secção 6 -->
+<div class="section-block" id="competencias">
+<div class="section-block-header"><span class="s-icon">🎓</span><h3>6. Aptidões e Atitudes a Desenvolver</h3></div>
+<div class="section-block-body">
+<div class="competencias-grid">
+<div class="comp-card aptidoes">
+<h5>✅ Aptidões</h5>
+<ul>
+<li>Aplicar funções estatísticas: SOMA, MÉDIA, MÁXIMO, MÍNIMO</li>
+<li>Distinguir CONTAR (números) de CONTARA (qualquer conteúdo)</li>
+<li>Usar CONTAR.SE com critérios de texto e numéricos</li>
+<li>Construir fórmulas com SE para lógica condicional</li>
+<li>Aplicar PGTO e VF em cenários financeiros</li>
+<li>Compatibilizar taxa e periodicidade nas funções financeiras</li>
+<li>Usar o assistente de funções e a escrita direta</li>
+</ul>
+</div>
+<div class="comp-card atitudes">
+<h5>🌟 Atitudes</h5>
+<ul>
+<li>Raciocínio lógico na escolha da função adequada</li>
+<li>Precisão na definição dos argumentos</li>
+<li>Autonomia na interpretação dos resultados</li>
+<li>Pensamento crítico na análise de cenários financeiros</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<!-- Secção 7 -->
+
+<div class="content-nav">
+<a class="prev" href="impressao.html">
+<span>←</span>
+<div><span class="nav-label">Anterior</span><span class="nav-title">C06 — Impressão</span></div>
+</a>
+<a class="next" href="graficos.html">
+<div><span class="nav-label">Próximo</span><span class="nav-title">C08 — Gráficos</span></div>
+<span>→</span>
+</a>
+</div>
+</div>
+</div>
+  </main>
+  <div class="floating-actions" aria-label="Ações rápidas">
+    <a href="../index.html#inicio" aria-label="Página inicial" title="Página inicial"><span class="float-icon icon-home" aria-hidden="true"></span></a>
+    <button type="button" data-action="top" aria-label="Voltar ao topo" title="Voltar ao topo"><span class="float-icon icon-top" aria-hidden="true"></span></button>
+    <button type="button" data-action="print" aria-label="Imprimir" title="Imprimir"><span class="float-icon icon-print" aria-hidden="true"></span></button>
+  </div>
+  <script src="../assets/config.js"></script>
+  <script src="../assets/app.js?v=20260803-conteudos-0778"></script>
+</body>
+</html>

@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="pt-PT">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>UFCD 0695 | Controlo do site</title>
+    <link rel="stylesheet" href="assets/styles.css">
+    <style>
+      body[data-page="teams-control"] {
+        --control-max: 1320px;
+        background: #f2fbf6;
+      }
+
+      body[data-page="teams-control"] .embed-shell {
+        min-height: 100vh;
+        padding: clamp(18px, 3vw, 32px);
+        background: #f2fbf6;
+      }
+
+      body[data-page="teams-control"] .teams-control-section {
+        padding: 0;
+      }
+
+      body[data-page="teams-control"] .teams-control-section .section-inner {
+        width: min(100%, var(--control-max));
+        margin-inline: auto;
+        display: grid;
+        gap: 24px;
+      }
+
+      body[data-page="teams-control"] .teams-page-accordion {
+        width: 100%;
+        max-width: var(--control-max);
+        margin: 0 auto;
+        border: 1px solid var(--cor-linha);
+        border-radius: 8px;
+        overflow: hidden;
+        background: var(--cor-branco);
+        box-shadow: var(--sombra);
+      }
+
+      body[data-page="teams-control"] .teams-page-accordion + .teams-page-accordion {
+        margin-top: 0;
+      }
+
+      body[data-page="teams-control"] .teams-page-accordion > summary {
+        min-height: 132px;
+        padding: clamp(24px, 4vw, 42px);
+      }
+
+      body[data-page="teams-control"] .teams-accordion-copy small {
+        font-weight: 400;
+      }
+
+      body[data-page="teams-control"] .teams-accordion-body {
+        display: grid;
+        gap: 18px;
+        padding: clamp(18px, 3vw, 26px);
+      }
+
+      body[data-page="teams-control"] .teams-control-layout,
+      body[data-page="teams-control"] .teams-summary-card,
+      body[data-page="teams-control"] .teams-table-card,
+      body[data-page="teams-control"] .site-control-card {
+        width: 100%;
+        max-width: 100%;
+        margin-inline: auto;
+      }
+
+      body[data-page="teams-control"] .teams-summary-card,
+      body[data-page="teams-control"] .teams-table-card {
+        border: 1px solid var(--cor-linha);
+        border-radius: 8px;
+        box-shadow: none;
+      }
+
+      body[data-page="teams-control"] .teams-table-card {
+        margin-top: 0;
+      }
+
+      body[data-page="teams-control"] .teams-table-wrap {
+        width: 100%;
+        overflow-x: visible;
+      }
+
+      body[data-page="teams-control"] .teams-control-table {
+        width: 100%;
+        min-width: 0;
+        table-layout: fixed;
+      }
+
+      body[data-page="teams-control"] .teams-control-table th,
+      body[data-page="teams-control"] .teams-control-table td {
+        vertical-align: middle;
+      }
+
+      body[data-page="teams-control"] .teams-control-table th:nth-child(1),
+      body[data-page="teams-control"] .teams-control-table td:nth-child(1) {
+        width: 27%;
+      }
+
+      body[data-page="teams-control"] .teams-control-table th:nth-child(2),
+      body[data-page="teams-control"] .teams-control-table td:nth-child(2) {
+        width: 22%;
+        text-align: center;
+      }
+
+      body[data-page="teams-control"] .teams-control-table th:nth-child(3),
+      body[data-page="teams-control"] .teams-control-table td:nth-child(3) {
+        width: 18%;
+        text-align: center;
+      }
+
+      body[data-page="teams-control"] .teams-control-table th:nth-child(4),
+      body[data-page="teams-control"] .teams-control-table td:nth-child(4) {
+        width: 22%;
+        text-align: center;
+      }
+
+      body[data-page="teams-control"] .teams-control-table th:nth-child(5),
+      body[data-page="teams-control"] .teams-control-table td:nth-child(5) {
+        width: 11%;
+        text-align: center;
+      }
+
+      body[data-page="teams-control"] .teams-share-meter {
+        justify-content: center;
+      }
+
+      body[data-page="teams-control"] .teams-state-actions,
+      body[data-page="teams-control"] .teams-actions {
+        justify-content: center;
+      }
+
+      body[data-page="teams-control"] .site-control-card {
+        display: grid;
+        gap: 18px;
+      }
+
+      body[data-page="teams-control"] .site-control-heading {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(220px, 320px);
+        gap: 18px;
+        align-items: end;
+      }
+
+      body[data-page="teams-control"] .site-control-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+
+      body[data-page="teams-control"] .site-control-group {
+        width: 100%;
+        border: 1px solid var(--cor-linha);
+        border-radius: 8px;
+        overflow: hidden;
+        background: var(--cor-fundo);
+      }
+
+      body[data-page="teams-control"] .site-control-group > summary {
+        min-height: 58px;
+        padding: 14px 16px;
+      }
+
+      body[data-page="teams-control"] .site-control-options {
+        padding: 0 16px 16px;
+      }
+
+      @media (max-width: 900px) {
+        body[data-page="teams-control"] .teams-table-wrap {
+          overflow-x: auto;
+        }
+
+        body[data-page="teams-control"] .teams-control-table {
+          min-width: 980px;
+        }
+      }
+
+      @media (max-width: 760px) {
+        body[data-page="teams-control"] .embed-shell {
+          padding: 14px;
+        }
+
+        body[data-page="teams-control"] .teams-summary-grid,
+        body[data-page="teams-control"] .site-control-heading {
+          grid-template-columns: 1fr;
+        }
+
+        body[data-page="teams-control"] .teams-table-heading {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+      }
+    </style>
+  </head>
+  <body data-page="teams-control" data-depth="embed">
+    <main class="embed-shell" id="teams-control-root"></main>
+    <script src="assets/config.js"></script>
+    <script src="assets/app.js?v=20260906-ufcd0695-base"></script>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+

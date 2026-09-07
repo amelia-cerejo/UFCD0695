@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>C03 — Células · UFCD 0778</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+  <link rel="stylesheet" href="conteudo.css">
+</head>
+<body data-page="conteudo-estatico">
+    <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <aside class="sidebar" aria-label="Menu principal">
+      <a class="brand" href="../index.html#inicio"><span class="brand-mark">0778</span><span><strong>Folha de Cálculo</strong></span></a>
+      <nav class="side-nav">
+        <a href="../index.html#inicio">Início</a>
+        <a href="../index.html#objetivos">Objetivos</a>
+        <a href="../index.html#metodologia">Metodologia</a>
+        <button class="nav-parent" type="button" aria-expanded="true" aria-controls="submenu-conteudos">Conteúdos <span class="nav-parent-arrow" aria-hidden="true">▾</span></button>
+        <div class="submenu open" id="submenu-conteudos"></div>
+        <button class="nav-parent" type="button" aria-expanded="false" aria-controls="submenu-atividades">Atividades <span class="nav-parent-arrow" aria-hidden="true">▾</span></button>
+        <div class="submenu activity-submenu" id="submenu-atividades"></div>
+        <button class="nav-parent" type="button" aria-expanded="false" aria-controls="submenu-avaliacao">Avaliação <span class="nav-parent-arrow" aria-hidden="true">▾</span></button>
+        <div class="submenu evaluation-submenu" id="submenu-avaliacao"></div>
+        <button class="nav-parent" type="button" aria-expanded="false" aria-controls="submenu-recursos">Recursos <span class="nav-parent-arrow" aria-hidden="true">▾</span></button>
+        <div class="submenu resource-submenu" id="submenu-recursos"></div>
+      </nav>
+    </aside>
+  <main class="page-shell">
+<div class="page-layout">
+<aside class="content-sidebar">
+<div class="sidebar-card">
+<div class="sidebar-card-header">📋 Neste Conteúdo</div>
+<div class="sidebar-card-body">
+<ul class="toc-list">
+<li><a href="#insercao"><span class="toc-num">1</span> Inserção e edição de dados</a></li>
+<li><a href="#selecao"><span class="toc-num">2</span> Seleção de células</a></li>
+<li><a href="#copiar-mover"><span class="toc-num">3</span> Copiar, cortar e mover</a></li>
+<li><a href="#preenchimento"><span class="toc-num">4</span> Preenchimento automático</a></li>
+<li><a href="#formatacao"><span class="toc-num">5</span> Formatação de células</a></li>
+<li><a href="#competencias"><span class="toc-num">6</span> Aptidões e atitudes</a></li>
+</ul>
+</div>
+</div>
+</aside>
+<div class="content">
+<div class="content-hero">
+<div class="hero-icon">🔲</div>
+<div>
+<h2>Células — Inserção, Edição e Formatação</h2>
+<p>A célula é a unidade básica da folha de cálculo. Aprenda a introduzir, editar, selecionar, mover, copiar, eliminar, preencher automaticamente e formatar dados em células.</p>
+
+</div>
+</div>
+<!-- Secção 1 -->
+<div class="section-block" id="insercao">
+<div class="section-block-header"><span class="s-icon">✏️</span><h3>1. Inserção e Edição de Dados</h3></div>
+<div class="section-block-body">
+<div class="subsec">
+<h4>Introduzir Dados numa Célula</h4>
+<ol class="steps">
+<li>Clique na célula onde pretende introduzir dados.</li>
+<li>Comece a escrever — o conteúdo anterior é substituído automaticamente.</li>
+<li>Prima <kbd>Enter</kbd> para confirmar e avançar para a célula abaixo.</li>
+<li>Prima <kbd>Tab</kbd> para confirmar e avançar para a célula à direita.</li>
+<li>Prima <kbd>Escape</kbd> para cancelar a introdução sem guardar.</li>
+</ol>
+</div>
+<div class="subsec">
+<h4>Editar o Conteúdo de uma Célula</h4>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Método</th><th>Como fazer</th><th>Efeito</th></tr></thead>
+<tbody>
+<tr><td>Substituir tudo</td><td>Clicar na célula e escrever</td><td>Apaga o conteúdo anterior e substitui</td></tr>
+<tr><td>Editar no local</td><td>Duplo clique na célula</td><td>Coloca o cursor dentro da célula para edição parcial</td></tr>
+<tr><td>Editar na barra de fórmulas</td><td>Clicar na barra de fórmulas</td><td>Permite editar sem entrar na célula</td></tr>
+<tr><td>Ativar edição</td><td>Premir <kbd>F2</kbd></td><td>Coloca a célula em modo de edição</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="subsec">
+<h4>Tipos de Dados e Reconhecimento Automático</h4>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Tipo</th><th>Exemplos</th><th>Alinhamento padrão</th><th>Nota</th></tr></thead>
+<tbody>
+<tr><td><strong>Texto</strong></td><td>Lisboa, Produto A, Nome</td><td>Esquerda</td><td>Qualquer sequência de caracteres</td></tr>
+<tr><td><strong>Número inteiro</strong></td><td>100, -25, 0</td><td>Direita</td><td>Sem casas decimais</td></tr>
+<tr><td><strong>Número decimal</strong></td><td>3,14; 1.234,56</td><td>Direita</td><td>Usar vírgula como separador decimal em PT</td></tr>
+<tr><td><strong>Percentagem</strong></td><td>25%, 0,5</td><td>Direita</td><td>Introduzir 25% ou 0,25 e formatar</td></tr>
+<tr><td><strong>Data</strong></td><td>01/01/2026, 1-jan-2026</td><td>Direita</td><td>O Excel converte para número interno de data</td></tr>
+<tr><td><strong>Hora</strong></td><td>14:30, 9:00:00</td><td>Direita</td><td>Formato HH:MM ou HH:MM:SS</td></tr>
+<tr><td><strong>Fórmula</strong></td><td>=A1+B1, =SOMA(A1:A10)</td><td>Depende do resultado</td><td>Começa sempre com =</td></tr>
+</tbody>
+</table>
+</div>
+<div class="box box-tip">
+<span class="box-icon">💡</span>
+<div class="box-content"><p>Para forçar um número a ser tratado como texto (ex.: código postal "0100"), preceda-o com um apóstrofo: <code>'0100</code>. O apóstrofo não aparece na célula mas indica ao Excel que é texto.</p></div>
+</div>
+</div>
+<div class="subsec">
+<h4>Eliminar Conteúdo</h4>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Ação</th><th>Tecla / Método</th></tr></thead>
+<tbody>
+<tr><td>Eliminar conteúdo (mantém formatação)</td><td><kbd>Delete</kbd></td></tr>
+<tr><td>Eliminar conteúdo e formatação</td><td>Início &gt; Limpar &gt; Limpar Tudo</td></tr>
+<tr><td>Eliminar apenas formatação</td><td>Início &gt; Limpar &gt; Limpar Formatos</td></tr>
+<tr><td>Eliminar células (desloca outras)</td><td>Botão direito &gt; Eliminar Células</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<!-- Secção 2 -->
+<div class="section-block" id="selecao">
+<div class="section-block-header"><span class="s-icon">🖱️</span><h3>2. Seleção de Células</h3></div>
+<div class="section-block-body">
+<div class="table-wrap">
+<table>
+<thead><tr><th>O que selecionar</th><th>Como fazer</th></tr></thead>
+<tbody>
+<tr><td>Uma célula</td><td>Clicar na célula</td></tr>
+<tr><td>Intervalo contínuo</td><td>Clicar na primeira célula e arrastar até à última</td></tr>
+<tr><td>Intervalo contínuo (teclado)</td><td>Clicar na primeira célula + <kbd>Shift</kbd> + clicar na última</td></tr>
+<tr><td>Células não adjacentes</td><td>Clicar na primeira + manter <kbd>Ctrl</kbd> + clicar nas restantes</td></tr>
+<tr><td>Coluna inteira</td><td>Clicar no cabeçalho da coluna (letra)</td></tr>
+<tr><td>Linha inteira</td><td>Clicar no cabeçalho da linha (número)</td></tr>
+<tr><td>Várias colunas/linhas</td><td>Arrastar sobre os cabeçalhos</td></tr>
+<tr><td>Toda a folha</td><td>Clicar no canto superior esquerdo (entre A e 1) ou <kbd>Ctrl + A</kbd></td></tr>
+<tr><td>Área de dados atual</td><td><kbd>Ctrl + Shift + End</kbd></td></tr>
+</tbody>
+</table>
+</div>
+<div class="box box-tip">
+<span class="box-icon">💡</span>
+<div class="box-content"><p>Para selecionar um intervalo grande, escreva a referência na <strong>Caixa de Nome</strong> (ex.: <code>A1:Z100</code>) e prima <kbd>Enter</kbd>. O Excel seleciona o intervalo imediatamente.</p></div>
+</div>
+</div>
+</div>
+<!-- Secção 3 -->
+<div class="section-block" id="copiar-mover">
+<div class="section-block-header"><span class="s-icon">📋</span><h3>3. Copiar, Cortar e Mover</h3></div>
+<div class="section-block-body">
+<div class="subsec">
+<h4>Operações Básicas</h4>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Operação</th><th>Atalho</th><th>Botão no Friso</th><th>Efeito</th></tr></thead>
+<tbody>
+<tr><td><strong>Copiar</strong></td><td><kbd>Ctrl + C</kbd></td><td>Início &gt; Copiar</td><td>Copia o conteúdo (original mantém-se)</td></tr>
+<tr><td><strong>Cortar</strong></td><td><kbd>Ctrl + X</kbd></td><td>Início &gt; Cortar</td><td>Move o conteúdo (original é removido)</td></tr>
+<tr><td><strong>Colar</strong></td><td><kbd>Ctrl + V</kbd></td><td>Início &gt; Colar</td><td>Cola o conteúdo na célula de destino</td></tr>
+<tr><td><strong>Desfazer</strong></td><td><kbd>Ctrl + Z</kbd></td><td>Barra de acesso rápido</td><td>Reverte a última ação</td></tr>
+<tr><td><strong>Refazer</strong></td><td><kbd>Ctrl + Y</kbd></td><td>Barra de acesso rápido</td><td>Repete a última ação desfeita</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="subsec">
+<h4>Colar Especial</h4>
+<p>O <strong>Colar Especial</strong> (<kbd>Ctrl + Alt + V</kbd>) permite colar apenas partes específicas do conteúdo copiado:</p>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Opção</th><th>O que cola</th><th>Quando usar</th></tr></thead>
+<tbody>
+<tr><td><strong>Tudo</strong></td><td>Conteúdo + formatação + fórmulas</td><td>Cópia completa (igual a Ctrl+V)</td></tr>
+<tr><td><strong>Valores</strong></td><td>Apenas os valores calculados</td><td>Para "fixar" resultados de fórmulas</td></tr>
+<tr><td><strong>Formatos</strong></td><td>Apenas a formatação</td><td>Para copiar o estilo visual sem o conteúdo</td></tr>
+<tr><td><strong>Fórmulas</strong></td><td>Apenas as fórmulas</td><td>Para copiar cálculos sem formatação</td></tr>
+<tr><td><strong>Transpor</strong></td><td>Linhas ↔ Colunas</td><td>Para rodar uma tabela 90°</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="subsec">
+<h4>Mover Células por Arrastar</h4>
+<ol class="steps">
+<li>Selecione as células a mover.</li>
+<li>Posicione o cursor na borda da seleção (o cursor muda para uma seta com 4 pontas).</li>
+<li>Arraste para a posição de destino.</li>
+<li>Para copiar em vez de mover, mantenha <kbd>Ctrl</kbd> pressionado durante o arrasto.</li>
+</ol>
+</div>
+</div>
+</div>
+<!-- Secção 4 -->
+<div class="section-block" id="preenchimento">
+<div class="section-block-header"><span class="s-icon">🔄</span><h3>4. Preenchimento Automático e Séries</h3></div>
+<div class="section-block-body">
+<p>O Excel reconhece padrões e pode completar séries automaticamente usando a <strong>alça de preenchimento</strong> — o pequeno quadrado verde no canto inferior direito da célula selecionada.</p>
+<div class="subsec">
+<h4>Como Usar a Alça de Preenchimento</h4>
+<ol class="steps">
+<li>Introduza o(s) primeiro(s) valor(es) da série.</li>
+<li>Selecione a(s) célula(s) com os valores iniciais.</li>
+<li>Posicione o cursor sobre a alça de preenchimento (canto inferior direito).</li>
+<li>O cursor muda para uma cruz preta (+).</li>
+<li>Arraste na direção pretendida (baixo, cima, direita ou esquerda).</li>
+</ol>
+</div>
+<div class="subsec">
+<h4>Tipos de Séries Reconhecidas</h4>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Tipo de série</th><th>Exemplo de entrada</th><th>Resultado ao arrastar</th></tr></thead>
+<tbody>
+<tr><td>Números com incremento 1</td><td>1</td><td>1, 2, 3, 4, 5...</td></tr>
+<tr><td>Números com incremento definido</td><td>2, 4 (selecionar ambas)</td><td>2, 4, 6, 8, 10...</td></tr>
+<tr><td>Datas (dias)</td><td>01/01/2026</td><td>01/01, 02/01, 03/01...</td></tr>
+<tr><td>Datas (meses)</td><td>jan-26</td><td>jan-26, fev-26, mar-26...</td></tr>
+<tr><td>Dias da semana</td><td>Segunda</td><td>Segunda, Terça, Quarta...</td></tr>
+<tr><td>Meses por extenso</td><td>Janeiro</td><td>Janeiro, Fevereiro, Março...</td></tr>
+<tr><td>Texto + número</td><td>Produto 1</td><td>Produto 1, Produto 2, Produto 3...</td></tr>
+<tr><td>Repetição de valor</td><td>Lisboa (arrastar com Ctrl)</td><td>Lisboa, Lisboa, Lisboa...</td></tr>
+</tbody>
+</table>
+</div>
+<div class="box box-tip">
+<span class="box-icon">💡</span>
+<div class="box-content"><p>Para criar uma série com incremento específico (ex.: 5, 10, 15...), introduza os <strong>dois primeiros valores</strong>, selecione ambas as células e arraste a alça de preenchimento. O Excel calcula o incremento automaticamente.</p></div>
+</div>
+</div>
+<div class="subsec">
+<h4>Preenchimento Rápido (Flash Fill)</h4>
+<p>O <strong>Preenchimento Rápido</strong> (<kbd>Ctrl + E</kbd>) reconhece padrões nos dados e preenche automaticamente uma coluna. Por exemplo, se tiver nomes completos numa coluna e quiser extrair apenas o primeiro nome:</p>
+<div class="formula-block">
+            Coluna A: "Ana Silva"    → Coluna B: escreva "Ana"<br/>
+            Coluna A: "João Santos"  → Coluna B: prima Ctrl+E<br/>
+<span class="result">→ Excel preenche: "João", "Maria", "Pedro"...</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Secção 5 -->
+<div class="section-block" id="formatacao">
+<div class="section-block-header"><span class="s-icon">🎨</span><h3>5. Formatação de Células</h3></div>
+<div class="section-block-body">
+<p>A formatação melhora a apresentação visual dos dados <strong>sem alterar o seu conteúdo</strong>. Aceda às opções através do separador <strong>Início</strong> ou da caixa de diálogo <strong>Formatar Células</strong> (<kbd>Ctrl + 1</kbd>).</p>
+<div class="subsec">
+<h4>Formatação de Texto</h4>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Opção</th><th>Atalho</th><th>Descrição</th></tr></thead>
+<tbody>
+<tr><td><strong>Negrito</strong></td><td><kbd>Ctrl + N</kbd></td><td>Texto em negrito</td></tr>
+<tr><td><strong>Itálico</strong></td><td><kbd>Ctrl + I</kbd></td><td>Texto em itálico</td></tr>
+<tr><td><strong>Sublinhado</strong></td><td><kbd>Ctrl + S</kbd></td><td>Texto sublinhado</td></tr>
+<tr><td><strong>Tipo de letra</strong></td><td>—</td><td>Escolher a fonte (Calibri, Arial, etc.)</td></tr>
+<tr><td><strong>Tamanho</strong></td><td>—</td><td>Tamanho em pontos (pt)</td></tr>
+<tr><td><strong>Cor do texto</strong></td><td>—</td><td>Cor da fonte</td></tr>
+<tr><td><strong>Cor de preenchimento</strong></td><td>—</td><td>Cor de fundo da célula</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="subsec">
+<h4>Alinhamento</h4>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Opção</th><th>Descrição</th></tr></thead>
+<tbody>
+<tr><td><strong>Horizontal</strong></td><td>Esquerda, Centro, Direita, Justificado</td></tr>
+<tr><td><strong>Vertical</strong></td><td>Superior, Meio, Inferior</td></tr>
+<tr><td><strong>Moldar texto</strong></td><td>O texto ocupa várias linhas dentro da mesma célula</td></tr>
+<tr><td><strong>Unir e centrar</strong></td><td>Une várias células numa só (usar com moderação)</td></tr>
+<tr><td><strong>Orientação</strong></td><td>Roda o texto em ângulo (ex.: 45°, 90°)</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="subsec">
+<h4>Formatação de Números</h4>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Formato</th><th>Exemplo de entrada</th><th>Apresentação</th></tr></thead>
+<tbody>
+<tr><td><strong>Número</strong></td><td>1234.56</td><td>1 234,56 (com separador de milhares)</td></tr>
+<tr><td><strong>Moeda</strong></td><td>125</td><td>125,00 €</td></tr>
+<tr><td><strong>Percentagem</strong></td><td>0,25</td><td>25%</td></tr>
+<tr><td><strong>Data</strong></td><td>01/01/2026</td><td>1 de janeiro de 2026 (vários formatos)</td></tr>
+<tr><td><strong>Hora</strong></td><td>0,5</td><td>12:00 (meio-dia)</td></tr>
+<tr><td><strong>Texto</strong></td><td>0100</td><td>0100 (preserva zeros à esquerda)</td></tr>
+</tbody>
+</table>
+</div>
+<div class="box box-info">
+<span class="box-icon">ℹ️</span>
+<div class="box-content"><p>A formatação é <strong>apenas visual</strong>: o valor armazenado na célula não é alterado. Ao aplicar formato de moeda ao valor 125, o Excel apresenta <strong>125,00 €</strong> mas continua a armazenar o número 125.</p></div>
+</div>
+</div>
+<div class="subsec">
+<h4>Bordas e Preenchimento</h4>
+<ul class="styled">
+<li><strong>Bordas:</strong> Início &gt; Bordas (ou <kbd>Ctrl + 1</kbd> &gt; Separador Borda) — escolha o estilo, espessura e cor das linhas.</li>
+<li><strong>Cor de preenchimento:</strong> Início &gt; Cor de Preenchimento — aplica cor de fundo à célula.</li>
+<li><strong>Copiar formatação:</strong> use o botão <strong>Pincel de Formatação</strong> (Início) para copiar o formato de uma célula para outra.</li>
+</ul>
+</div>
+</div>
+</div>
+<!-- Secção 6 -->
+<div class="section-block" id="competencias">
+<div class="section-block-header"><span class="s-icon">🎓</span><h3>6. Aptidões e Atitudes a Desenvolver</h3></div>
+<div class="section-block-body">
+<div class="competencias-grid">
+<div class="comp-card aptidoes">
+<h5>✅ Aptidões</h5>
+<ul>
+<li>Introduzir e editar texto, números, datas, horas e percentagens</li>
+<li>Selecionar células, intervalos, linhas e colunas</li>
+<li>Copiar, cortar, colar e usar o Colar Especial</li>
+<li>Mover dados por arrastar</li>
+<li>Usar a alça de preenchimento para criar séries</li>
+<li>Aplicar formatação de texto, números e alinhamento</li>
+<li>Aplicar bordas e cores de preenchimento</li>
+</ul>
+</div>
+<div class="comp-card atitudes">
+<h5>🌟 Atitudes</h5>
+<ul>
+<li>Rigor na introdução e verificação dos dados</li>
+<li>Atenção ao detalhe na formatação</li>
+<li>Autonomia na resolução de problemas de edição</li>
+<li>Cuidado para não alterar dados por engano</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<!-- Secção 7 -->
+
+<div class="content-nav">
+<a class="prev" href="ficheiros_folhas.html">
+<span>←</span>
+<div><span class="nav-label">Anterior</span><span class="nav-title">C02 — Ficheiros e Folhas</span></div>
+</a>
+<a class="next" href="formatacao_linhas_colunas.html">
+<div><span class="nav-label">Próximo</span><span class="nav-title">C04 — Formatação de Linhas e Colunas</span></div>
+<span>→</span>
+</a>
+</div>
+</div>
+</div>
+  </main>
+  <div class="floating-actions" aria-label="Ações rápidas">
+    <a href="../index.html#inicio" aria-label="Página inicial" title="Página inicial"><span class="float-icon icon-home" aria-hidden="true"></span></a>
+    <button type="button" data-action="top" aria-label="Voltar ao topo" title="Voltar ao topo"><span class="float-icon icon-top" aria-hidden="true"></span></button>
+    <button type="button" data-action="print" aria-label="Imprimir" title="Imprimir"><span class="float-icon icon-print" aria-hidden="true"></span></button>
+  </div>
+  <script src="../assets/config.js"></script>
+  <script src="../assets/app.js?v=20260803-conteudos-0778"></script>
+</body>
+</html>

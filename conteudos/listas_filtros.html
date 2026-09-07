@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>C10 — Listas, Ordenação e Filtros · UFCD 0778</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+  <link rel="stylesheet" href="conteudo.css">
+</head>
+<body data-page="conteudo-estatico">
+    <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <aside class="sidebar" aria-label="Menu principal">
+      <a class="brand" href="../index.html#inicio"><span class="brand-mark">0778</span><span><strong>Folha de Cálculo</strong></span></a>
+      <nav class="side-nav">
+        <a href="../index.html#inicio">Início</a>
+        <a href="../index.html#objetivos">Objetivos</a>
+        <a href="../index.html#metodologia">Metodologia</a>
+        <button class="nav-parent" type="button" aria-expanded="true" aria-controls="submenu-conteudos">Conteúdos <span class="nav-parent-arrow" aria-hidden="true">▾</span></button>
+        <div class="submenu open" id="submenu-conteudos"></div>
+        <button class="nav-parent" type="button" aria-expanded="false" aria-controls="submenu-atividades">Atividades <span class="nav-parent-arrow" aria-hidden="true">▾</span></button>
+        <div class="submenu activity-submenu" id="submenu-atividades"></div>
+        <button class="nav-parent" type="button" aria-expanded="false" aria-controls="submenu-avaliacao">Avaliação <span class="nav-parent-arrow" aria-hidden="true">▾</span></button>
+        <div class="submenu evaluation-submenu" id="submenu-avaliacao"></div>
+        <button class="nav-parent" type="button" aria-expanded="false" aria-controls="submenu-recursos">Recursos <span class="nav-parent-arrow" aria-hidden="true">▾</span></button>
+        <div class="submenu resource-submenu" id="submenu-recursos"></div>
+      </nav>
+    </aside>
+  <main class="page-shell">
+<div class="page-layout">
+<aside class="content-sidebar">
+<div class="sidebar-card">
+<div class="sidebar-card-header">📋 Neste Conteúdo</div>
+<div class="sidebar-card-body">
+<ul class="toc-list">
+<li><a href="#estrutura"><span class="toc-num">1</span> Estrutura de uma lista</a></li>
+<li><a href="#tabela-formatada"><span class="toc-num">2</span> Tabela formatada</a></li>
+<li><a href="#ordenacao"><span class="toc-num">3</span> Ordenação</a></li>
+<li><a href="#filtros"><span class="toc-num">4</span> Filtros</a></li>
+<li><a href="#linha-totais"><span class="toc-num">5</span> Linha de totais</a></li>
+<li><a href="#competencias"><span class="toc-num">6</span> Aptidões e atitudes</a></li>
+</ul>
+</div>
+</div>
+</aside>
+<div class="content">
+<div class="content-hero">
+<div class="hero-icon">🔍</div>
+<div>
+<h2>Listas, Ordenação e Filtros de Dados</h2>
+<p>Estruturar dados como tabela formatada, garantir a qualidade dos dados e utilizar ordenação e filtros para responder a questões concretas sobre a informação.</p>
+
+</div>
+</div>
+<!-- Secção 1 -->
+<div class="section-block" id="estrutura">
+<div class="section-block-header"><span class="s-icon">📋</span><h3>1. Estrutura de uma Lista de Dados</h3></div>
+<div class="section-block-body">
+<p>Uma <strong>lista de dados</strong> (ou base de dados) é um conjunto de informação organizado em linhas e colunas, onde cada linha representa um registo e cada coluna representa um campo.</p>
+<div class="subsec">
+<h4>Regras para uma Lista Bem Estruturada</h4>
+<div class="box box-success">
+<span class="box-icon">✅</span>
+<div class="box-content">
+<ul style="padding-left:16px; font-size:.9rem;">
+<li><strong>Um único cabeçalho por coluna</strong> — cada coluna tem um nome único e descritivo na primeira linha.</li>
+<li><strong>Sem linhas ou colunas vazias</strong> no interior dos dados.</li>
+<li><strong>Cada coluna contém sempre o mesmo tipo de informação</strong> (ex.: a coluna "Data" só tem datas).</li>
+<li><strong>Sem células unidas</strong> dentro da área de dados.</li>
+<li><strong>Dados consistentes</strong> — mesma ortografia, mesmo formato de data, mesmas categorias.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="subsec">
+<h4>Erros Comuns a Corrigir</h4>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Problema</th><th>Exemplo</th><th>Solução</th></tr></thead>
+<tbody>
+<tr><td>Inconsistência de texto</td><td>"Lisboa", "lisboa", "LISBOA"</td><td>Uniformizar com maiúsculas/minúsculas</td></tr>
+<tr><td>Espaços extra</td><td>" Lisboa" (com espaço antes)</td><td>Usar a função =COMPACTAR() para remover espaços</td></tr>
+<tr><td>Datas em formato texto</td><td>"01-01-2026" como texto</td><td>Converter para formato de data reconhecido pelo Excel</td></tr>
+<tr><td>Números como texto</td><td>"100" (alinhado à esquerda)</td><td>Converter para número (Dados &gt; Texto para Colunas)</td></tr>
+<tr><td>Categorias inconsistentes</td><td>"Norte", "norte", "Região Norte"</td><td>Definir uma lista de valores válidos e uniformizar</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<!-- Secção 2 -->
+<div class="section-block" id="tabela-formatada">
+<div class="section-block-header"><span class="s-icon">📊</span><h3>2. Tabela Formatada</h3></div>
+<div class="section-block-body">
+<p>Uma <strong>tabela formatada</strong> é um intervalo de dados que o Excel reconhece como uma unidade estruturada. Oferece funcionalidades automáticas de filtragem, ordenação, formatação e cálculo.</p>
+<div class="subsec">
+<h4>Converter um Intervalo em Tabela</h4>
+<ol class="steps">
+<li>Clique em qualquer célula dentro do intervalo de dados.</li>
+<li>No separador <strong>Inserir</strong>, clique em <strong>Tabela</strong> (ou <kbd>Ctrl + T</kbd>).</li>
+<li>Confirme o intervalo e verifique se a opção <strong>"A minha tabela tem cabeçalhos"</strong> está ativa.</li>
+<li>Clique em <strong>OK</strong>.</li>
+</ol>
+</div>
+<div class="subsec">
+<h4>Nomear a Tabela</h4>
+<p>Após criar a tabela, atribua-lhe um nome descritivo:</p>
+<ol class="steps">
+<li>Clique dentro da tabela.</li>
+<li>No separador <strong>Estrutura da Tabela</strong>, escreva o nome na caixa <strong>Nome da Tabela</strong>.</li>
+<li>Use nomes sem espaços: <code>VendasMensais</code>, <code>ListaProdutos</code>, <code>RegistoClientes</code>.</li>
+</ol>
+</div>
+<div class="subsec">
+<h4>Vantagens das Tabelas Formatadas</h4>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Vantagem</th><th>Descrição</th></tr></thead>
+<tbody>
+<tr><td><strong>Setas de filtro automáticas</strong></td><td>Aparecem automaticamente nos cabeçalhos</td></tr>
+<tr><td><strong>Expansão automática</strong></td><td>Ao adicionar dados abaixo ou à direita, a tabela expande-se automaticamente</td></tr>
+<tr><td><strong>Fórmulas automáticas</strong></td><td>As fórmulas são aplicadas automaticamente às novas linhas</td></tr>
+<tr><td><strong>Referências estruturadas</strong></td><td>As fórmulas usam nomes de colunas em vez de referências de células (ex.: <code>=[@Preço]*[@Quantidade]</code>)</td></tr>
+<tr><td><strong>Linha de totais</strong></td><td>Permite adicionar cálculos automáticos no final da tabela</td></tr>
+<tr><td><strong>Estilos visuais</strong></td><td>Formatação alternada de linhas para melhor legibilidade</td></tr>
+</tbody>
+</table>
+</div>
+<div class="box box-tip">
+<span class="box-icon">💡</span>
+<div class="box-content"><p>As tabelas formatadas são o ponto de partida recomendado antes de criar tabelas dinâmicas. Ao acrescentar registos, basta atualizar a tabela dinâmica para os integrar na análise.</p></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Secção 3 -->
+<div class="section-block" id="ordenacao">
+<div class="section-block-header"><span class="s-icon">↕️</span><h3>3. Ordenação de Dados</h3></div>
+<div class="section-block-body">
+<div class="subsec">
+<h4>Ordenação Simples</h4>
+<ol class="steps">
+<li>Clique em qualquer célula da coluna pela qual pretende ordenar.</li>
+<li>No separador <strong>Dados</strong>, clique em <strong>Ordenar de A a Z</strong> (crescente) ou <strong>Ordenar de Z a A</strong> (decrescente).</li>
+</ol>
+<p style="margin-top:8px;">Ou use as setas de filtro nos cabeçalhos da tabela: clique na seta &gt; escolha a ordenação pretendida.</p>
+</div>
+<div class="subsec">
+<h4>Ordenação por Vários Níveis</h4>
+<ol class="steps">
+<li>Clique em qualquer célula da tabela.</li>
+<li>No separador <strong>Dados</strong>, clique em <strong>Ordenar</strong>.</li>
+<li>Defina o primeiro nível de ordenação (coluna e direção).</li>
+<li>Clique em <strong>Adicionar Nível</strong> para adicionar mais critérios.</li>
+<li>Confirme com <strong>OK</strong>.</li>
+</ol>
+<div class="box box-tip">
+<span class="box-icon">💡</span>
+<div class="box-content"><p>Exemplo: ordenar primeiro por <em>Categoria</em> (A-Z) e depois por <em>Preço</em> (decrescente). Dentro de cada categoria, os produtos ficam ordenados do mais caro para o mais barato.</p></div>
+</div>
+</div>
+<div class="subsec">
+<h4>Tipos de Ordenação</h4>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Tipo de dados</th><th>Crescente</th><th>Decrescente</th></tr></thead>
+<tbody>
+<tr><td>Texto</td><td>A → Z</td><td>Z → A</td></tr>
+<tr><td>Números</td><td>Menor → Maior</td><td>Maior → Menor</td></tr>
+<tr><td>Datas</td><td>Mais antiga → Mais recente</td><td>Mais recente → Mais antiga</td></tr>
+<tr><td>Cor de célula</td><td>Cor selecionada no topo</td><td>Cor selecionada no fundo</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<!-- Secção 4 -->
+<div class="section-block" id="filtros">
+<div class="section-block-header"><span class="s-icon">🔽</span><h3>4. Filtros de Dados</h3></div>
+<div class="section-block-body">
+<p>Os filtros <strong>ocultam temporariamente</strong> as linhas que não cumprem os critérios definidos. Os dados não são eliminados — ficam apenas invisíveis até o filtro ser removido.</p>
+<div class="subsec">
+<h4>Aplicar um Filtro</h4>
+<ol class="steps">
+<li>Clique na seta de filtro do cabeçalho da coluna pretendida.</li>
+<li>Escolha os critérios de filtragem na lista ou use as opções avançadas.</li>
+<li>Clique em <strong>OK</strong> para aplicar.</li>
+</ol>
+<p style="margin-top:8px;">As linhas filtradas ficam ocultas e os números das linhas visíveis aparecem a azul. A seta do cabeçalho filtrado muda para um ícone de funil.</p>
+</div>
+<div class="subsec">
+<h4>Tipos de Filtros</h4>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Tipo</th><th>Opções disponíveis</th><th>Exemplo</th></tr></thead>
+<tbody>
+<tr><td><strong>Filtros de Texto</strong></td><td>Igual a, Não igual a, Começa por, Termina em, Contém, Não contém</td><td>Mostrar apenas registos onde Cidade = "Lisboa"</td></tr>
+<tr><td><strong>Filtros de Número</strong></td><td>Igual a, Maior que, Menor que, Entre, Acima da média, Abaixo da média</td><td>Mostrar produtos com preço &gt; 50 €</td></tr>
+<tr><td><strong>Filtros de Data</strong></td><td>Hoje, Esta semana, Este mês, Este ano, Antes de, Depois de, Entre</td><td>Mostrar vendas do mês atual</td></tr>
+<tr><td><strong>Filtro por cor</strong></td><td>Filtrar por cor de célula ou cor de texto</td><td>Mostrar apenas células marcadas a vermelho</td></tr>
+<tr><td><strong>Seleção manual</strong></td><td>Marcar/desmarcar valores específicos da lista</td><td>Mostrar apenas "Norte" e "Sul"</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="subsec">
+<h4>Filtros Combinados</h4>
+<p>É possível aplicar filtros em várias colunas simultaneamente. Os critérios são combinados com <strong>E</strong> (AND) — só aparecem os registos que cumprem todos os critérios ativos.</p>
+<div class="formula-block">
+<span class="comment">// Exemplo: filtrar por Cidade E por Preço</span><br/>
+            Coluna Cidade: filtrar "Lisboa"<br/>
+            Coluna Preço: filtrar "&gt; 100"<br/>
+<span class="result">→ Mostra apenas registos de Lisboa com preço &gt; 100 €</span>
+</div>
+</div>
+<div class="subsec">
+<h4>Limpar Filtros</h4>
+<ul class="styled">
+<li><strong>Limpar filtro de uma coluna:</strong> clique na seta de filtro &gt; <strong>Limpar Filtro de "[nome da coluna]"</strong>.</li>
+<li><strong>Limpar todos os filtros:</strong> separador <strong>Dados &gt; Limpar</strong>.</li>
+<li><strong>Desativar filtros:</strong> separador <strong>Dados &gt; Filtrar</strong> (remove as setas de filtro).</li>
+</ul>
+<div class="box box-warning">
+<span class="box-icon">⚠️</span>
+<div class="box-content"><p>Os filtros ocultam linhas mas <strong>não eliminam dados</strong>. Para repor todos os registos, limpe os filtros ativos. Verifique sempre se existem filtros ativos antes de fazer cálculos ou análises.</p></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Secção 5 -->
+<div class="section-block" id="linha-totais">
+<div class="section-block-header"><span class="s-icon">➕</span><h3>5. Linha de Totais</h3></div>
+<div class="section-block-body">
+<p>A <strong>linha de totais</strong> é uma funcionalidade exclusiva das tabelas formatadas que adiciona automaticamente cálculos no final da tabela.</p>
+<div class="subsec">
+<h4>Ativar a Linha de Totais</h4>
+<ol class="steps">
+<li>Clique dentro da tabela formatada.</li>
+<li>No separador <strong>Estrutura da Tabela</strong>, ative a opção <strong>Linha de Totais</strong>.</li>
+<li>Uma nova linha aparece no final da tabela.</li>
+<li>Clique numa célula da linha de totais e escolha o tipo de cálculo na lista pendente.</li>
+</ol>
+</div>
+<div class="subsec">
+<h4>Cálculos Disponíveis na Linha de Totais</h4>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Cálculo</th><th>Função utilizada</th><th>Quando usar</th></tr></thead>
+<tbody>
+<tr><td><strong>Soma</strong></td><td><code>=SUBTOTAL(109;...)</code></td><td>Somar valores numéricos (ignora linhas ocultas por filtro)</td></tr>
+<tr><td><strong>Média</strong></td><td><code>=SUBTOTAL(101;...)</code></td><td>Calcular a média dos valores visíveis</td></tr>
+<tr><td><strong>Contagem</strong></td><td><code>=SUBTOTAL(102;...)</code></td><td>Contar células com números</td></tr>
+<tr><td><strong>Contagem de números</strong></td><td><code>=SUBTOTAL(103;...)</code></td><td>Contar células não vazias</td></tr>
+<tr><td><strong>Máximo</strong></td><td><code>=SUBTOTAL(104;...)</code></td><td>Valor mais alto</td></tr>
+<tr><td><strong>Mínimo</strong></td><td><code>=SUBTOTAL(105;...)</code></td><td>Valor mais baixo</td></tr>
+</tbody>
+</table>
+</div>
+<div class="box box-info">
+<span class="box-icon">ℹ️</span>
+<div class="box-content"><p>A linha de totais usa a função <code>SUBTOTAL</code> que <strong>ignora as linhas ocultas por filtro</strong>. Assim, quando aplica um filtro, os totais atualizam-se automaticamente para refletir apenas os dados visíveis.</p></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Secção 6 -->
+<div class="section-block" id="competencias">
+<div class="section-block-header"><span class="s-icon">🎓</span><h3>6. Aptidões e Atitudes a Desenvolver</h3></div>
+<div class="section-block-body">
+<div class="competencias-grid">
+<div class="comp-card aptidoes">
+<h5>✅ Aptidões</h5>
+<ul>
+<li>Estruturar dados com cabeçalhos únicos e sem linhas vazias</li>
+<li>Converter um intervalo em tabela formatada</li>
+<li>Nomear a tabela com um nome descritivo</li>
+<li>Ordenar dados por um ou vários critérios</li>
+<li>Aplicar filtros de texto, número e data</li>
+<li>Combinar filtros em várias colunas</li>
+<li>Limpar filtros e repor todos os registos</li>
+<li>Ativar e configurar a linha de totais</li>
+</ul>
+</div>
+<div class="comp-card atitudes">
+<h5>🌟 Atitudes</h5>
+<ul>
+<li>Método e rigor na organização dos dados</li>
+<li>Pensamento crítico na análise dos resultados</li>
+<li>Atenção à consistência e qualidade dos dados</li>
+<li>Cuidado para não eliminar dados ao filtrar</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<!-- Secção 7 -->
+
+<div class="content-nav">
+<a class="prev" href="desenho.html">
+<span>←</span>
+<div><span class="nav-label">Anterior</span><span class="nav-title">C09 — Desenho e Objetos</span></div>
+</a>
+
+</div>
+</div>
+</div>
+  </main>
+  <div class="floating-actions" aria-label="Ações rápidas">
+    <a href="../index.html#inicio" aria-label="Página inicial" title="Página inicial"><span class="float-icon icon-home" aria-hidden="true"></span></a>
+    <button type="button" data-action="top" aria-label="Voltar ao topo" title="Voltar ao topo"><span class="float-icon icon-top" aria-hidden="true"></span></button>
+    <button type="button" data-action="print" aria-label="Imprimir" title="Imprimir"><span class="float-icon icon-print" aria-hidden="true"></span></button>
+  </div>
+  <script src="../assets/config.js"></script>
+  <script src="../assets/app.js?v=20260803-conteudos-0778"></script>
+</body>
+</html>

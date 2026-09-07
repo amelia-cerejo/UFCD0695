@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>C08 — Gráficos · UFCD 0778</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+  <link rel="stylesheet" href="conteudo.css">
+</head>
+<body data-page="conteudo-estatico">
+    <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <aside class="sidebar" aria-label="Menu principal">
+      <a class="brand" href="../index.html#inicio"><span class="brand-mark">0778</span><span><strong>Folha de Cálculo</strong></span></a>
+      <nav class="side-nav">
+        <a href="../index.html#inicio">Início</a>
+        <a href="../index.html#objetivos">Objetivos</a>
+        <a href="../index.html#metodologia">Metodologia</a>
+        <button class="nav-parent" type="button" aria-expanded="true" aria-controls="submenu-conteudos">Conteúdos <span class="nav-parent-arrow" aria-hidden="true">▾</span></button>
+        <div class="submenu open" id="submenu-conteudos"></div>
+        <button class="nav-parent" type="button" aria-expanded="false" aria-controls="submenu-atividades">Atividades <span class="nav-parent-arrow" aria-hidden="true">▾</span></button>
+        <div class="submenu activity-submenu" id="submenu-atividades"></div>
+        <button class="nav-parent" type="button" aria-expanded="false" aria-controls="submenu-avaliacao">Avaliação <span class="nav-parent-arrow" aria-hidden="true">▾</span></button>
+        <div class="submenu evaluation-submenu" id="submenu-avaliacao"></div>
+        <button class="nav-parent" type="button" aria-expanded="false" aria-controls="submenu-recursos">Recursos <span class="nav-parent-arrow" aria-hidden="true">▾</span></button>
+        <div class="submenu resource-submenu" id="submenu-recursos"></div>
+      </nav>
+    </aside>
+  <main class="page-shell">
+<div class="page-layout">
+<aside class="content-sidebar">
+<div class="sidebar-card">
+<div class="sidebar-card-header">📋 Neste Conteúdo</div>
+<div class="sidebar-card-body">
+<ul class="toc-list">
+<li><a href="#tipos"><span class="toc-num">1</span> Tipos de gráficos</a></li>
+<li><a href="#criar"><span class="toc-num">2</span> Criar um gráfico</a></li>
+<li><a href="#editar"><span class="toc-num">3</span> Editar e formatar</a></li>
+<li><a href="#elementos"><span class="toc-num">4</span> Elementos do gráfico</a></li>
+<li><a href="#boas-praticas"><span class="toc-num">5</span> Boas práticas</a></li>
+<li><a href="#competencias"><span class="toc-num">6</span> Aptidões e atitudes</a></li>
+</ul>
+</div>
+</div>
+</aside>
+<div class="content">
+<div class="content-hero">
+<div class="hero-icon">📈</div>
+<div>
+<h2>Gráficos — Tipos, Criação e Edição</h2>
+<p>Os gráficos permitem representar visualmente os dados, facilitando a interpretação e a comunicação de informação. Aprenda a escolher o tipo certo, criar, editar e formatar gráficos no Excel.</p>
+
+</div>
+</div>
+<!-- Secção 1 -->
+<div class="section-block" id="tipos">
+<div class="section-block-header"><span class="s-icon">📊</span><h3>1. Tipos de Gráficos</h3></div>
+<div class="section-block-body">
+<p>A escolha do tipo de gráfico depende do tipo de dados e da mensagem que se pretende transmitir.</p>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Tipo</th><th>Quando usar</th><th>Exemplo de uso</th></tr></thead>
+<tbody>
+<tr><td><strong>Colunas</strong></td><td>Comparar valores entre categorias</td><td>Vendas por mês, resultados por produto</td></tr>
+<tr><td><strong>Barras</strong></td><td>Comparar categorias (especialmente com nomes longos)</td><td>Ranking de produtos, comparação de países</td></tr>
+<tr><td><strong>Linhas</strong></td><td>Mostrar tendências ao longo do tempo</td><td>Evolução de preços, temperatura ao longo do ano</td></tr>
+<tr><td><strong>Circular (Pizza)</strong></td><td>Mostrar proporções de um todo (percentagens)</td><td>Quota de mercado, distribuição de despesas</td></tr>
+<tr><td><strong>Área</strong></td><td>Mostrar volumes acumulados ao longo do tempo</td><td>Vendas acumuladas, crescimento de utilizadores</td></tr>
+<tr><td><strong>Dispersão (XY)</strong></td><td>Analisar a relação entre duas variáveis numéricas</td><td>Correlação entre preço e procura</td></tr>
+<tr><td><strong>Histograma</strong></td><td>Mostrar a distribuição de frequências</td><td>Distribuição de idades, notas de alunos</td></tr>
+<tr><td><strong>Combinado</strong></td><td>Combinar dois tipos de gráfico (ex.: colunas + linha)</td><td>Vendas (colunas) + margem (linha)</td></tr>
+</tbody>
+</table>
+</div>
+<div class="box box-tip" style="margin-top:14px;">
+<span class="box-icon">💡</span>
+<div class="box-content">
+<strong>Regra de ouro na escolha do gráfico:</strong>
+<p>Colunas/Barras → comparar categorias | Linhas → tendências no tempo | Circular → proporções (máx. 5-6 fatias) | Dispersão → correlação entre variáveis numéricas</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Secção 2 -->
+<div class="section-block" id="criar">
+<div class="section-block-header"><span class="s-icon">➕</span><h3>2. Criar um Gráfico</h3></div>
+<div class="section-block-body">
+<div class="subsec">
+<h4>Passo a Passo</h4>
+<ol class="steps">
+<li>Selecione os dados que pretende representar, <strong>incluindo os cabeçalhos</strong> (títulos das colunas e linhas).</li>
+<li>No separador <strong>Inserir</strong>, escolha o tipo de gráfico pretendido no grupo <strong>Gráficos</strong>.</li>
+<li>O gráfico é inserido automaticamente na folha de cálculo.</li>
+<li>Mova e redimensione o gráfico conforme necessário.</li>
+</ol>
+<div class="box box-warning">
+<span class="box-icon">⚠️</span>
+<div class="box-content"><p>Selecione sempre os dados <strong>com os cabeçalhos</strong>. Uma seleção incorreta produz gráficos com dados errados ou sem legendas. Verifique sempre a pré-visualização antes de confirmar.</p></div>
+</div>
+</div>
+<div class="subsec">
+<h4>Gráfico Recomendado</h4>
+<p>Se não tiver a certeza do tipo de gráfico mais adequado, use <strong>Inserir &gt; Gráficos Recomendados</strong>. O Excel analisa os dados e sugere os tipos mais adequados.</p>
+</div>
+<div class="subsec">
+<h4>Mover o Gráfico para uma Folha Separada</h4>
+<ol class="steps">
+<li>Clique com o botão direito no gráfico.</li>
+<li>Escolha <strong>Mover Gráfico</strong>.</li>
+<li>Selecione <strong>Nova Folha</strong> e dê um nome à folha.</li>
+<li>Clique em <strong>OK</strong>.</li>
+</ol>
+</div>
+</div>
+</div>
+<!-- Secção 3 -->
+<div class="section-block" id="editar">
+<div class="section-block-header"><span class="s-icon">✏️</span><h3>3. Editar e Formatar Gráficos</h3></div>
+<div class="section-block-body">
+<p>Ao clicar num gráfico, aparecem dois separadores contextuais no friso: <strong>Estrutura do Gráfico</strong> e <strong>Formatar</strong>.</p>
+<div class="subsec">
+<h4>Separador Estrutura do Gráfico</h4>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Opção</th><th>O que permite fazer</th></tr></thead>
+<tbody>
+<tr><td><strong>Adicionar Elemento de Gráfico</strong></td><td>Adicionar/remover título, legenda, rótulos de dados, linhas de grelha, eixos</td></tr>
+<tr><td><strong>Esquema Rápido</strong></td><td>Aplicar um esquema predefinido de elementos</td></tr>
+<tr><td><strong>Estilos de Gráfico</strong></td><td>Alterar o estilo visual (cores, efeitos)</td></tr>
+<tr><td><strong>Alternar Linha/Coluna</strong></td><td>Trocar os dados das linhas pelas colunas e vice-versa</td></tr>
+<tr><td><strong>Selecionar Dados</strong></td><td>Alterar o intervalo de dados do gráfico</td></tr>
+<tr><td><strong>Alterar Tipo de Gráfico</strong></td><td>Mudar para outro tipo de gráfico</td></tr>
+<tr><td><strong>Mover Gráfico</strong></td><td>Mover para outra folha ou para uma folha de gráfico</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="subsec">
+<h4>Alterar os Dados de Origem</h4>
+<ol class="steps">
+<li>Clique no gráfico.</li>
+<li>No separador <strong>Estrutura do Gráfico</strong>, clique em <strong>Selecionar Dados</strong>.</li>
+<li>Altere o intervalo de dados ou adicione/remova séries.</li>
+<li>Clique em <strong>OK</strong>.</li>
+</ol>
+<div class="box box-tip">
+<span class="box-icon">💡</span>
+<div class="box-content"><p>Quando os dados da folha são alterados, o gráfico atualiza-se automaticamente. Não é necessário recriar o gráfico.</p></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Secção 4 -->
+<div class="section-block" id="elementos">
+<div class="section-block-header"><span class="s-icon">🏷️</span><h3>4. Elementos do Gráfico</h3></div>
+<div class="section-block-body">
+<div class="table-wrap">
+<table>
+<thead><tr><th>Elemento</th><th>Descrição</th><th>Como adicionar/editar</th></tr></thead>
+<tbody>
+<tr><td><strong>Título do gráfico</strong></td><td>Texto descritivo no topo do gráfico</td><td>Clicar no título e escrever; ou Estrutura &gt; Adicionar Elemento &gt; Título do Gráfico</td></tr>
+<tr><td><strong>Títulos dos eixos</strong></td><td>Etiquetas dos eixos X e Y</td><td>Estrutura &gt; Adicionar Elemento &gt; Títulos dos Eixos</td></tr>
+<tr><td><strong>Legenda</strong></td><td>Identifica as séries de dados por cor</td><td>Estrutura &gt; Adicionar Elemento &gt; Legenda (posição: direita, esquerda, topo, baixo)</td></tr>
+<tr><td><strong>Rótulos de dados</strong></td><td>Mostra os valores em cada ponto/barra do gráfico</td><td>Estrutura &gt; Adicionar Elemento &gt; Rótulos de Dados</td></tr>
+<tr><td><strong>Linhas de grelha</strong></td><td>Linhas horizontais/verticais de referência</td><td>Estrutura &gt; Adicionar Elemento &gt; Linhas de Grelha</td></tr>
+<tr><td><strong>Tabela de dados</strong></td><td>Mostra os dados numéricos abaixo do gráfico</td><td>Estrutura &gt; Adicionar Elemento &gt; Tabela de Dados</td></tr>
+<tr><td><strong>Linha de tendência</strong></td><td>Mostra a tendência geral dos dados</td><td>Botão direito na série &gt; Adicionar Linha de Tendência</td></tr>
+</tbody>
+</table>
+</div>
+<div class="subsec" style="margin-top:16px;">
+<h4>Formatar Elementos Individualmente</h4>
+<ul class="styled">
+<li>Duplo clique em qualquer elemento do gráfico abre o painel de formatação lateral.</li>
+<li>Pode alterar cores, bordas, preenchimentos, tamanho de texto e muito mais.</li>
+<li>Para formatar uma série específica: clique uma vez para selecionar todas as barras/pontos, depois clique novamente numa barra/ponto específico para selecionar apenas esse.</li>
+</ul>
+</div>
+</div>
+</div>
+<!-- Secção 5 -->
+<div class="section-block" id="boas-praticas">
+<div class="section-block-header"><span class="s-icon">✅</span><h3>5. Boas Práticas na Criação de Gráficos</h3></div>
+<div class="section-block-body">
+<div class="box box-success">
+<span class="box-icon">✅</span>
+<div class="box-content">
+<strong>O que fazer</strong>
+<ul style="margin-top:6px; padding-left:16px; font-size:.9rem;">
+<li>Escolher o tipo de gráfico adequado ao tipo de dados e à mensagem.</li>
+<li>Incluir sempre um título descritivo e claro.</li>
+<li>Adicionar rótulos de dados quando os valores exatos são importantes.</li>
+<li>Usar cores com contraste suficiente para facilitar a leitura.</li>
+<li>Manter o gráfico simples — menos é mais.</li>
+<li>Verificar se os eixos têm escala adequada (não começar sempre em zero pode distorcer a perceção).</li>
+</ul>
+</div>
+</div>
+<div class="box box-danger" style="margin-top:12px;">
+<span class="box-icon">❌</span>
+<div class="box-content">
+<strong>O que evitar</strong>
+<ul style="margin-top:6px; padding-left:16px; font-size:.9rem;">
+<li>Gráficos circulares com mais de 5-6 fatias (difíceis de ler).</li>
+<li>Efeitos 3D que distorcem a perceção dos valores.</li>
+<li>Demasiadas cores ou padrões que confundem o leitor.</li>
+<li>Gráficos sem título ou sem identificação dos eixos.</li>
+<li>Usar o tipo de gráfico errado (ex.: circular para mostrar tendências no tempo).</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<!-- Secção 6 -->
+<div class="section-block" id="competencias">
+<div class="section-block-header"><span class="s-icon">🎓</span><h3>6. Aptidões e Atitudes a Desenvolver</h3></div>
+<div class="section-block-body">
+<div class="competencias-grid">
+<div class="comp-card aptidoes">
+<h5>✅ Aptidões</h5>
+<ul>
+<li>Selecionar o tipo de gráfico adequado aos dados</li>
+<li>Criar gráficos a partir de dados selecionados</li>
+<li>Adicionar e editar título, legenda e rótulos de dados</li>
+<li>Alterar o tipo de gráfico e os dados de origem</li>
+<li>Formatar elementos individuais do gráfico</li>
+<li>Mover o gráfico para uma folha separada</li>
+</ul>
+</div>
+<div class="comp-card atitudes">
+<h5>🌟 Atitudes</h5>
+<ul>
+<li>Sentido crítico na escolha do tipo de gráfico</li>
+<li>Clareza e objetividade na comunicação visual</li>
+<li>Atenção à legibilidade e ao design</li>
+<li>Rigor na representação fiel dos dados</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<!-- Secção 7 -->
+
+<div class="content-nav">
+<a class="prev" href="funcoes.html">
+<span>←</span>
+<div><span class="nav-label">Anterior</span><span class="nav-title">C07 — Funções</span></div>
+</a>
+<a class="next" href="desenho.html">
+<div><span class="nav-label">Próximo</span><span class="nav-title">C09 — Desenho e Objetos</span></div>
+<span>→</span>
+</a>
+</div>
+</div>
+</div>
+  </main>
+  <div class="floating-actions" aria-label="Ações rápidas">
+    <a href="../index.html#inicio" aria-label="Página inicial" title="Página inicial"><span class="float-icon icon-home" aria-hidden="true"></span></a>
+    <button type="button" data-action="top" aria-label="Voltar ao topo" title="Voltar ao topo"><span class="float-icon icon-top" aria-hidden="true"></span></button>
+    <button type="button" data-action="print" aria-label="Imprimir" title="Imprimir"><span class="float-icon icon-print" aria-hidden="true"></span></button>
+  </div>
+  <script src="../assets/config.js"></script>
+  <script src="../assets/app.js?v=20260803-conteudos-0778"></script>
+</body>
+</html>
