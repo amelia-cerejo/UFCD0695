@@ -2206,8 +2206,8 @@ async function carregarDadosTeams(root) {
 
   try {
     const [formandos, registos] = await Promise.all([
-      obterJsonAppsScript({ acao: "formandos" }),
-      obterJsonAppsScript({ acao: "registos", questionario: "Partilha de ecrã" })
+      obterJsonAppsScript({ acao: "formandos", ufcd: UFCD.code, acao_formacao: UFCD.action }),
+      obterJsonAppsScript({ acao: "registos", questionario: "Partilha de ecrã", ufcd: UFCD.code, acao_formacao: UFCD.action })
     ]);
 
     preencherTabelaTeams(root, formandos.formandos || [], registos.registos || []);
@@ -2352,7 +2352,7 @@ async function registarAcaoPartilhaEcra(root, nome, acao) {
   if (status) status.textContent = `A guardar a alteração de ${nome}...`;
 
   try {
-    const respostaAntes = await obterJsonAppsScript({ acao: "registos", questionario: "Partilha de ecrã" });
+    const respostaAntes = await obterJsonAppsScript({ acao: "registos", questionario: "Partilha de ecrã", ufcd: UFCD.code, acao_formacao: UFCD.action });
     const registosAntes = respostaAntes.registos || [];
     const totalAntes = contarAcoesPartilhaEcra(registosAntes, nome, acao);
 
@@ -2362,6 +2362,9 @@ async function registarAcaoPartilhaEcra(root, nome, acao) {
       body: JSON.stringify({
         spreadsheet_id: APPS_SCRIPT_SPREADSHEET_ID,
         questionario: "Partilha de ecrã",
+        ufcd: UFCD.code,
+        codigo_ufcd: UFCD.code,
+        acao_formacao: UFCD.action,
         respostas: {
           "Nome do formando": nome,
           "Data da reunião": new Date().toISOString().slice(0, 10),
@@ -2375,7 +2378,7 @@ async function registarAcaoPartilhaEcra(root, nome, acao) {
     let registosConfirmados = null;
     for (let tentativa = 0; tentativa < 6; tentativa += 1) {
       await aguardar(tentativa === 0 ? 900 : 700);
-      const respostaDepois = await obterJsonAppsScript({ acao: "registos", questionario: "Partilha de ecrã" });
+      const respostaDepois = await obterJsonAppsScript({ acao: "registos", questionario: "Partilha de ecrã", ufcd: UFCD.code, acao_formacao: UFCD.action });
       const registosDepois = respostaDepois.registos || [];
       if (contarAcoesPartilhaEcra(registosDepois, nome, acao) > totalAntes) {
         registosConfirmados = registosDepois;
