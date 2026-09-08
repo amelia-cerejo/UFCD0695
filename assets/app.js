@@ -9,8 +9,8 @@ const UFCD = {
 const pendingLinks = {
   appsScriptUrl: window.UFCD0695_PENDING_LINKS?.appsScriptUrl || "PENDENTE_UFCD0695_APPS_SCRIPT_URL",
   spreadsheetId: window.UFCD0695_PENDING_LINKS?.spreadsheetId || "PENDENTE_UFCD0695_SPREADSHEET_ID",
-  mentimeterEmbedUrl: "",
-  mentimeterParticipationUrl: "",
+  mentimeterEmbedUrl: /^https?:\/\//i.test(window.UFCD0695_PENDING_LINKS?.mentimeterEmbedUrl || "") ? window.UFCD0695_PENDING_LINKS.mentimeterEmbedUrl : "",
+  mentimeterParticipationUrl: /^https?:\/\//i.test(window.UFCD0695_PENDING_LINKS?.mentimeterParticipationUrl || "") ? window.UFCD0695_PENDING_LINKS.mentimeterParticipationUrl : "",
   glossaryUrl: /^https?:\/\//i.test(window.UFCD0695_PENDING_LINKS?.glossaryUrl || "") ? window.UFCD0695_PENDING_LINKS.glossaryUrl : "",
   individualTaskForumUrls: Array.from({ length: 13 }, (_, index) => {
     const url = String(window.UFCD0695_PENDING_LINKS?.individualTaskForumUrls?.[index] || "").trim();
@@ -393,7 +393,7 @@ const individualTasks = [
     ],
     "forumUrls": [],
     "pdfUrl": "assets/pdfs/TI01.pdf",
-    "moodleRecord": "Publica uma mensagem curta no Fórum com uma aprendizagem ou competência que gostaria de desenvolver nesta UFCD, uma situação em que considera que a gestão informatizada de documentos lhe poderá ser útil e uma palavra ou expressão que represente a sua principal expectativa para a formação. O registo no Fórum é uma síntese da reflexão individual; não é necessário copiar todas as respostas da TI.",
+    "moodleRecord": "Publica uma mensagem curta com uma aprendizagem ou competência que gostaria de desenvolver nesta UFCD, uma situação em que considera que a gestão informatizada de documentos lhe poderá ser útil e uma palavra ou expressão que represente a sua principal expectativa para a formação. Este registo é uma síntese da reflexão individual; não é necessário copiar todas as respostas da TI.",
     "forumButtonLabel": "Abrir Fórum Moodle",
     "workFiles": []
   },
@@ -1747,6 +1747,7 @@ async function carregarVisibilidadeRemotaDoSite(options = {}) {
 
   siteVisibilityRemoteLoading = obterJsonAppsScript({
     acao: "visibilidade_site",
+    spreadsheet_id: APPS_SCRIPT_SPREADSHEET_ID,
     ufcd: UFCD.code,
     prefixo: SITE_CONTROL_KEY_PREFIX,
     campos: "essenciais"
