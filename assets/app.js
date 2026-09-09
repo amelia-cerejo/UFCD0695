@@ -401,40 +401,64 @@ const individualTasks = [
     "id": "tarefa-individual-2",
     "number": "TI02",
     "url": "atividades/tarefas-individuais.html",
-    "title": "TI02",
-    "intro": "Conteúdo a definir",
-    "objective": "",
-    "steps": [],
+    "title": "TI02 — Escolher uma solução adequada",
+    "intro": "Modelos do Excel para a Web — controlo de receitas e despesas mensais.",
+    "objective": "Explorar os modelos disponíveis no Excel para a Web, escolher uma solução adequada para acompanhar receitas e despesas mensais e testar se responde à necessidade proposta.",
+    "steps": [
+      { "title": "Explorar e escolher", "text": "Explore diferentes modelos e escolha o que considera mais adequado para controlar receitas e despesas mensais." },
+      { "title": "Criar e analisar", "text": "Crie uma cópia para trabalhar e analise a estrutura e as funcionalidades disponíveis." },
+      { "title": "Testar", "text": "Introduza dados fictícios relativos a um mês, incluindo diferentes receitas e despesas." },
+      { "title": "Verificar", "text": "Confirme os resultados apresentados e avalie se o modelo responde à necessidade proposta." }
+    ],
     "forumUrls": [],
-    "pdfUrl": "",
+    "pdfUrl": "assets/pdfs/TI02.pdf",
+    "moodleRecord": "<ol style=\"margin:0;padding-left:22px;line-height:1.8;\"><li>Modelo escolhido</li><li>Categoria</li><li>Porque escolhi este modelo</li><li>Uma funcionalidade que considerei particularmente útil</li></ol>",
+    "moodleLabel": "Indique:",
+    "forumButtonLabel": "Abrir Fórum Moodle",
     "workFiles": [],
-    "placeholder": true
+    "placeholder": false
   },
   {
     "id": "tarefa-individual-3",
     "number": "TI03",
     "url": "atividades/tarefas-individuais.html",
-    "title": "TI03",
-    "intro": "Conteúdo a definir",
-    "objective": "",
-    "steps": [],
+    "title": "TI03 — Escolher e adaptar uma solução",
+    "intro": "Modelos do Excel para a Web — organização de um pequeno evento.",
+    "objective": "Escolher um modelo do Excel para a Web e adaptá-lo para acompanhar as atividades, os responsáveis, os prazos e o estado de execução de um pequeno evento.",
+    "steps": [
+      { "title": "Escolher", "text": "Explore os modelos disponíveis, escolha o melhor ponto de partida, crie uma cópia e defina o tipo de evento." },
+      { "title": "Adaptar", "text": "Altere campos, títulos ou categorias, elimine elementos sem utilidade e acrescente os elementos necessários." },
+      { "title": "Preencher", "text": "Introduza dados fictícios suficientes e utilize formatos adequados aos diferentes tipos de dados." },
+      { "title": "Verificar", "text": "Teste as fórmulas e as restantes funcionalidades e confirme que a solução acompanha atividades, responsáveis, datas ou prazos e estado de execução." }
+    ],
     "forumUrls": [],
-    "pdfUrl": "",
+    "pdfUrl": "assets/pdfs/TI03.pdf",
+    "moodleRecord": "<ol style=\"margin:0;padding-left:22px;line-height:1.8;\"><li>Evento escolhido</li><li>Modelo utilizado como ponto de partida</li><li>Principais alterações efetuadas</li><li>O modelo original era suficiente? Porquê?</li></ol>",
+    "moodleLabel": "Indique:",
+    "forumButtonLabel": "Abrir Fórum Moodle",
     "workFiles": [],
-    "placeholder": true
+    "placeholder": false
   },
   {
     "id": "tarefa-individual-4",
     "number": "TI04",
     "url": "atividades/tarefas-individuais.html",
-    "title": "TI04",
-    "intro": "Conteúdo a definir",
-    "objective": "",
-    "steps": [],
+    "title": "TI04 — Transformar um modelo numa solução",
+    "intro": "Modelos do Excel para a Web — acompanhamento de processos internos.",
+    "objective": "Transformar um modelo do Excel para a Web numa solução profissional que permita registar, consultar, ordenar e filtrar processos internos e identificar situações que exigem atenção.",
+    "steps": [
+      { "title": "Escolher", "text": "Parta de qualquer modelo disponível, exceto de um modelo já utilizado nas TI02 ou TI03." },
+      { "title": "Estruturar", "text": "Prepare o registo de diferentes processos com assunto, responsável, prazo, prioridade e estado." },
+      { "title": "Facilitar a consulta", "text": "Distinga prioridades e/ou estados, facilite a identificação de prazos ou situações que exijam atenção e permita ordenar e filtrar a informação." },
+      { "title": "Melhorar", "text": "Utilize pelo menos uma funcionalidade do Excel que melhore efetivamente o ficheiro e apresente uma organização visual adequada a um contexto profissional." }
+    ],
     "forumUrls": [],
-    "pdfUrl": "",
+    "pdfUrl": "assets/pdfs/TI04.pdf",
+    "moodleRecord": "<ol style=\"margin:0;padding-left:22px;line-height:1.8;\"><li>Que modelo escolheu e porquê?</li><li>Qual foi a alteração mais importante que realizou?</li><li>Que problema consegue agora resolver que o modelo original não resolvia?</li></ol>",
+    "moodleLabel": "Responda:",
+    "forumButtonLabel": "Abrir Fórum Moodle",
     "workFiles": [],
-    "placeholder": true
+    "placeholder": false
   },
   {
     "id": "tarefa-individual-5",
@@ -609,7 +633,7 @@ const siteVisibility = {
   ficheirosExcel: Object.fromEntries(resources.flatMap((resource) => [...(resource.videos || []), ...(resource.downloadFiles || [])]).map((file) => [file.id, true])),
   assistentesGpt: Object.fromEntries(resources.filter((resource) => resource.gptUrl).map((resource) => [resource.id, true])),
   tarefasGrupo: Object.fromEntries(groupTasks.map((task) => [task.title, true])),
-  tarefasIndividuais: Object.fromEntries(individualTasks.flatMap((task) => [[task.id, true], [task.title, true]]))
+  tarefasIndividuais: Object.fromEntries(individualTasks.flatMap((task) => [[task.id, false], [task.title, false]]))
 };
 
 const siteVisibilitySections = {
@@ -1893,7 +1917,10 @@ function renderSiteVisibilityControls() {
   const resourceItems = resources.map((resource) => ({ key: resource.id, label: resource.title }));
   const excelFileItems = resources.flatMap((resource) => [...(resource.videos || []), ...(resource.downloadFiles || [])]).map((file) => ({ key: file.id, label: file.title }));
   const gptItems = resources.filter((resource) => resource.gptUrl).map((resource) => ({ key: resource.id, label: resource.title }));
-  const groupItems = groupTasks.map((task) => ({ key: task.title, label: task.title }));
+  const groupItems = groupTasks.map((task, index) => ({
+    key: task.title,
+    label: `TG${String(index + 1).padStart(2, "0")} — ${task.topic}`
+  }));
   const glossaryField = renderStandaloneLink({
     label: "Glossário Moodle das tarefas de grupo",
     linkType: "glossary",
@@ -2738,8 +2765,9 @@ function renderActivityPage() {
       items.length ? `<ul class="${className}">${items.map((item) => `<li>${item}</li>`).join("")}</ul>` : "";
 
     const getEssentialSteps = (task) => (task.steps || []).map((part) => {
+      if (typeof part === "string") return part;
       const instruction = part.text || part.items?.[0] || "Realiza o procedimento indicado no PDF da tarefa.";
-      return `<strong>${part.title}:</strong> ${instruction}`;
+      return part.title ? `<strong>${part.title}:</strong> ${instruction}` : instruction;
     });
     const getTaskPdfUrl = (task) => task.pdfUrl ? `${getBasePath()}${task.pdfUrl}` : "";
 
@@ -3253,8 +3281,6 @@ function inicializarSite() {
   if (!APPS_SCRIPT_WEB_APP_URL) {
     carregarVisibilidadeDoSite();
     carregarLinksDoSite();
-  } else {
-    carregarUltimaVisibilidadeRemotaDoSite();
   }
 
   renderContentMenus();
