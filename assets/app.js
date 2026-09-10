@@ -602,7 +602,7 @@ const resources = [
       { id: "novo-bem-vindo-excel", title: "Novo Bem-vindo ao Excel", description: "Livro introdutório para conhecer o ambiente de trabalho e começar a utilizar o Excel.", path: "assets/ficheiros/Excel/Novo Bem-vindo ao Excel.xlsx", firstSheet: "Início" },
       { id: "web-bem-vindo-excel", title: "Bem-vindo ao Excel — versão Web", description: "Livro de apoio para explorar o Excel na versão utilizada através do navegador.", path: "assets/ficheiros/Excel/Web_Bem-vindo ao Excel.xlsx", firstSheet: "Bem-vindo ao Excel" },
       { id: "formulas-excel", title: "Tutorial de Fórmulas", description: "Livro de apoio para explorar, compreender e praticar fórmulas no Excel.", path: "assets/ficheiros/Excel/Fórmulas.xlsx", firstSheet: "Início" },
-      { id: "resumo-conceitos", title: "Resumo de conceitos", description: "Livro de consulta rápida para rever e consolidar os principais conceitos de folha de cálculo.", path: "assets/ficheiros/Excel/Resumo de conceitos.xlsx", firstSheet: "Referências" },
+      { id: "resumo-conceitos", title: "Novo Resumo de conceitos", description: "Livro de consulta rápida para rever e consolidar os principais conceitos de folha de cálculo.", path: "assets/ficheiros/Excel/Novo Resumo de conceitos.xlsx", firstSheet: "Referencias" },
     ]
   },
   {
@@ -2825,11 +2825,10 @@ function renderActivityPage() {
     };
 
     const overviewItems = [
-          "Usar o ficheiro prático indicado em cada tarefa e guardar o resultado na pasta definida.",
-          "Respeitar rigorosamente o nome indicado em cada enunciado e utilizar apenas o primeiro nome.",
-          "Guardar os ficheiros na estrutura definida pela formadora, mantendo a organização entre computador e Google Drive.",
-          "Efetuar no Moodle o registo específico solicitado em cada tarefa.",
-          "Confirmar, antes de concluir, se o ficheiro está completo, legível e funcional."
+      "Criar uma nova cópia em cada tarefa e manter as versões anteriores.",
+      "Guardar os trabalhos no computador e na pasta pessoal da Google Drive, utilizando apenas o primeiro nome.",
+      "Respeitar o nome de ficheiro indicado em cada enunciado e efetuar o registo solicitado no Moodle.",
+      "Antes de concluir, confirmar se o ficheiro está completo, legível e funcional."
     ];
 
     root.innerHTML = `
@@ -2850,9 +2849,16 @@ function renderActivityPage() {
               <span class="task-module-mark" aria-hidden="true">TI</span>
             </summary>
             <div class="task-module-body">
-              <ul class="moodle-like-list">
-                ${overviewItems.map((item) => `<li>${item}</li>`).join("")}
-              </ul>
+              <div class="task-block">
+                <strong>Resumo</strong>
+                <ul class="moodle-like-list">
+                  ${overviewItems.map((item) => `<li>${item}</li>`).join("")}
+                </ul>
+              </div>
+              <div class="embed-fallback resource-action-row align-right">
+                <a class="small-button" href="https://drive.google.com/drive/folders/1FoY5IChKIUe-S4qHVWpYwQhpfEWKsyVS" target="_blank" rel="noopener">Abrir pasta Trabalhos Individuais</a>
+                <a class="small-button" href="${getBasePath()}assets/pdfs/TIs.pdf" target="_blank" rel="noopener">Abrir guia geral das TI</a>
+              </div>
             </div>
           </details>
 
