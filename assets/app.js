@@ -82,8 +82,14 @@ const activities = [
   { id: "tarefas-grupo", title: "Glossário Colaborativo", menuTitle: "Tarefas de Grupo", intro: "Atividade de grupo para construir o Glossário Colaborativo da UFCD 0695.", url: "atividades/tarefas-grupo.html", focus: "Glossário colaborativo", duration: "Dias 2 a 12", product: "Definição, exemplo e fonte para cada conceito atribuído.", steps: [{ title: "Definir", text: "Construir uma definição clara do conceito atribuído." }, { title: "Exemplificar", text: "Acrescentar um exemplo simples relacionado com a gestão informatizada de documentos." }, { title: "Referenciar", text: "Indicar a fonte utilizada." }, { title: "Partilhar", text: "Publicar a entrada no Glossário ou Padlet colaborativo." }], evidence: ["Definição", "Exemplo", "Fonte"] },
   { id: "tarefas-individuais", title: "Tarefas Individuais", intro: "Resumo das tarefas práticas realizadas nos livros Excel; as instruções completas são disponibilizadas em PDF.", url: "atividades/tarefas-individuais.html", focus: "Trabalho individual", duration: "A partir do segundo dia", product: "Livros Excel concluídos e guardados na Drive.", steps: [{ title: "Ler", text: "Consultar o enunciado e o PDF da tarefa." }, { title: "Realizar", text: "Aplicar os procedimentos no livro indicado." }, { title: "Verificar", text: "Confirmar fórmulas, resultados e apresentação." }, { title: "Guardar", text: "Guardar com o nome e na pasta definidos." }], evidence: ["Livro Excel atualizado", "Versão guardada na Drive"] },
   { id: "resolucoes-livros", parentId: "tarefas-individuais", title: "Resoluções dos Livros", menuTitle: "Resoluções dos livros", intro: "Resoluções demonstrativas dos livros práticos 1 a 3.", url: "atividades/resolucoes-livros.html" },
-  { id: "projeto-final-apresentacao", title: "Projeto Final - Solução em Folha de Cálculo", menuTitle: "Projeto Final", intro: "Livro Excel funcional que integra organização, cálculos, análise, apresentação e preparação para impressão.", url: "atividades/projeto-final-apresentacao.html", focus: "Projeto individual", duration: "TI08 a TI12", product: "Livro Excel final, PDF, reflexão final e apresentação breve.", steps: [{ title: "Planear", text: "Escolher e estruturar o contexto do projeto." }, { title: "Construir", text: "Organizar dados e aplicar fórmulas, funções, formatação e análise." }, { title: "Rever", text: "Validar dados, cálculos, gráficos e impressão." }, { title: "Partilhar", text: "Guardar, apresentar e refletir sobre o resultado." }], evidence: ["XLSX final", "PDF final", "Reflexão final", "Apresentação individual"] },
+  { id: "projeto-final-apresentacao", title: "Projeto Final - Construção e análise colaborativa de uma base de dados", menuTitle: "Projeto Final", intro: "Projeto colaborativo para recolher, organizar, relacionar e analisar dados, preparando-os para uma demonstração no Microsoft Access.", url: "atividades/projeto-final-apresentacao.html", focus: "Base de dados colaborativa", duration: "Três fases", product: "Formulários, tabelas relacionadas, análise comum e apresentação final.", steps: [], evidence: [] },
   { id: "alternativas-projeto", parentId: "projeto-final-apresentacao", title: "Alternativas de Projeto", menuTitle: "Outras alternativas", intro: "Contextos alternativos para desenvolver o Projeto Final com os mesmos requisitos técnicos.", url: "atividades/alternativas-projeto.html" }
+];
+
+const projectFinalPhases = [
+  { id: "fase-1", title: "1.ª fase — Recolha e tratamento de dados" },
+  { id: "fase-2", title: "2.ª fase — Tabelas relacionadas" },
+  { id: "fase-final", title: "Fase final — Integração e análise" }
 ];
 
 const evaluations = [
@@ -412,7 +418,7 @@ const individualTasks = [
     ],
     "forumUrls": [],
     "pdfUrl": "assets/pdfs/TI02.pdf",
-    "moodleRecord": "<ol style=\"margin:0;padding-left:22px;line-height:1.8;\"><li>Modelo escolhido</li><li>Categoria</li><li>Porque escolhi este modelo</li><li>Uma funcionalidade que considerei particularmente útil</li></ol>",
+    "moodleRecord": "<ol style=\"margin:0;padding-left:22px;line-height:1.8;\"><li>Modelo escolhido</li><li>Categoria</li><li>Porque escolhi este modelo</li><li>Uma funcionalidade que considerei particularmente útil</li><li>Ligação para o ficheiro guardado na pasta individual</li></ol>",
     "moodleLabel": "Indique:",
     "forumButtonLabel": "Abrir Fórum Moodle",
     "workFiles": [],
@@ -433,7 +439,7 @@ const individualTasks = [
     ],
     "forumUrls": [],
     "pdfUrl": "assets/pdfs/TI03.pdf",
-    "moodleRecord": "<ol style=\"margin:0;padding-left:22px;line-height:1.8;\"><li>Evento escolhido</li><li>Modelo utilizado como ponto de partida</li><li>Principais alterações efetuadas</li><li>O modelo original era suficiente? Porquê?</li></ol>",
+    "moodleRecord": "<ol style=\"margin:0;padding-left:22px;line-height:1.8;\"><li>Evento escolhido</li><li>Modelo utilizado como ponto de partida</li><li>Principais alterações efetuadas</li><li>O modelo original era suficiente? Porquê?</li><li>Ligação para o ficheiro guardado na pasta individual</li></ol>",
     "moodleLabel": "Indique:",
     "forumButtonLabel": "Abrir Fórum Moodle",
     "workFiles": [],
@@ -454,7 +460,7 @@ const individualTasks = [
     ],
     "forumUrls": [],
     "pdfUrl": "assets/pdfs/TI04.pdf",
-    "moodleRecord": "<ol style=\"margin:0;padding-left:22px;line-height:1.8;\"><li>Que modelo escolheu e porquê?</li><li>Qual foi a alteração mais importante que realizou?</li><li>Que problema consegue agora resolver que o modelo original não resolvia?</li></ol>",
+    "moodleRecord": "<ol style=\"margin:0;padding-left:22px;line-height:1.8;\"><li>Que modelo escolheu e porquê?</li><li>Qual foi a alteração mais importante que realizou?</li><li>Que problema consegue agora resolver que o modelo original não resolvia?</li><li>Ligação para o ficheiro guardado na pasta individual</li></ol>",
     "moodleLabel": "Responda:",
     "forumButtonLabel": "Abrir Fórum Moodle",
     "workFiles": [],
@@ -464,117 +470,208 @@ const individualTasks = [
     "id": "tarefa-individual-5",
     "number": "TI05",
     "url": "atividades/tarefas-individuais.html",
-    "title": "TI05",
-    "intro": "Conteúdo a definir",
-    "objective": "",
-    "steps": [],
+    "title": "TI05 — Criar e testar um formulário",
+    "intro": "Google Forms e Google Sheets — recolha estruturada e teste de respostas.",
+    "objective": "Criar um pequeno formulário, escolher os tipos de pergunta adequados e confirmar como as respostas são guardadas no Google Sheets.",
+    "steps": [
+      "Abrir a pasta individual na área partilhada e criar aí um Google Form sobre um tema simples à escolha.",
+      "Incluir título, descrição e pelo menos seis perguntas: resposta curta, escolha múltipla, lista pendente, escala ou classificação e data.",
+      "Definir pelo menos quatro perguntas como obrigatórias.",
+      "Pré-visualizar o formulário e submeter duas respostas de teste.",
+      "Ligar o formulário a uma folha Google Sheets e confirmar os cabeçalhos e os dados recebidos.",
+      "Partilhar com a formadora as ligações de edição do formulário e da folha de respostas."
+    ],
     "forumUrls": [],
-    "pdfUrl": "",
+    "pdfUrl": "assets/pdfs/TI05.pdf",
+    "moodleRecord": "<ol style=\"margin:0;padding-left:22px;line-height:1.8;\"><li>Tema do formulário</li><li>Ligação de edição do formulário</li><li>Ligação para a folha de respostas</li><li>Um problema encontrado no teste e a forma como foi resolvido</li></ol>",
+    "moodleLabel": "Registar:",
+    "forumButtonLabel": "Abrir atividade Moodle",
     "workFiles": [],
-    "placeholder": true
+    "placeholder": false
   },
   {
     "id": "tarefa-individual-6",
     "number": "TI06",
     "url": "atividades/tarefas-individuais.html",
-    "title": "TI06",
-    "intro": "Conteúdo a definir",
-    "objective": "",
-    "steps": [],
+    "title": "TI06 — Limpar e normalizar dados",
+    "intro": "Preparação de dados recolhidos para uma utilização coerente.",
+    "objective": "Transformar respostas recebidas numa tabela coerente e pronta para utilização.",
+    "steps": [
+      "Criar uma cópia da folha fornecida e preservar os dados originais num separador próprio.",
+      "Identificar e remover duplicados e espaços desnecessários.",
+      "Uniformizar maiúsculas, minúsculas, categorias e outras designações.",
+      "Corrigir datas guardadas como texto.",
+      "Identificar campos obrigatórios vazios e verificar a estrutura dos emails e NIF.",
+      "Registar as correções efetuadas. Nesta sessão inicia-se também o Projeto Final."
+    ],
     "forumUrls": [],
-    "pdfUrl": "",
+    "pdfUrl": "assets/pdfs/TI06.pdf",
+    "moodleRecord": "<ol style=\"margin:0;padding-left:22px;line-height:1.8;\"><li>Número de duplicados encontrados</li><li>Número de campos obrigatórios vazios</li><li>Principais correções efetuadas</li><li>Ligação para o ficheiro tratado</li></ol>",
+    "moodleLabel": "Registar:",
+    "forumButtonLabel": "Abrir atividade Moodle",
     "workFiles": [],
-    "placeholder": true
+    "placeholder": false
   },
   {
     "id": "tarefa-individual-7",
     "number": "TI07",
     "url": "atividades/tarefas-individuais.html",
-    "title": "TI07",
-    "intro": "Conteúdo a definir",
-    "objective": "",
-    "steps": [],
+    "title": "TI07 — Estruturar e validar uma tabela",
+    "intro": "Tabelas, formatos e validação de dados.",
+    "objective": "Transformar um intervalo numa tabela estruturada e aplicar validação de dados.",
+    "steps": [
+      "Transformar os dados numa tabela estruturada, atribuir-lhe um nome e fixar a linha dos cabeçalhos.",
+      "Formatar corretamente texto, números, datas e moeda.",
+      "Criar uma folha chamada Listas_Apoio com listas para estado, prioridade, categoria e sim/não.",
+      "Aplicar as listas às colunas correspondentes e testar valores válidos e inválidos.",
+      "Ordenar e filtrar os dados utilizando dois critérios diferentes.",
+      "Guardar o ficheiro como 2026-02_07_TabelaValidada_PrimeiroNome.xlsx."
+    ],
     "forumUrls": [],
-    "pdfUrl": "",
+    "pdfUrl": "assets/pdfs/TI07.pdf",
+    "moodleRecord": "<ol style=\"margin:0;padding-left:22px;line-height:1.8;\"><li>Nome atribuído à tabela</li><li>Exemplo de uma regra de validação utilizada</li><li>Uma vantagem da validação de dados</li><li>Ligação para o ficheiro</li></ol>",
+    "moodleLabel": "Registar:",
+    "forumButtonLabel": "Abrir atividade Moodle",
     "workFiles": [],
-    "placeholder": true
+    "placeholder": false
   },
   {
     "id": "tarefa-individual-8",
     "number": "TI08",
     "url": "atividades/tarefas-individuais.html",
-    "title": "TI08",
-    "intro": "Conteúdo a definir",
-    "objective": "",
-    "steps": [],
+    "title": "TI08 — Criar identificadores e relações",
+    "intro": "Chaves e procura de informação entre tabelas.",
+    "objective": "Compreender a utilidade dos identificadores, das chaves principais e das referências entre tabelas.",
+    "steps": [
+      "Criar um identificador único para cada registo principal e confirmar que não existem repetições.",
+      "Substituir os nomes repetidos pelos respetivos IDs.",
+      "Utilizar uma função de procura para obter informação da tabela principal.",
+      "Identificar e corrigir IDs sem correspondência.",
+      "Indicar a chave principal e a chave estrangeira e explicar como os IDs reduzem erros e repetições.",
+      "Guardar o ficheiro como 2026-02_08_DadosRelacionados_PrimeiroNome.xlsx."
+    ],
     "forumUrls": [],
-    "pdfUrl": "",
+    "pdfUrl": "assets/pdfs/TI08.pdf",
+    "moodleRecord": "<ol style=\"margin:0;padding-left:22px;line-height:1.8;\"><li>Fórmula de procura utilizada</li><li>Chave principal</li><li>Chave estrangeira</li><li>Explicação breve sobre a utilidade dos identificadores</li><li>Ligação para o ficheiro</li></ol>",
+    "moodleLabel": "Registar:",
+    "forumButtonLabel": "Abrir atividade Moodle",
     "workFiles": [],
-    "placeholder": true
+    "placeholder": false
   },
   {
     "id": "tarefa-individual-9",
     "number": "TI09",
     "url": "atividades/tarefas-individuais.html",
-    "title": "TI09",
-    "intro": "Conteúdo a definir",
-    "objective": "",
-    "steps": [],
+    "title": "TI09 — Criar fórmulas e alertas",
+    "intro": "Controlo automático de datas, prazos, estados e campos obrigatórios.",
+    "objective": "Utilizar fórmulas e formatação condicional para controlar os dados.",
+    "steps": [
+      "Calcular os dias até ao prazo e identificar automaticamente os registos atrasados.",
+      "Calcular o total de registos, as contagens por estado e a percentagem de registos concluídos.",
+      "Contar os campos obrigatórios vazios.",
+      "Utilizar tratamento de erros em pelo menos uma fórmula.",
+      "Aplicar formatação condicional a atrasos, prioridades e campos vazios e confirmar os resultados com filtros.",
+      "Guardar o ficheiro como 2026-02_09_FormulasAlertas_PrimeiroNome.xlsx."
+    ],
     "forumUrls": [],
-    "pdfUrl": "",
+    "pdfUrl": "assets/pdfs/TI09.pdf",
+    "moodleRecord": "<ol style=\"margin:0;padding-left:22px;line-height:1.8;\"><li>Funções utilizadas</li><li>Percentagem de registos concluídos</li><li>Situação mais crítica encontrada</li><li>Ligação para o ficheiro</li></ol>",
+    "moodleLabel": "Registar:",
+    "forumButtonLabel": "Abrir atividade Moodle",
     "workFiles": [],
-    "placeholder": true
+    "placeholder": false
   },
   {
     "id": "tarefa-individual-10",
     "number": "TI10",
     "url": "atividades/tarefas-individuais.html",
-    "title": "TI10",
-    "intro": "Conteúdo a definir",
-    "objective": "",
-    "steps": [],
+    "title": "TI10 — Resumir dados",
+    "intro": "Criação e atualização de tabelas dinâmicas.",
+    "objective": "Resumir e cruzar informação utilizando tabelas dinâmicas.",
+    "steps": [
+      "Confirmar que os dados estão organizados como tabela.",
+      "Criar uma tabela dinâmica por categoria e acrescentar o estado como segunda dimensão.",
+      "Apresentar contagens e, quando aplicável, somas ou médias e aplicar um filtro.",
+      "Criar uma segunda tabela dinâmica com outra perspetiva.",
+      "Acrescentar um registo, atualizar as tabelas e confirmar a alteração dos resultados.",
+      "Registar duas observações fundamentadas e guardar como 2026-02_10_TabelasDinamicas_PrimeiroNome.xlsx."
+    ],
     "forumUrls": [],
-    "pdfUrl": "",
+    "pdfUrl": "assets/pdfs/TI10.pdf",
+    "moodleRecord": "<ol style=\"margin:0;padding-left:22px;line-height:1.8;\"><li>Perspetiva utilizada na primeira tabela dinâmica</li><li>Perspetiva utilizada na segunda tabela dinâmica</li><li>Duas observações apoiadas nos resultados</li><li>Ligação para o ficheiro</li></ol>",
+    "moodleLabel": "Registar:",
+    "forumButtonLabel": "Abrir atividade Moodle",
     "workFiles": [],
-    "placeholder": true
+    "placeholder": false
   },
   {
     "id": "tarefa-individual-11",
     "number": "TI11",
     "url": "atividades/tarefas-individuais.html",
-    "title": "TI11",
-    "intro": "Conteúdo a definir",
-    "objective": "",
-    "steps": [],
+    "title": "TI11 — Apresentar resultados",
+    "intro": "Gráficos, indicadores e conclusões apoiadas nos dados.",
+    "objective": "Escolher gráficos adequados e construir uma pequena folha de indicadores.",
+    "steps": [
+      "Criar, a partir das tabelas dinâmicas da TI10, um gráfico para comparar categorias.",
+      "Criar um segundo gráfico para representar uma evolução, distribuição ou proporção.",
+      "Atribuir títulos claros, verificar a necessidade da legenda e retirar elementos visuais sem utilidade.",
+      "Criar pelo menos quatro indicadores principais.",
+      "Organizar tudo numa folha chamada Indicadores e escrever três conclusões apoiadas nos resultados.",
+      "Guardar o ficheiro como 2026-02_11_Indicadores_PrimeiroNome.xlsx."
+    ],
     "forumUrls": [],
-    "pdfUrl": "",
+    "pdfUrl": "assets/pdfs/TI11.pdf",
+    "moodleRecord": "<ol style=\"margin:0;padding-left:22px;line-height:1.8;\"><li>Tipos de gráficos escolhidos</li><li>Quatro indicadores apresentados</li><li>Conclusão considerada mais importante</li><li>Ligação para o ficheiro</li></ol>",
+    "moodleLabel": "Registar:",
+    "forumButtonLabel": "Abrir atividade Moodle",
     "workFiles": [],
-    "placeholder": true
+    "placeholder": false
   },
   {
     "id": "tarefa-individual-12",
     "number": "TI12",
     "url": "atividades/tarefas-individuais.html",
-    "title": "TI12",
-    "intro": "Conteúdo a definir",
-    "objective": "",
-    "steps": [],
+    "title": "TI12 — Digitalizar e arquivar um documento",
+    "intro": "PDF, OCR, nomenclatura e arquivo digital.",
+    "objective": "Aplicar procedimentos de digitalização, OCR, nomenclatura e arquivo digital.",
+    "steps": [
+      "Utilizar um documento fornecido pela formadora ou um documento fictício sem dados pessoais reais.",
+      "Digitalizar ou converter o documento para PDF e confirmar a orientação e a ordem das páginas.",
+      "Corrigir páginas inclinadas ou mal enquadradas, aplicar OCR e confirmar que o texto é pesquisável.",
+      "Aplicar a nomenclatura indicada e guardar o ficheiro na pasta correta.",
+      "Registar numa tabela o tipo, a data, o estado, a confidencialidade, a localização e a existência de cópia de segurança.",
+      "Não publicar dados pessoais nem informação confidencial."
+    ],
     "forumUrls": [],
-    "pdfUrl": "",
+    "pdfUrl": "assets/pdfs/TI12.pdf",
+    "moodleRecord": "<ol style=\"margin:0;padding-left:22px;line-height:1.8;\"><li>Nome atribuído ao PDF</li><li>Confirmação de que o texto ficou pesquisável</li><li>Localização do documento e da cópia de segurança</li><li>Ligação para o PDF e para a tabela de registo</li></ol>",
+    "moodleLabel": "Registar:",
+    "forumButtonLabel": "Abrir atividade Moodle",
     "workFiles": [],
-    "placeholder": true
+    "placeholder": false
   },
   {
     "id": "tarefa-individual-13",
     "number": "TI13",
     "url": "atividades/tarefas-individuais.html",
     "title": "TI13 — Reflexão Final",
-    "intro": "Reflexão Final",
-    "objective": "",
-    "steps": [],
+    "intro": "Comparação entre as expectativas iniciais e as competências adquiridas.",
+    "objective": "Rever as expectativas da TI01 e refletir sobre o percurso realizado e a evolução alcançada.",
+    "steps": [
+      "Explicar se as expectativas iniciais foram atingidas.",
+      "Identificar as aprendizagens mais importantes e a atividade em que sentiu maior evolução.",
+      "Referir a principal dificuldade encontrada e como a ultrapassou.",
+      "Indicar uma competência que poderá aplicar no futuro.",
+      "Comparar aquilo que sabia no início com aquilo que consegue fazer agora.",
+      "Resumir numa frase a sua experiência nesta UFCD."
+    ],
     "forumUrls": [],
     "pdfUrl": "assets/pdfs/TI13.pdf",
-    "workFiles": []
+    "moodleRecord": "Publica uma mensagem curta com a expectativa inicial que considera ter sido mais concretizada, a aprendizagem mais útil ou significativa, uma competência que agora consegue aplicar e uma frase que resuma a sua experiência na UFCD.",
+    "moodleLabel": "Registo no Fórum:",
+    "forumButtonLabel": "Abrir Fórum Moodle",
+    "workFiles": [],
+    "placeholder": false
   }
 ];
 
@@ -633,7 +730,8 @@ const siteVisibility = {
   ficheirosExcel: Object.fromEntries(resources.flatMap((resource) => [...(resource.videos || []), ...(resource.downloadFiles || [])]).map((file) => [file.id, true])),
   assistentesGpt: Object.fromEntries(resources.filter((resource) => resource.gptUrl).map((resource) => [resource.id, true])),
   tarefasGrupo: Object.fromEntries(groupTasks.map((task) => [task.title, true])),
-  tarefasIndividuais: Object.fromEntries(individualTasks.flatMap((task) => [[task.id, false], [task.title, false]]))
+  tarefasIndividuais: Object.fromEntries(individualTasks.flatMap((task) => [[task.id, false], [task.title, false]])),
+  projetoFinal: Object.fromEntries(projectFinalPhases.map((phase) => [phase.id, false]))
 };
 
 const siteVisibilitySections = {
@@ -645,7 +743,8 @@ const siteVisibilitySections = {
   ficheirosExcel: true,
   assistentesGpt: true,
   tarefasGrupo: true,
-  tarefasIndividuais: true
+  tarefasIndividuais: true,
+  projetoFinal: true
 };
 
 const siteVisibilitySectionMeta = {
@@ -657,7 +756,8 @@ const siteVisibilitySectionMeta = {
   ficheirosExcel: { secao: "ficheiros_excel", chave: "secao-ficheiros-excel", titulo: "Ficheiros Excel", tipo: "secao", ordem: 45 },
   assistentesGpt: { secao: "assistentes_gpt", chave: "secao-assistentes-gpt", titulo: "Assistentes GPT", tipo: "secao", ordem: 48 },
   tarefasGrupo: { secao: "tarefas_grupo", chave: "secao-tarefas-grupo", titulo: "Tarefas de grupo", tipo: "secao", ordem: 50 },
-  tarefasIndividuais: { secao: "tarefas_individuais", chave: "secao-tarefas-individuais", titulo: "Tarefas individuais", tipo: "secao", ordem: 60 }
+  tarefasIndividuais: { secao: "tarefas_individuais", chave: "secao-tarefas-individuais", titulo: "Tarefas individuais", tipo: "secao", ordem: 60 },
+  projetoFinal: { secao: "projeto_final", chave: "secao-projeto-final", titulo: "Fases do Projeto Final", tipo: "secao", ordem: 80 }
 };
 
 const SITE_VISIBILITY_STORAGE_KEY = "ufcd0695-site-visibility-v1";
@@ -823,7 +923,7 @@ function obterConstituicaoVisibilidadeSite() {
   };
   const adicionarItem = (section, key, titulo, url, tipo, ordem, options = {}) => {
     const meta = siteVisibilitySectionMeta[section];
-    const visibilityKey = section === "tarefasIndividuais" ? key : key.replace(/^(menu|conteudo|atividade|avaliacao|recurso|ficheiro-excel|assistente-gpt|tarefa-grupo|tarefa-individual)-/, "");
+    const visibilityKey = section === "tarefasIndividuais" ? key : key.replace(/^(menu|conteudo|atividade|avaliacao|recurso|ficheiro-excel|assistente-gpt|tarefa-grupo|tarefa-individual|projeto-final)-/, "");
     itens.push(criarItemVisibilidade(meta.secao, key, titulo, url, tipo, "item", siteVisibility[section]?.[visibilityKey], ordem, options));
   };
 
@@ -868,6 +968,9 @@ function obterConstituicaoVisibilidadeSite() {
     linkLabel: "Fórum",
     linkPlaceholder: "https://fad.iefp.pt/mod/forum/discuss.php?d=..."
   }));
+
+  adicionarSecao("projetoFinal");
+  projectFinalPhases.forEach((phase, index) => adicionarItem("projetoFinal", `projeto-final-${phase.id}`, phase.title, "atividades/projeto-final-apresentacao.html", "fase_projeto", 81 + index));
 
   return itens;
 }
@@ -1529,7 +1632,8 @@ function aplicarItemVisibilidadeRemota(item) {
     { prefix: "ficheiro-excel-", section: "ficheirosExcel" },
     { prefix: "assistente-gpt-", section: "assistentesGpt" },
     { prefix: "tarefa-grupo-", section: "tarefasGrupo" },
-    { prefix: "tarefa-individual-", section: "tarefasIndividuais" }
+    { prefix: "tarefa-individual-", section: "tarefasIndividuais" },
+    { prefix: "projeto-final-", section: "projetoFinal" }
   ];
 
   const mapping = mappings.find((candidate) => chave.startsWith(candidate.prefix));
@@ -1928,6 +2032,7 @@ function renderSiteVisibilityControls() {
     linkValue: obterGlossarioUrl(),
     linkPlaceholder: "https://fad.iefp.pt/mod/glossary/view.php?id=..."
   });
+  const projectFinalItems = projectFinalPhases.map((phase) => ({ key: phase.id, label: phase.title }));
   const individualItems = individualTasks.map((task) => ({
     key: task.id,
     label: task.title,
@@ -1973,6 +2078,7 @@ function renderSiteVisibilityControls() {
         ${renderGroup("Assistentes GPT", "assistentesGpt", gptItems)}
         ${renderGroup("Tarefas de Grupo", "tarefasGrupo", groupItems, { before: glossaryField })}
         ${renderGroup("Tarefas Individuais", "tarefasIndividuais", individualItems, { before: renderTiMaterialsStatus() })}
+        ${renderGroup("Fases do Projeto Final", "projetoFinal", projectFinalItems)}
       </div>
       <div class="site-control-actions">
           <button class="small-button" type="button" data-action="save-site-visibility">Guardar na Apps Script</button>
@@ -2903,6 +3009,209 @@ function renderActivityPage() {
     return;
   }
 
+  if (activity.id === "projeto-final-apresentacao") {
+    root.innerHTML = `
+      <section class="section task-page-section project-final-page">
+        <div class="section-inner">
+          <div class="section-heading task-page-heading">
+            <p class="eyebrow">Projeto Final · UFCD 0695</p>
+            <h1>Construção e análise colaborativa de uma base de dados</h1>
+            <p class="lead">A turma constrói uma base de dados comum. Cada grupo trabalha uma parte da informação e todas as tabelas relacionam-se através de identificadores únicos.</p>
+          </div>
+
+          <div class="activity-meta-grid">
+            <article class="card activity-meta-card">
+              <p class="eyebrow">Tema</p>
+              <h3>A indicar pela formadora</h3>
+            </article>
+            <article class="card activity-meta-card">
+              <p class="eyebrow">Organização</p>
+              <h3>Quatro grupos · três fases</h3>
+            </article>
+          </div>
+
+          <article class="card activity-card">
+            <p class="eyebrow">Contexto</p>
+            <h2>Uma base comum, construída em colaboração</h2>
+            <p>Os dados devem ser fictícios, mas realistas, coerentes e adequados ao tema. Cada grupo será responsável por uma tabela principal e por uma tabela relacionada, seguindo a estrutura definida pela formadora.</p>
+            <div class="activity-output-grid project-group-grid">
+              <div class="task-block"><strong>Grupo 1</strong><p>Tabelas a indicar · IDs no formato <code>G1-001</code>.</p></div>
+              <div class="task-block"><strong>Grupo 2</strong><p>Tabelas a indicar · IDs no formato <code>G2-001</code>.</p></div>
+              <div class="task-block"><strong>Grupo 3</strong><p>Tabelas a indicar · IDs no formato <code>G3-001</code>.</p></div>
+              <div class="task-block"><strong>Grupo 4</strong><p>Tabelas a indicar · IDs no formato <code>G4-001</code>.</p></div>
+            </div>
+          </article>
+
+          <details class="task-overview-card project-objectives-card">
+            <summary>
+              <span class="task-module-copy"><strong>Objetivos do projeto</strong><small>Competências a desenvolver ao longo das três fases.</small></span>
+              <span class="task-module-mark" aria-hidden="true">✓</span>
+            </summary>
+            <div class="task-module-body">
+              <div class="activity-output-grid">
+                <ul class="clean-list task-block">
+                  <li>Criar colaborativamente um formulário de recolha de dados.</li>
+                  <li>Organizar, tratar e validar respostas numa folha de cálculo.</li>
+                  <li>Construir tabelas estruturadas e utilizar listas de apoio.</li>
+                  <li>Aplicar fórmulas, filtros e formatação condicional.</li>
+                  <li>Relacionar informação através de identificadores únicos.</li>
+                </ul>
+                <ul class="clean-list task-block">
+                  <li>Criar tabelas dinâmicas e gráficos.</li>
+                  <li>Retirar conclusões fundamentadas.</li>
+                  <li>Preparar um painel-resumo simples.</li>
+                  <li>Apresentar recomendações de melhoria.</li>
+                  <li>Preparar os dados para a demonstração no Microsoft Access.</li>
+                </ul>
+              </div>
+            </div>
+          </details>
+
+          ${isItemVisible("projectFinal", "fase-1") ? `<details class="task-overview-card" open>
+            <summary>
+              <span class="task-module-copy"><strong>1.ª fase — Recolha e tratamento de dados</strong><small>Google Forms e preparação das tabelas principais.</small></span>
+              <span class="task-module-mark" aria-hidden="true">1</span>
+            </summary>
+            <div class="task-module-body">
+              <div class="task-block">
+                <strong>Criar o formulário em colaboração</strong>
+                <p>Um elemento de cada grupo cria o Google Form dentro da sua pasta individual na área partilhada. O formulário deve ser partilhado para edição com o grupo e com a formadora.</p>
+                <div class="embed-fallback resource-action-row">
+                  <a class="small-button" href="https://drive.google.com/drive/folders/1FoY5IChKIUe-S4qHVWpYwQhpfEWKsyVS" target="_blank" rel="noopener">Abrir pastas individuais</a>
+                </div>
+              </div>
+              <div class="activity-output-grid">
+                <div class="task-block">
+                  <strong>Requisitos do formulário</strong>
+                  <ul class="clean-list">
+                    <li>Título e explicação breve do objetivo.</li>
+                    <li>Perguntas e tipos de resposta definidos pela formadora.</li>
+                    <li>Campos obrigatórios e opcionais devidamente configurados.</li>
+                    <li>Listas de escolha para valores predefinidos.</li>
+                    <li>Apenas dados necessários e sem dados pessoais reais.</li>
+                    <li>Ligação ao Google Sheets comum da turma.</li>
+                  </ul>
+                </div>
+                <div class="task-block">
+                  <strong>Tratar os dados</strong>
+                  <ol class="clean-list">
+                    <li>Recolher o número de respostas válidas indicado pela formadora.</li>
+                    <li>Manter o separador original das respostas sem alterações.</li>
+                    <li>Criar uma folha para os dados tratados.</li>
+                    <li>Eliminar duplicados e identificar campos vazios.</li>
+                    <li>Corrigir formatos e uniformizar designações.</li>
+                    <li>Aplicar listas de apoio e identificadores únicos.</li>
+                  </ol>
+                </div>
+              </div>
+              <div class="task-block">
+                <strong>Entrega da 1.ª fase</strong>
+                <p>Ligação de edição e versão publicada do formulário, respostas originais, tabela tratada, identificadores atribuídos e registo dos problemas encontrados e corrigidos.</p>
+              </div>
+            </div>
+          </details>` : ""}
+
+          ${isItemVisible("projectFinal", "fase-2") ? `<details class="task-overview-card">
+            <summary>
+              <span class="task-module-copy"><strong>2.ª fase — Construção das tabelas relacionadas</strong><small>Trabalho direto no Google Sheets com os identificadores da primeira fase.</small></span>
+              <span class="task-module-mark" aria-hidden="true">2</span>
+            </summary>
+            <div class="task-module-body">
+              <div class="task-block">
+                <strong>Estrutura definida pela formadora</strong>
+                <p>Para cada grupo serão indicados o nome da tabela, os campos e a respetiva ordem, o identificador, os campos obrigatórios, os tipos de dados, as relações e a quantidade mínima de registos.</p>
+              </div>
+              <div class="task-block">
+                <strong>Requisitos comuns</strong>
+                <ul class="clean-list">
+                  <li>Tabela estruturada, com cabeçalhos claros e consistentes.</li>
+                  <li>IDs válidos das tabelas relacionadas, sem duplicados nem referências inexistentes.</li>
+                  <li>Formatos adequados a texto, datas, números e moeda.</li>
+                  <li>Validação de dados através da folha <code>Listas_Apoio</code>.</li>
+                  <li>Fórmulas ou funções úteis e formatação condicional relevante.</li>
+                  <li>Possibilidade de ordenar e filtrar a informação.</li>
+                </ul>
+              </div>
+              <div class="task-block">
+                <strong>Entrega da 2.ª fase</strong>
+                <p>Tabela completa, cálculos e fórmulas, validações, formatação condicional, confirmação dos IDs utilizados e registo dos erros encontrados e corrigidos.</p>
+              </div>
+            </div>
+          </details>` : ""}
+
+          ${isItemVisible("projectFinal", "fase-final") ? `<details class="task-overview-card">
+            <summary>
+              <span class="task-module-copy"><strong>Fase final — Integração e análise</strong><small>Todos os grupos analisam uma cópia igual da base comum.</small></span>
+              <span class="task-module-mark" aria-hidden="true">3</span>
+            </summary>
+            <div class="task-module-body">
+              <div class="activity-output-grid">
+                <div class="task-block">
+                  <strong>Controlo de qualidade</strong>
+                  <ul class="clean-list">
+                    <li>Contar os registos de cada tabela.</li>
+                    <li>Detetar IDs repetidos ou inexistentes.</li>
+                    <li>Identificar campos obrigatórios vazios.</li>
+                    <li>Verificar datas, valores numéricos e listas de apoio.</li>
+                    <li>Registar os problemas na folha <code>Controlo_Qualidade</code>.</li>
+                  </ul>
+                </div>
+                <div class="task-block">
+                  <strong>Análise comum</strong>
+                  <ul class="clean-list">
+                    <li>Distribuições por categorias, estados e níveis de atividade.</li>
+                    <li>Situações pendentes, atrasadas ou problemáticas.</li>
+                    <li>Totais, médias, percentagens e diferenças relevantes.</li>
+                    <li>Relações entre tabelas e problemas de qualidade.</li>
+                    <li>Conclusões fundamentadas e propostas de melhoria.</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="task-block">
+                <strong>Elementos obrigatórios</strong>
+                <p>Folhas <code>Controlo_Qualidade</code> e <code>Indicadores</code>, pelo menos duas tabelas dinâmicas, dois gráficos, um painel-resumo simples, três conclusões e duas recomendações de melhoria.</p>
+              </div>
+            </div>
+          </details>
+
+          <article class="card activity-card">
+            <p class="eyebrow">Microsoft Access</p>
+            <h2>Demonstração</h2>
+            <p>Os grupos deixam os dados organizados para demonstrar a importação das folhas como tabelas, as chaves primárias e estrangeiras, os relacionamentos, a integridade referencial e uma consulta com várias tabelas.</p>
+          </article>
+
+          <div class="activity-output-grid">
+            <article class="card">
+              <p class="eyebrow">Apresentação final</p>
+              <h3>O que apresentar</h3>
+              <ul class="clean-list">
+                <li>A parte da base construída pelo grupo.</li>
+                <li>O processo de recolha e tratamento.</li>
+                <li>Problemas encontrados e indicadores principais.</li>
+                <li>Tabelas dinâmicas, gráficos e painel-resumo.</li>
+                <li>Três conclusões, duas recomendações e aprendizagens.</li>
+                <li>Participação de todos os elementos.</li>
+              </ul>
+            </article>
+            <article class="card activity-card">
+              <p class="eyebrow">Entrega final</p>
+              <h3>Elementos a entregar</h3>
+              <ul class="clean-list">
+                <li>Ligação para o Google Form.</li>
+                <li>Folha com os dados recolhidos e tratados.</li>
+                <li>As duas tabelas construídas.</li>
+                <li>Cópia analisada da base comum.</li>
+                <li>Apresentação utilizada.</li>
+                <li>Identificação dos elementos do grupo.</li>
+              </ul>
+            </article>
+          </div>` : ""}
+        </div>
+      </section>
+    `;
+    return;
+  }
+
   if (!isEvaluation) {
     root.innerHTML = `
       <section class="section task-page-section">
@@ -3312,12 +3621,3 @@ function inicializarSite() {
   }
 }
 inicializarSite();
-
-
-
-
-
-
-
-
-
