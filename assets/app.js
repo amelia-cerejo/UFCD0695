@@ -20,6 +20,7 @@ const pendingLinks = {
 };
 
 const topics = [
+  { id: "bases-de-dados", title: "Bases de Dados", menuTitle: "Bases de Dados", cardTitle: "Bases de Dados", intro: "Organizar, relacionar, consultar e gerir informação com Excel e Access.", image: "", url: "conteudos/bases-de-dados.html" },
   { id: "excel", title: "Excel", menuTitle: "Excel", cardTitle: "Bases de dados — Excel", intro: "Organizar, tratar e analisar informação em Excel como suporte à gestão documental.", image: "", url: "conteudos/excel.html" },
   { id: "access", title: "Access", menuTitle: "Access", cardTitle: "Bases de dados — Access", intro: "Criar e utilizar bases de dados relacionais para registar, consultar e organizar informação.", image: "", url: "conteudos/access.html" },
   { id: "pdf", title: "PDF", menuTitle: "PDF", cardTitle: "Documentos PDF", intro: "Criar, converter, organizar e utilizar documentos em formato PDF na gestão documental.", image: "", url: "conteudos/pdf.html" },
@@ -66,7 +67,7 @@ const contentLessons = {
 };
 
 const contentMenuGroups = [
-  { title: "Bases de Dados", theme: "database", children: [{ topicId: "excel" }, { topicId: "access" }] },
+  { title: "Bases de Dados", theme: "database", parentTopicId: "bases-de-dados", children: [{ topicId: "excel" }, { topicId: "access" }] },
   { title: "PDF", theme: "document", children: [{ topicId: "pdf" }] },
   { title: "Digitalização", theme: "document", children: [{ topicId: "digitalizacao" }] }
 ];
@@ -690,7 +691,7 @@ const resources = [
       { id: "desmistificar-formulas-excel", title: "Desmistificar Fórmulas Excel", description: "Explicação acessível para compreender a lógica das fórmulas e começar a utilizá-las com confiança.", path: "assets/videos/Desmistificar_Fórmulas_Excel.mp4" }
     ]
   },
-  { id: "manual", title: "Manual de formação", intro: "Manual de Formação da UFCD 0778 em PDF.", url: "recursos/manual.html", pdfUrl: "assets/pdfs/UFCD0778_Manual.pdf" },
+  { id: "manual", title: "Manual de formação", intro: "Manual atualizado da UFCD 0695 — Gestão informatizada de documentos.", url: "recursos/manual.html", pdfUrl: "assets/pdfs/Manual_UFCD0695_Atualizado.pdf" },
   {
     id: "ficheiros-excel", title: "Ficheiros Excel",
     intro: "Livros de Excel para explorar funcionalidades, acompanhar demonstrações e praticar os conteúdos da UFCD.",
@@ -700,6 +701,7 @@ const resources = [
       { id: "web-bem-vindo-excel", title: "Bem-vindo ao Excel — versão Web", description: "Livro de apoio para explorar o Excel na versão utilizada através do navegador.", path: "assets/ficheiros/Excel/Web_Bem-vindo ao Excel.xlsx", firstSheet: "Bem-vindo ao Excel" },
       { id: "formulas-excel", title: "Tutorial de Fórmulas", description: "Livro de apoio para explorar, compreender e praticar fórmulas no Excel.", path: "assets/ficheiros/Excel/Fórmulas.xlsx", firstSheet: "Início" },
       { id: "resumo-conceitos", title: "Novo Resumo de conceitos", description: "Livro de consulta rápida para rever e consolidar os principais conceitos de folha de cálculo.", path: "assets/ficheiros/Excel/Novo Resumo de conceitos.xlsx", firstSheet: "Referencias" },
+      { id: "base-de-dados-projeto-final", title: "Base de Dados — Projeto Final", description: "Base inicial do Projeto Final, com a folha de apoio para a construção colaborativa da base de dados.", path: "assets/ficheiros/Excel/Base_de_Dados.xlsx" },
     ]
   },
   {
@@ -854,6 +856,18 @@ function isSectionVisible(section) {
 function isItemVisible(section, key) {
   return isSectionVisible(section) && siteVisibility[section]?.[key] !== false;
 }
+
+function faseProjetoFinalVisivel(phaseId) {
+  return siteVisibilityRemoteReady
+    && isSectionVisible("projetoFinal")
+    && siteVisibility.projetoFinal?.[phaseId] === true;
+}
+
+document.addEventListener("click", (event) => {
+  const summary = event.target.closest('details[data-project-phase-active="false"] > summary');
+  if (!summary) return;
+  event.preventDefault();
+});
 
 function renderPortfolioMenuLink() {
   document.querySelectorAll(".side-nav").forEach((menu) => {
@@ -1425,7 +1439,7 @@ function renderHomeCards() {
   const digitalizacao = topicById("digitalizacao");
   grid.innerHTML = `
     <article class="content-card content-area-card database-area-card">
-      <div class="content-area-heading"><span>Área principal</span><h3>Bases de Dados</h3><p>Registar, organizar, consultar e gerir informação documental.</p></div>
+      <div class="content-area-heading"><span>Área principal</span><h3><a href="conteudos/bases-de-dados.html">Bases de Dados</a></h3><p>Registar, organizar, consultar e gerir informação documental.</p></div>
       <div class="content-subarea-grid">
         <a class="content-subarea excel-subarea" href="${excel.url}"><strong>Excel</strong><small>${excel.intro}</small></a>
         <a class="content-subarea access-subarea" href="${access.url}"><strong>Access</strong><small>${access.intro}</small></a>
@@ -1445,7 +1459,7 @@ function renderConteudosIndex() {
   const digitalizacao = topicById("digitalizacao");
   grid.innerHTML = `
     <article class="card content-area-card database-area-card">
-      <div class="content-area-heading"><span>Área principal</span><h3>Bases de Dados</h3><p>Excel e Access funcionam como subáreas desta área.</p></div>
+      <div class="content-area-heading"><span>Área principal</span><h3><a href="conteudos/bases-de-dados.html">Bases de Dados</a></h3><p>Excel e Access funcionam como subáreas desta área.</p></div>
       <div class="content-subarea-grid">
         <a class="content-subarea excel-subarea" href="${excel.url}"><strong>Excel</strong><small>${excel.intro}</small></a>
         <a class="content-subarea access-subarea" href="${access.url}"><strong>Access</strong><small>${access.intro}</small></a>
@@ -3016,196 +3030,141 @@ function renderActivityPage() {
           <div class="section-heading task-page-heading">
             <p class="eyebrow">Projeto Final · UFCD 0695</p>
             <h1>Construção e análise colaborativa de uma base de dados</h1>
-            <p class="lead">A turma constrói uma base de dados comum. Cada grupo trabalha uma parte da informação e todas as tabelas relacionam-se através de identificadores únicos.</p>
+            <p class="lead">Cada grupo escolhe um tema e desenvolve uma base de dados própria, utilizando Google Forms e Google Sheets.</p>
           </div>
 
           <div class="activity-meta-grid">
             <article class="card activity-meta-card">
-              <p class="eyebrow">Tema</p>
-              <h3>A indicar pela formadora</h3>
+              <p class="eyebrow">Organização</p>
+              <h3>Quatro elementos · três fases</h3>
             </article>
             <article class="card activity-meta-card">
-              <p class="eyebrow">Organização</p>
-              <h3>Quatro grupos · três fases</h3>
+              <p class="eyebrow">Resultado final</p>
+              <h3>Oito tabelas relacionadas e análise dos dados</h3>
             </article>
           </div>
 
           <article class="card activity-card">
-            <p class="eyebrow">Contexto</p>
-            <h2>Uma base comum, construída em colaboração</h2>
-            <p>Os dados devem ser fictícios, mas realistas, coerentes e adequados ao tema. Cada grupo será responsável por uma tabela principal e por uma tabela relacionada, seguindo a estrutura definida pela formadora.</p>
-            <div class="activity-output-grid project-group-grid">
-              <div class="task-block"><strong>Grupo 1</strong><p>Tabelas a indicar · IDs no formato <code>G1-001</code>.</p></div>
-              <div class="task-block"><strong>Grupo 2</strong><p>Tabelas a indicar · IDs no formato <code>G2-001</code>.</p></div>
-              <div class="task-block"><strong>Grupo 3</strong><p>Tabelas a indicar · IDs no formato <code>G3-001</code>.</p></div>
-              <div class="task-block"><strong>Grupo 4</strong><p>Tabelas a indicar · IDs no formato <code>G4-001</code>.</p></div>
+            <p class="eyebrow">Ponto de partida</p>
+            <h2>Base de dados do grupo</h2>
+            <p>O trabalho parte de uma base inicial que contém a folha <code>Listas_Apoio</code>. Cada grupo deve fazer uma cópia para a pasta da respetiva sala e organizar aí todos os elementos do projeto.</p>
+            <p>Cada elemento será responsável por um formulário e por duas folhas de cálculo. Os dados utilizados devem ser fictícios, mas realistas e coerentes.</p>
+            <div class="embed-fallback resource-action-row">
+              <a class="small-button" href="https://drive.google.com/drive/folders/1K-w7rpT_LZ-zeCmkAPkFReAXOUwBGdyU" target="_blank" rel="noopener">Abrir pasta dos projetos</a>
+              <a class="small-button" href="https://docs.google.com/spreadsheets/d/1IZR2u_oDYCT2sN8IJ5EiZ8VrMTHq_-eo2M14uQZGCyY/edit?gid=1002#gid=1002" target="_blank" rel="noopener">Abrir base no Google Sheets</a>
+              <a class="small-button" href="${getBasePath()}assets/ficheiros/Excel/Base_de_Dados.xlsx" download>Descarregar base de dados</a>
+              <a class="small-button orange" href="${getBasePath()}assets/pdfs/UFCD0695_Projeto_Final_Enunciado_Geral.pdf" target="_blank" rel="noopener">Abrir PDF geral</a>
             </div>
           </article>
 
-          <details class="task-overview-card project-objectives-card">
+          <details class="task-overview-card project-objectives-card" open>
             <summary>
-              <span class="task-module-copy"><strong>Objetivos do projeto</strong><small>Competências a desenvolver ao longo das três fases.</small></span>
+              <span class="task-module-copy"><strong>Organização do projeto</strong><small>As três fases de construção, relação e análise.</small></span>
               <span class="task-module-mark" aria-hidden="true">✓</span>
             </summary>
             <div class="task-module-body">
-              <div class="activity-output-grid">
-                <ul class="clean-list task-block">
-                  <li>Criar colaborativamente um formulário de recolha de dados.</li>
-                  <li>Organizar, tratar e validar respostas numa folha de cálculo.</li>
-                  <li>Construir tabelas estruturadas e utilizar listas de apoio.</li>
-                  <li>Aplicar fórmulas, filtros e formatação condicional.</li>
-                  <li>Relacionar informação através de identificadores únicos.</li>
-                </ul>
-                <ul class="clean-list task-block">
-                  <li>Criar tabelas dinâmicas e gráficos.</li>
-                  <li>Retirar conclusões fundamentadas.</li>
-                  <li>Preparar um painel-resumo simples.</li>
-                  <li>Apresentar recomendações de melhoria.</li>
-                  <li>Preparar os dados para a demonstração no Microsoft Access.</li>
-                </ul>
+              <ol class="clean-list task-block">
+                <li><strong>Formulários e tabelas-base:</strong> criar quatro formulários e as tabelas <code>Clientes</code>, <code>Fornecedores</code>, <code>Colaboradores</code> e <code>Entidades_Formadoras</code>.</li>
+                <li><strong>Tabelas relacionadas:</strong> criar <code>Documentos</code>, <code>Processos</code>, <code>Participacoes_Formacao</code> e <code>Formacoes</code>.</li>
+                <li><strong>Integração e análise:</strong> verificar a qualidade dos dados, criar indicadores, tabelas dinâmicas, gráficos, conclusões e preparar a demonstração no Microsoft Access.</li>
+              </ol>
+              <div class="task-block">
+                <strong>Resultado esperado</strong>
+                <p>Uma base com oito tabelas relacionadas, análise dos dados, registo dos problemas de qualidade e conclusões apoiadas nos resultados.</p>
               </div>
             </div>
           </details>
 
-          ${isItemVisible("projectFinal", "fase-1") ? `<details class="task-overview-card" open>
+          ${true ? `<details class="task-overview-card" data-project-phase-active="${faseProjetoFinalVisivel("fase-1")}">
             <summary>
-              <span class="task-module-copy"><strong>1.ª fase — Recolha e tratamento de dados</strong><small>Google Forms e preparação das tabelas principais.</small></span>
+              <span class="task-module-copy"><strong>1.ª fase — Formulários e tabelas-base</strong><small>Escolha do tema, organização da pasta e criação das primeiras quatro tabelas.</small></span>
               <span class="task-module-mark" aria-hidden="true">1</span>
             </summary>
             <div class="task-module-body">
-              <div class="task-block">
-                <strong>Criar o formulário em colaboração</strong>
-                <p>Um elemento de cada grupo cria o Google Form dentro da sua pasta individual na área partilhada. O formulário deve ser partilhado para edição com o grupo e com a formadora.</p>
-                <div class="embed-fallback resource-action-row">
-                  <a class="small-button" href="https://drive.google.com/drive/folders/1FoY5IChKIUe-S4qHVWpYwQhpfEWKsyVS" target="_blank" rel="noopener">Abrir pastas individuais</a>
-                </div>
-              </div>
-              <div class="activity-output-grid">
-                <div class="task-block">
-                  <strong>Requisitos do formulário</strong>
-                  <ul class="clean-list">
-                    <li>Título e explicação breve do objetivo.</li>
-                    <li>Perguntas e tipos de resposta definidos pela formadora.</li>
-                    <li>Campos obrigatórios e opcionais devidamente configurados.</li>
-                    <li>Listas de escolha para valores predefinidos.</li>
-                    <li>Apenas dados necessários e sem dados pessoais reais.</li>
-                    <li>Ligação ao Google Sheets comum da turma.</li>
-                  </ul>
-                </div>
-                <div class="task-block">
-                  <strong>Tratar os dados</strong>
-                  <ol class="clean-list">
-                    <li>Recolher o número de respostas válidas indicado pela formadora.</li>
-                    <li>Manter o separador original das respostas sem alterações.</li>
-                    <li>Criar uma folha para os dados tratados.</li>
-                    <li>Eliminar duplicados e identificar campos vazios.</li>
-                    <li>Corrigir formatos e uniformizar designações.</li>
-                    <li>Aplicar listas de apoio e identificadores únicos.</li>
-                  </ol>
-                </div>
+              <p>Cada elemento cria pelo menos um Google Form dentro da pasta do grupo. Todos colaboram na revisão e no teste dos quatro formulários, que devem ficar ligados à cópia do Google Sheets <code>Base_de_Dados</code>.</p>
+              <div class="activity-output-grid project-group-grid">
+                <div class="task-block"><strong>Elemento 1</strong><p><code>Clientes</code></p></div>
+                <div class="task-block"><strong>Elemento 2</strong><p><code>Fornecedores</code></p></div>
+                <div class="task-block"><strong>Elemento 3</strong><p><code>Colaboradores</code></p></div>
+                <div class="task-block"><strong>Elemento 4</strong><p><code>Entidades_Formadoras</code></p></div>
               </div>
               <div class="task-block">
-                <strong>Entrega da 1.ª fase</strong>
-                <p>Ligação de edição e versão publicada do formulário, respostas originais, tabela tratada, identificadores atribuídos e registo dos problemas encontrados e corrigidos.</p>
+                <strong>Trabalho a realizar</strong>
+                <ul class="clean-list">
+                  <li>Criar, rever e testar os quatro formulários.</li>
+                  <li>Recolher pelo menos 15 respostas válidas por formulário e preservar as respostas originais.</li>
+                  <li>Criar e preencher as quatro tabelas-base com os cabeçalhos definidos.</li>
+                  <li>Atribuir identificadores únicos aos registos.</li>
+                  <li>Aplicar listas pendentes, validação de dados e formatos adequados.</li>
+                  <li>Corrigir duplicados, campos vazios e incoerências e adaptar <code>Listas_Apoio</code> quando necessário.</li>
+                </ul>
+              </div>
+              <div class="task-block"><strong>Resultado esperado</strong><p>A pasta do grupo contém a base, os quatro formulários, as folhas de respostas e as quatro tabelas-base completas e validadas.</p></div>
+              <div class="embed-fallback resource-action-row align-right">
+                <a class="small-button orange" href="${getBasePath()}assets/pdfs/UFCD0695_Projeto_Final_Fase1.pdf" target="_blank" rel="noopener">Abrir PDF da 1.ª fase</a>
               </div>
             </div>
           </details>` : ""}
 
-          ${isItemVisible("projectFinal", "fase-2") ? `<details class="task-overview-card">
+          ${true ? `<details class="task-overview-card" data-project-phase-active="${faseProjetoFinalVisivel("fase-2")}">
             <summary>
-              <span class="task-module-copy"><strong>2.ª fase — Construção das tabelas relacionadas</strong><small>Trabalho direto no Google Sheets com os identificadores da primeira fase.</small></span>
+              <span class="task-module-copy"><strong>2.ª fase — Construção das tabelas relacionadas</strong><small>Quatro novas folhas na mesma base de dados do grupo.</small></span>
               <span class="task-module-mark" aria-hidden="true">2</span>
             </summary>
             <div class="task-module-body">
-              <div class="task-block">
-                <strong>Estrutura definida pela formadora</strong>
-                <p>Para cada grupo serão indicados o nome da tabela, os campos e a respetiva ordem, o identificador, os campos obrigatórios, os tipos de dados, as relações e a quantidade mínima de registos.</p>
+              <div class="activity-output-grid project-group-grid">
+                <div class="task-block"><strong>Elemento 1</strong><p><code>Clientes</code> → <code>Documentos</code></p></div>
+                <div class="task-block"><strong>Elemento 2</strong><p><code>Fornecedores</code> → <code>Processos</code></p></div>
+                <div class="task-block"><strong>Elemento 3</strong><p><code>Colaboradores</code> → <code>Participacoes_Formacao</code></p></div>
+                <div class="task-block"><strong>Elemento 4</strong><p><code>Entidades_Formadoras</code> → <code>Formacoes</code></p></div>
               </div>
               <div class="task-block">
-                <strong>Requisitos comuns</strong>
+                <strong>Trabalho a realizar</strong>
                 <ul class="clean-list">
-                  <li>Tabela estruturada, com cabeçalhos claros e consistentes.</li>
-                  <li>IDs válidos das tabelas relacionadas, sem duplicados nem referências inexistentes.</li>
-                  <li>Formatos adequados a texto, datas, números e moeda.</li>
-                  <li>Validação de dados através da folha <code>Listas_Apoio</code>.</li>
-                  <li>Fórmulas ou funções úteis e formatação condicional relevante.</li>
-                  <li>Possibilidade de ordenar e filtrar a informação.</li>
+                  <li>Criar as quatro novas folhas com os campos definidos no enunciado.</li>
+                  <li>Utilizar os identificadores das tabelas relacionadas.</li>
+                  <li>Aplicar listas pendentes, formatos, fórmulas e formatação condicional.</li>
+                  <li>Confirmar que não existem identificadores duplicados ou referências inexistentes.</li>
+                  <li>Verificar campos obrigatórios, datas e valores numéricos.</li>
+                  <li>Adaptar ou criar listas de apoio quando o tema o justificar.</li>
                 </ul>
               </div>
-              <div class="task-block">
-                <strong>Entrega da 2.ª fase</strong>
-                <p>Tabela completa, cálculos e fórmulas, validações, formatação condicional, confirmação dos IDs utilizados e registo dos erros encontrados e corrigidos.</p>
+              <div class="task-block"><strong>Resultado esperado</strong><p>A base do grupo fica com oito tabelas preenchidas e relacionadas, prontas para a análise final.</p></div>
+              <div class="embed-fallback resource-action-row align-right">
+                <a class="small-button orange" href="${getBasePath()}assets/pdfs/UFCD0695_Projeto_Final_Fase2.pdf" target="_blank" rel="noopener">Abrir PDF da 2.ª fase</a>
               </div>
             </div>
           </details>` : ""}
 
-          ${isItemVisible("projectFinal", "fase-final") ? `<details class="task-overview-card">
+          ${true ? `<details class="task-overview-card" data-project-phase-active="${faseProjetoFinalVisivel("fase-final")}">
             <summary>
-              <span class="task-module-copy"><strong>Fase final — Integração e análise</strong><small>Todos os grupos analisam uma cópia igual da base comum.</small></span>
+              <span class="task-module-copy"><strong>Fase final — Integração, análise e apresentação</strong><small>Qualidade dos dados, indicadores, gráficos e conclusões.</small></span>
               <span class="task-module-mark" aria-hidden="true">3</span>
             </summary>
             <div class="task-module-body">
-              <div class="activity-output-grid">
-                <div class="task-block">
-                  <strong>Controlo de qualidade</strong>
-                  <ul class="clean-list">
-                    <li>Contar os registos de cada tabela.</li>
-                    <li>Detetar IDs repetidos ou inexistentes.</li>
-                    <li>Identificar campos obrigatórios vazios.</li>
-                    <li>Verificar datas, valores numéricos e listas de apoio.</li>
-                    <li>Registar os problemas na folha <code>Controlo_Qualidade</code>.</li>
-                  </ul>
-                </div>
-                <div class="task-block">
-                  <strong>Análise comum</strong>
-                  <ul class="clean-list">
-                    <li>Distribuições por categorias, estados e níveis de atividade.</li>
-                    <li>Situações pendentes, atrasadas ou problemáticas.</li>
-                    <li>Totais, médias, percentagens e diferenças relevantes.</li>
-                    <li>Relações entre tabelas e problemas de qualidade.</li>
-                    <li>Conclusões fundamentadas e propostas de melhoria.</li>
-                  </ul>
-                </div>
-              </div>
               <div class="task-block">
-                <strong>Elementos obrigatórios</strong>
-                <p>Folhas <code>Controlo_Qualidade</code> e <code>Indicadores</code>, pelo menos duas tabelas dinâmicas, dois gráficos, um painel-resumo simples, três conclusões e duas recomendações de melhoria.</p>
+                <strong>Trabalho a realizar</strong>
+                <ul class="clean-list">
+                  <li>Criar uma cópia de trabalho da base na pasta <code>04_Analise</code>.</li>
+                  <li>Registar os problemas encontrados na folha <code>Controlo_Qualidade</code>.</li>
+                  <li>Criar a folha <code>Indicadores</code>, pelo menos duas tabelas dinâmicas e dois gráficos.</li>
+                  <li>Construir um painel-resumo simples.</li>
+                  <li>Apresentar três conclusões apoiadas nos dados e duas recomendações de melhoria.</li>
+                  <li>Exportar as oito tabelas organizadas para Excel.</li>
+                </ul>
+              </div>
+              <div class="task-block"><strong>Apresentação</strong><p>Todos os elementos participam e explicam a organização da base, os problemas encontrados, os indicadores principais, as relações entre as tabelas e as conclusões retiradas.</p></div>
+              <div class="embed-fallback resource-action-row align-right">
+                <a class="small-button orange" href="${getBasePath()}assets/pdfs/UFCD0695_Projeto_Final_Fase_Final.pdf" target="_blank" rel="noopener">Abrir PDF da fase final</a>
               </div>
             </div>
           </details>
 
-          <article class="card activity-card">
+          ${faseProjetoFinalVisivel("fase-final") ? `<article class="card activity-card">
             <p class="eyebrow">Microsoft Access</p>
             <h2>Demonstração</h2>
-            <p>Os grupos deixam os dados organizados para demonstrar a importação das folhas como tabelas, as chaves primárias e estrangeiras, os relacionamentos, a integridade referencial e uma consulta com várias tabelas.</p>
-          </article>
-
-          <div class="activity-output-grid">
-            <article class="card">
-              <p class="eyebrow">Apresentação final</p>
-              <h3>O que apresentar</h3>
-              <ul class="clean-list">
-                <li>A parte da base construída pelo grupo.</li>
-                <li>O processo de recolha e tratamento.</li>
-                <li>Problemas encontrados e indicadores principais.</li>
-                <li>Tabelas dinâmicas, gráficos e painel-resumo.</li>
-                <li>Três conclusões, duas recomendações e aprendizagens.</li>
-                <li>Participação de todos os elementos.</li>
-              </ul>
-            </article>
-            <article class="card activity-card">
-              <p class="eyebrow">Entrega final</p>
-              <h3>Elementos a entregar</h3>
-              <ul class="clean-list">
-                <li>Ligação para o Google Form.</li>
-                <li>Folha com os dados recolhidos e tratados.</li>
-                <li>As duas tabelas construídas.</li>
-                <li>Cópia analisada da base comum.</li>
-                <li>Apresentação utilizada.</li>
-                <li>Identificação dos elementos do grupo.</li>
-              </ul>
-            </article>
-          </div>` : ""}
+            <p>A importação para o Microsoft Access será apenas uma demonstração. Os grupos devem deixar os dados corretamente organizados e preparados para essa demonstração.</p>
+          </article>` : ""}` : ""}
         </div>
       </section>
     `;
@@ -3443,7 +3402,7 @@ function renderResourcePage() {
     const pdfUrl = `${getBasePath()}${resource.pdfUrl}`;
     root.innerHTML = `
       <section class="pdf-reader-shell" aria-label="Leitor do manual em PDF">
-        <iframe class="pdf-frame native-pdf-frame" src="${pdfUrl}#view=FitH" title="Manual de Formação da UFCD 0778"></iframe>
+        <iframe class="pdf-frame native-pdf-frame" src="${pdfUrl}#view=FitH" title="Manual de Formação da UFCD 0695"></iframe>
       </section>
     `;
     return;

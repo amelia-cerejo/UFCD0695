@@ -1,11 +1,391 @@
-<!doctype html>
-<html lang="pt-PT">
+<!DOCTYPE html>
+<html lang="pt">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Bases de dados — Access · UFCD 0695</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Access Completo | UFCD 0695</title>
   <link rel="stylesheet" href="../assets/styles.css">
-  <link rel="stylesheet" href="conteudo.css">
+<style>
+  :root {
+    --primary: #a4262c;
+    --primary-dark: #7a1a1e;
+    --primary-light: #fdf0f0;
+    --accent: #5c1014;
+    --text: #1a1a2e;
+    --text-light: #555;
+    --bg: #fdf8f8;
+    --white: #ffffff;
+    --border: #f0d0d0;
+    --shadow: 0 2px 12px rgba(164,38,44,0.10);
+    --radius: 10px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
+
+  /* HEADER */
+  header {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    color: var(--white);
+    padding: 48px 24px 36px;
+    text-align: center;
+  }
+  header .badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.18);
+    border: 1px solid rgba(255,255,255,0.35);
+    border-radius: 20px;
+    padding: 4px 16px;
+    font-size: 0.78rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  header h1 { font-size: 2.1rem; font-weight: 700; margin-bottom: 8px; }
+  header p { font-size: 1.05rem; opacity: 0.88; max-width: 600px; margin: 0 auto; }
+
+  /* NAV */
+  nav.top-nav {
+    background: var(--white);
+    border-bottom: 2px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  nav.top-nav::-webkit-scrollbar { display: none; }
+  nav.top-nav a {
+    display: block;
+    padding: 13px 18px;
+    color: var(--text-light);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+  nav.top-nav a:hover, nav.top-nav a.active {
+    color: var(--primary);
+    border-bottom-color: var(--primary);
+    background: var(--primary-light);
+  }
+
+  /* MAIN */
+  main { max-width: 980px; margin: 0 auto; padding: 40px 20px 60px; }
+
+  /* SECTION */
+  section { margin-bottom: 64px; scroll-margin-top: 70px; }
+  section > h2 {
+    font-size: 1.45rem;
+    color: var(--primary-dark);
+    border-left: 5px solid var(--primary);
+    padding-left: 14px;
+    margin-bottom: 24px;
+  }
+
+  /* CARD */
+  .card {
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 26px 28px;
+    margin-bottom: 20px;
+    border: 1px solid var(--border);
+  }
+  .card h3 { color: var(--primary-dark); font-size: 1.05rem; margin-bottom: 14px; }
+
+  /* TABLE */
+  .table-wrap { overflow-x: auto; border-radius: var(--radius); box-shadow: var(--shadow); margin-bottom: 4px; }
+  table { width: 100%; border-collapse: collapse; background: var(--white); font-size: 0.91rem; }
+  thead tr { background: var(--primary); color: var(--white); }
+  thead th { padding: 12px 15px; text-align: left; font-weight: 600; }
+  tbody tr:nth-child(even) { background: var(--primary-light); }
+  tbody tr:hover { background: #f5d0d0; }
+  tbody td { padding: 10px 15px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  tbody td code {
+    background: #fde8e8;
+    color: var(--accent);
+    padding: 2px 7px;
+    border-radius: 4px;
+    font-size: 0.86rem;
+    font-family: 'Consolas', monospace;
+  }
+
+  /* STEPS */
+  .steps { list-style: none; counter-reset: step; }
+  .steps li {
+    counter-increment: step;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 11px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.93rem;
+  }
+  .steps li:last-child { border-bottom: none; }
+  .steps li::before {
+    content: counter(step);
+    min-width: 30px;
+    height: 30px;
+    background: var(--primary);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.88rem;
+    flex-shrink: 0;
+  }
+
+  /* BOXES */
+  .tip-box {
+    background: var(--primary-light);
+    border-left: 4px solid var(--primary);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    padding: 14px 18px;
+    margin: 14px 0;
+    font-size: 0.92rem;
+  }
+  .tip-box strong { color: var(--primary-dark); }
+  .warn-box {
+    background: #fff8e1;
+    border-left: 4px solid #f59e0b;
+    border-radius: 0 var(--radius) var(--radius) 0;
+    padding: 14px 18px;
+    margin: 14px 0;
+    font-size: 0.92rem;
+  }
+  .warn-box strong { color: #92400e; }
+  .info-box {
+    background: #eff6ff;
+    border-left: 4px solid #3b82f6;
+    border-radius: 0 var(--radius) var(--radius) 0;
+    padding: 14px 18px;
+    margin: 14px 0;
+    font-size: 0.92rem;
+  }
+  .info-box strong { color: #1e40af; }
+
+  /* CONCEPT GRID */
+  .concept-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 14px;
+    margin-bottom: 8px;
+  }
+  .concept-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 18px 16px;
+    box-shadow: var(--shadow);
+    transition: transform 0.2s;
+  }
+  .concept-card:hover { transform: translateY(-2px); border-color: var(--primary); }
+  .concept-card .cc-icon { font-size: 1.8rem; margin-bottom: 8px; }
+  .concept-card h4 { color: var(--primary-dark); font-size: 0.93rem; margin-bottom: 5px; }
+  .concept-card p { font-size: 0.83rem; color: var(--text-light); }
+
+  /* RELATION DIAGRAM */
+  .relation-diagram {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    flex-wrap: wrap;
+    margin: 20px 0;
+  }
+  .rel-table {
+    background: var(--white);
+    border: 2px solid var(--primary);
+    border-radius: var(--radius);
+    overflow: hidden;
+    min-width: 160px;
+    box-shadow: var(--shadow);
+  }
+  .rel-table .rel-header {
+    background: var(--primary);
+    color: white;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-align: center;
+  }
+  .rel-table ul { list-style: none; padding: 10px 14px; }
+  .rel-table ul li {
+    font-size: 0.83rem;
+    padding: 4px 0;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .rel-table ul li:last-child { border-bottom: none; }
+  .pk { color: var(--primary); font-weight: 700; }
+  .fk { color: #2563eb; font-weight: 600; }
+  .rel-arrow {
+    padding: 0 16px;
+    font-size: 1.8rem;
+    color: var(--primary);
+    font-weight: 700;
+    text-align: center;
+  }
+  .rel-label {
+    font-size: 0.75rem;
+    color: var(--text-light);
+    text-align: center;
+    display: block;
+  }
+
+  /* OBJECT NAMING */
+  .naming-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 14px;
+  }
+  .naming-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px;
+    text-align: center;
+    box-shadow: var(--shadow);
+  }
+  .naming-card .nc-prefix {
+    display: inline-block;
+    background: var(--primary);
+    color: white;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-family: 'Consolas', monospace;
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .naming-card h4 { color: var(--primary-dark); font-size: 0.9rem; margin-bottom: 4px; }
+  .naming-card p { font-size: 0.8rem; color: var(--text-light); }
+  .naming-card code {
+    display: block;
+    margin-top: 6px;
+    background: #fde8e8;
+    color: var(--accent);
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 0.82rem;
+    font-family: 'Consolas', monospace;
+  }
+
+  /* QUERY FLOW */
+  .query-flow {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: 16px 0;
+  }
+  .qf-step {
+    flex: 1;
+    min-width: 120px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 14px 10px;
+    text-align: center;
+    box-shadow: var(--shadow);
+  }
+  .qf-step .qf-num {
+    width: 26px; height: 26px;
+    background: var(--primary);
+    color: white;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 0.82rem;
+    margin: 0 auto 8px;
+  }
+  .qf-step .qf-icon { font-size: 1.4rem; margin-bottom: 5px; }
+  .qf-step h4 { font-size: 0.82rem; color: var(--primary-dark); }
+
+  /* EXERCISE CARDS */
+  .exercise-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    margin-bottom: 18px;
+  }
+  .exercise-header {
+    background: var(--primary);
+    color: white;
+    padding: 13px 20px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .exercise-body { padding: 18px 20px; }
+  .exercise-body ol { padding-left: 20px; font-size: 0.91rem; }
+  .exercise-body ol li { padding: 4px 0; }
+  .exercise-tag {
+    display: inline-block;
+    background: rgba(255,255,255,0.2);
+    border: 1px solid rgba(255,255,255,0.4);
+    border-radius: 12px;
+    padding: 2px 10px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-left: 8px;
+  }
+
+  /* CHECKLIST */
+  .checklist { list-style: none; }
+  .checklist li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.92rem;
+  }
+  .checklist li:last-child { border-bottom: none; }
+  .checklist li::before {
+    content: "☐";
+    color: var(--primary);
+    font-size: 1.1rem;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* GRID 2 */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--accent);
+    color: rgba(255,255,255,0.8);
+    text-align: center;
+    padding: 24px;
+    font-size: 0.85rem;
+  }
+  footer strong { color: white; }
+
+  @media (max-width: 700px) {
+    header h1 { font-size: 1.5rem; }
+    .grid-2 { grid-template-columns: 1fr; }
+    nav.top-nav a { padding: 11px 12px; font-size: 0.8rem; }
+    .relation-diagram { flex-direction: column; }
+    .rel-arrow { transform: rotate(90deg); }
+  }
+</style>
 </head>
 <body data-page="conteudo-estatico" data-content-theme="access">
   <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false"><span></span><span></span><span></span></button>
@@ -24,29 +404,569 @@
       <button class="nav-parent" type="button" aria-expanded="false" aria-controls="submenu-recursos">Recursos <span class="nav-parent-arrow" aria-hidden="true">▾</span></button>
       <div class="submenu resource-submenu" id="submenu-recursos"></div>
     </nav>
-  </aside>
-  <main class="page-shell">
-    <div class="page-layout">
-      <aside class="content-sidebar"><div class="sidebar-card"><div class="sidebar-card-header">📋 Neste Conteúdo</div><div class="sidebar-card-body"><ul class="toc-list"><li><a href="#sec1"><span class="toc-num">1</span> Tabelas e campos</a></li>
-<li><a href="#sec2"><span class="toc-num">2</span> Relações e consultas</a></li>
-<li><a href="#sec3"><span class="toc-num">3</span> Formulários e relatórios</a></li></ul></div></div></aside>
-      <div class="content">
-        <div class="content-hero"><div class="hero-icon">🗃️</div><div><h2>Bases de dados — Access</h2><p>Criação e utilização de bases de dados relacionais para organizar e consultar informação.</p></div></div>
-        <div class="section-block" id="sec1">
-<div class="section-block-header"><span class="s-icon">🗃️</span><h3>1. Tabelas e campos</h3></div>
-<div class="section-block-body"><p>Definir a estrutura de dados de acordo com a informação a registar.</p><ul><li>Escolher tipos de dados adequados.</li><li>Definir chave primária.</li><li>Aplicar regras de validação quando necessário.</li></ul></div>
-</div><div class="section-block" id="sec2">
-<div class="section-block-header"><span class="s-icon">🗃️</span><h3>2. Relações e consultas</h3></div>
-<div class="section-block-body"><p>Relacionar tabelas e obter subconjuntos de informação através de critérios.</p><ul><li>Criar relações entre tabelas.</li><li>Construir consultas simples.</li><li>Ordenar e filtrar resultados.</li></ul></div>
-</div><div class="section-block" id="sec3">
-<div class="section-block-header"><span class="s-icon">🗃️</span><h3>3. Formulários e relatórios</h3></div>
-<div class="section-block-body"><p>Facilitar a introdução de dados e a apresentação de informação.</p><ul><li>Criar formulários de registo.</li><li>Verificar consistência dos dados.</li><li>Gerar relatórios adequados à finalidade.</li></ul></div>
-</div>
-        <div class="box box-info"><strong>Enquadramento:</strong> este conteúdo integra o referencial da UFCD 0695 — Gestão informatizada de documentos.</div>
+  </aside>  <div class="page-shell imported-content-page">
+<header>
+  <div class="badge">UFCD 0695 · Módulo 2 · Access Completo</div>
+  <h1>🗄️ Microsoft Access</h1>
+  <p>Guia completo — conceitos, planificação, tabelas, relações, consultas, formulários, relatórios e exercícios práticos</p>
+</header>
+
+<nav class="top-nav" id="topNav">
+  <a href="#conceitos" class="active">Conceitos</a>
+  <a href="#planificacao">Planificação</a>
+  <a href="#tabelas">Tabelas</a>
+  <a href="#relacoes">Relações</a>
+  <a href="#consultas">Consultas</a>
+  <a href="#formularios">Formulários</a>
+  <a href="#relatorios">Relatórios</a>
+  <a href="#nomenclatura">Nomenclatura</a>
+  <a href="#exercicios">Exercícios</a>
+</nav>
+
+<main>
+
+  <!-- 1. CONCEITOS -->
+  <section id="conceitos">
+    <h2>📖 Conceitos Fundamentais</h2>
+
+    <div class="concept-grid">
+      <div class="concept-card">
+        <div class="cc-icon">🗄️</div>
+        <h4>Base de Dados</h4>
+        <p>Conjunto organizado de dados relacionados, geridos por um SGBD</p>
+      </div>
+      <div class="concept-card">
+        <div class="cc-icon">📋</div>
+        <h4>Tabela</h4>
+        <p>Estrutura com linhas (registos) e colunas (campos) que armazena dados</p>
+      </div>
+      <div class="concept-card">
+        <div class="cc-icon">➡️</div>
+        <h4>Registo</h4>
+        <p>Uma linha da tabela — representa uma entidade (ex: um cliente)</p>
+      </div>
+      <div class="concept-card">
+        <div class="cc-icon">⬇️</div>
+        <h4>Campo</h4>
+        <p>Uma coluna da tabela — representa um atributo (ex: Nome, Data)</p>
+      </div>
+      <div class="concept-card">
+        <div class="cc-icon">🔑</div>
+        <h4>Chave Primária (PK)</h4>
+        <p>Campo único que identifica inequivocamente cada registo</p>
+      </div>
+      <div class="concept-card">
+        <div class="cc-icon">🔗</div>
+        <h4>Chave Estrangeira (FK)</h4>
+        <p>Campo que referencia a PK de outra tabela, criando uma relação</p>
+      </div>
+      <div class="concept-card">
+        <div class="cc-icon">↔️</div>
+        <h4>Relação</h4>
+        <p>Ligação entre tabelas através de campos comuns (1:1, 1:N, N:M)</p>
+      </div>
+      <div class="concept-card">
+        <div class="cc-icon">🔍</div>
+        <h4>Consulta (Query)</h4>
+        <p>Instrução para extrair, filtrar e combinar dados de tabelas</p>
       </div>
     </div>
-  </main>
+
+    <div class="card" style="margin-top:20px;">
+      <h3>Tipos de Dados no Access</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Tipo</th><th>Utilização</th><th>Exemplo</th><th>Limite</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Texto Curto</strong></td><td>Texto até 255 caracteres</td><td>Nome, Morada, NIF</td><td>255 car.</td></tr>
+            <tr><td><strong>Texto Longo</strong></td><td>Texto sem limite prático</td><td>Observações, Descrição</td><td>~1 GB</td></tr>
+            <tr><td><strong>Número</strong></td><td>Valores numéricos inteiros ou decimais</td><td>Quantidade, Código</td><td>Vários subtipos</td></tr>
+            <tr><td><strong>Data/Hora</strong></td><td>Datas e horas</td><td>Data de Nascimento</td><td>—</td></tr>
+            <tr><td><strong>Moeda</strong></td><td>Valores monetários com precisão</td><td>Preço, Salário</td><td>4 decimais</td></tr>
+            <tr><td><strong>Sim/Não</strong></td><td>Valores booleanos (verdadeiro/falso)</td><td>Ativo, Pago, Sócio</td><td>—</td></tr>
+            <tr><td><strong>Numeração Auto.</strong></td><td>ID gerado automaticamente pelo Access</td><td>ID_Cliente, ID_Produto</td><td>—</td></tr>
+            <tr><td><strong>Anexo</strong></td><td>Ficheiros anexados ao registo</td><td>Foto, Documento PDF</td><td>2 GB</td></tr>
+            <tr><td><strong>Hiperligação</strong></td><td>URL ou endereço de e-mail</td><td>Website, E-mail</td><td>—</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="tip-box">
+      <strong>💡 Texto Curto vs Número para códigos:</strong> O NIF, o código postal e o número de telefone devem ser <strong>Texto Curto</strong>, não Número — porque não são usados em cálculos e podem ter zeros à esquerda.
+    </div>
+  </section>
+
+  <!-- 2. PLANIFICAÇÃO -->
+  <section id="planificacao">
+    <h2>📐 Planificação de uma Base de Dados</h2>
+
+    <div class="warn-box">
+      <strong>⚠️ Regra de ouro:</strong> Nunca cries tabelas no Access sem antes planificar no papel. Uma base de dados mal planificada é muito difícil de corrigir depois de ter dados introduzidos.
+    </div>
+
+    <div class="card">
+      <h3>5 Passos de Planificação</h3>
+      <ul class="steps">
+        <li>
+          <div><strong>Definir o Objetivo</strong><br>
+          <span style="font-size:0.88rem; color:var(--text-light);">O que preciso de saber? Que informação vou gerir? Quem vai usar a BD?</span></div>
+        </li>
+        <li>
+          <div><strong>Identificar as Entidades (Tabelas)</strong><br>
+          <span style="font-size:0.88rem; color:var(--text-light);">Que "coisas" distintas preciso de registar? Cada entidade será uma tabela.</span></div>
+        </li>
+        <li>
+          <div><strong>Definir os Campos de cada Tabela</strong><br>
+          <span style="font-size:0.88rem; color:var(--text-light);">Que atributos tem cada entidade? Qual é a chave primária? Que tipo de dados?</span></div>
+        </li>
+        <li>
+          <div><strong>Definir as Relações entre Tabelas</strong><br>
+          <span style="font-size:0.88rem; color:var(--text-light);">Como se ligam as tabelas? Qual o tipo de relação (1:1, 1:N, N:M)?</span></div>
+        </li>
+        <li>
+          <div><strong>Verificar a Planificação</strong><br>
+          <span style="font-size:0.88rem; color:var(--text-light);">Cada tabela tem PK? Há informação repetida? Todos os dados necessários estão contemplados?</span></div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>✅ Checklist de Verificação da Planificação</h3>
+      <ul class="checklist">
+        <li>Cada tabela tem uma chave primária definida?</li>
+        <li>Não há informação repetida desnecessariamente entre tabelas?</li>
+        <li>As relações estão estabelecidas através de campos comuns?</li>
+        <li>Todos os dados necessários estão contemplados?</li>
+        <li>Os tipos de dados são adequados ao conteúdo de cada campo?</li>
+        <li>Os campos de texto têm tamanho adequado definido?</li>
+        <li>As chaves estrangeiras têm o mesmo tipo de dados que a PK referenciada?</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>Tipos de Relações</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Tipo</th><th>Descrição</th><th>Exemplo</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><strong>1 : 1</strong></td>
+              <td>Um registo de A corresponde a exatamente um registo de B</td>
+              <td>Pessoa ↔ Bilhete de Identidade</td>
+            </tr>
+            <tr>
+              <td><strong>1 : N</strong></td>
+              <td>Um registo de A pode corresponder a vários registos de B (o mais comum)</td>
+              <td>Cliente → Encomendas</td>
+            </tr>
+            <tr>
+              <td><strong>N : M</strong></td>
+              <td>Vários registos de A correspondem a vários de B (requer tabela intermédia)</td>
+              <td>Alunos ↔ Disciplinas</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. TABELAS -->
+  <section id="tabelas">
+    <h2>📋 Criar e Gerir Tabelas</h2>
+
+    <div class="card">
+      <h3>Criar uma Tabela em Vista de Estrutura</h3>
+      <ul class="steps">
+        <li>Abre o Access e cria uma nova base de dados em branco</li>
+        <li>No separador <strong>Criar</strong>, clica em <strong>Estrutura da Tabela</strong></li>
+        <li>Define os campos: escreve o <strong>Nome do Campo</strong>, escolhe o <strong>Tipo de Dados</strong> e define as propriedades em baixo</li>
+        <li>Define a <strong>Chave Primária</strong>: clica com o botão direito no campo e seleciona <strong>Chave Primária</strong> (ícone 🔑)</li>
+        <li>Guarda a tabela com <strong>Ctrl+S</strong> e dá-lhe um nome descritivo (ex: <code>tblClientes</code>)</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>Propriedades dos Campos</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Propriedade</th><th>Descrição</th><th>Exemplo</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Tamanho do Campo</strong></td><td>Nº máximo de caracteres (Texto Curto)</td><td>50 para Nome</td></tr>
+            <tr><td><strong>Formato</strong></td><td>Como o valor é apresentado</td><td><code>DD/MM/AAAA</code> para datas</td></tr>
+            <tr><td><strong>Máscara de Entrada</strong></td><td>Formato de introdução obrigatório</td><td><code>000-000-000</code> para NIF</td></tr>
+            <tr><td><strong>Legenda</strong></td><td>Rótulo alternativo para formulários</td><td>"Data de Nascimento" em vez de "DtNasc"</td></tr>
+            <tr><td><strong>Valor Predefinido</strong></td><td>Valor automático ao criar novo registo</td><td><code>=Hoje()</code> para data atual</td></tr>
+            <tr><td><strong>Necessário</strong></td><td>Campo obrigatório (não pode ficar vazio)</td><td>Sim para Nome</td></tr>
+            <tr><td><strong>Indexado</strong></td><td>Acelera pesquisas; pode impedir duplicados</td><td>Sim (Sem Duplicados) para NIF</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="tip-box">
+      <strong>💡 Numeração Automática como PK:</strong> Para a maioria das tabelas, usa um campo <strong>Numeração Automática</strong> como chave primária (ex: <code>ID_Cliente</code>). O Access gera o número automaticamente e garante que é único.
+    </div>
+  </section>
+
+  <!-- 4. RELAÇÕES -->
+  <section id="relacoes">
+    <h2>🔗 Relações entre Tabelas</h2>
+
+    <div class="card">
+      <h3>Exemplo de Diagrama — Garagem de Condomínio</h3>
+      <div class="relation-diagram">
+        <div class="rel-table">
+          <div class="rel-header">tblCondóminos</div>
+          <ul>
+            <li><span class="pk">🔑 Fração</span></li>
+            <li>Nome</li>
+            <li>Telefone</li>
+            <li>Email</li>
+          </ul>
+        </div>
+        <div class="rel-arrow">
+          1 → N
+          <span class="rel-label">Um condómino<br>vários veículos</span>
+        </div>
+        <div class="rel-table">
+          <div class="rel-header">tblVeículos</div>
+          <ul>
+            <li><span class="pk">🔑 Matrícula</span></li>
+            <li><span class="fk">🔗 Fração (FK)</span></li>
+            <li><span class="fk">🔗 Cód_Marca (FK)</span></li>
+            <li>Modelo</li>
+            <li>Cor</li>
+            <li>Ativo</li>
+          </ul>
+        </div>
+        <div class="rel-arrow">
+          N ← 1
+          <span class="rel-label">Vários veículos<br>uma marca</span>
+        </div>
+        <div class="rel-table">
+          <div class="rel-header">tblMarcas</div>
+          <ul>
+            <li><span class="pk">🔑 Cód_Marca</span></li>
+            <li>Designação</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Criar Relações no Access</h3>
+      <ul class="steps">
+        <li>Vai a <strong>Ferramentas de Base de Dados › Relações</strong></li>
+        <li>Clica em <strong>Mostrar Tabela</strong> e adiciona todas as tabelas necessárias</li>
+        <li>Arrasta o campo <strong>PK</strong> de uma tabela para o campo <strong>FK</strong> da outra</li>
+        <li>Na janela que aparece, ativa <strong>"Impor Integridade Referencial"</strong></li>
+        <li>Ativa também <strong>"Atualização em Cascata"</strong> e <strong>"Eliminação em Cascata"</strong> se necessário</li>
+        <li>Clica em <strong>Criar</strong> — aparece uma linha a ligar as tabelas</li>
+      </ul>
+    </div>
+
+    <div class="info-box">
+      <strong>ℹ️ Integridade Referencial:</strong> Ao ativar esta opção, o Access impede que sejas adicionado um registo na tabela "filho" (ex: Veículo) sem que exista o registo correspondente na tabela "pai" (ex: Condómino). Garante a consistência dos dados.
+    </div>
+  </section>
+
+  <!-- 5. CONSULTAS -->
+  <section id="consultas">
+    <h2>🔍 Consultas (Queries)</h2>
+    <p style="margin-bottom:20px; color:var(--text-light); font-size:0.93rem;">As consultas são a ferramenta mais poderosa do Access para extrair, filtrar e combinar dados de uma ou mais tabelas.</p>
+
+    <div class="query-flow">
+      <div class="qf-step">
+        <div class="qf-num">1</div>
+        <div class="qf-icon">➕</div>
+        <h4>Criar consulta</h4>
+      </div>
+      <div class="qf-step">
+        <div class="qf-num">2</div>
+        <div class="qf-icon">📋</div>
+        <h4>Adicionar tabelas</h4>
+      </div>
+      <div class="qf-step">
+        <div class="qf-num">3</div>
+        <div class="qf-icon">🖱️</div>
+        <h4>Arrastar campos</h4>
+      </div>
+      <div class="qf-step">
+        <div class="qf-num">4</div>
+        <div class="qf-icon">🎯</div>
+        <h4>Definir critérios</h4>
+      </div>
+      <div class="qf-step">
+        <div class="qf-num">5</div>
+        <div class="qf-icon">▶️</div>
+        <h4>Executar (!)</h4>
+      </div>
+      <div class="qf-step">
+        <div class="qf-num">6</div>
+        <div class="qf-icon">💾</div>
+        <h4>Guardar</h4>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Operadores de Critério</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Operador</th><th>Significado</th><th>Exemplo</th></tr></thead>
+          <tbody>
+            <tr><td><code>=</code></td><td>Igual a</td><td><code>="Lisboa"</code></td></tr>
+            <tr><td><code>&lt;&gt;</code></td><td>Diferente de</td><td><code>&lt;&gt;"Inativo"</code></td></tr>
+            <tr><td><code>&gt;</code> / <code>&lt;</code></td><td>Maior / Menor que</td><td><code>&gt;100</code></td></tr>
+            <tr><td><code>&gt;=</code> / <code>&lt;=</code></td><td>Maior ou igual / Menor ou igual</td><td><code>&gt;=01/01/2024</code></td></tr>
+            <tr><td><code>Entre...E</code></td><td>Intervalo de valores</td><td><code>Entre 01/01/2024 E 31/12/2024</code></td></tr>
+            <tr><td><code>Como</code></td><td>Padrão de texto (wildcard)</td><td><code>Como "A*"</code> (começa por A)</td></tr>
+            <tr><td><code>É Nulo</code></td><td>Campo vazio</td><td><code>É Nulo</code></td></tr>
+            <tr><td><code>Não É Nulo</code></td><td>Campo não vazio</td><td><code>Não É Nulo</code></td></tr>
+            <tr><td><code>Em</code></td><td>Lista de valores</td><td><code>Em ("Lisboa";"Porto";"Faro")</code></td></tr>
+            <tr><td><code>Não</code></td><td>Negação de critério</td><td><code>Não Como "A*"</code></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Tipos de Consultas</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Tipo</th><th>Descrição</th><th>Quando usar</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Seleção</strong></td><td>Extrai e filtra dados (não altera a BD)</td><td>Visualizar, pesquisar, relatórios</td></tr>
+            <tr><td><strong>Atualização</strong></td><td>Altera valores em múltiplos registos</td><td>Aumentar preços em 10%, corrigir dados</td></tr>
+            <tr><td><strong>Acrescentar</strong></td><td>Adiciona registos de uma tabela para outra</td><td>Migrar dados, arquivar registos</td></tr>
+            <tr><td><strong>Eliminação</strong></td><td>Apaga registos que cumprem critérios</td><td>Limpar dados antigos ou inválidos</td></tr>
+            <tr><td><strong>Tabela de Referência Cruzada</strong></td><td>Resume dados em formato de matriz</td><td>Vendas por mês e por produto</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="warn-box">
+      <strong>⚠️ Consultas de ação (Atualização, Eliminação):</strong> Estas consultas <strong>alteram ou apagam dados permanentemente</strong>. Faz sempre uma cópia de segurança da base de dados antes de as executar.
+    </div>
+  </section>
+
+  <!-- 6. FORMULÁRIOS -->
+  <section id="formularios">
+    <h2>📝 Formulários</h2>
+    <p style="margin-bottom:20px; color:var(--text-light); font-size:0.93rem;">Os formulários facilitam a introdução e visualização de dados, apresentando os registos de forma mais amigável do que a vista de folha de dados.</p>
+
+    <div class="grid-2">
+      <div class="card">
+        <h3>Criar Formulário Automático</h3>
+        <ul class="steps">
+          <li>Seleciona a tabela ou consulta na barra de navegação</li>
+          <li>Vai a <strong>Criar › Formulário</strong></li>
+          <li>O Access cria automaticamente um formulário básico</li>
+          <li>Guarda com <strong>Ctrl+S</strong> e dá um nome (ex: <code>frmClientes</code>)</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Assistente de Formulários</h3>
+        <ul class="steps">
+          <li>Vai a <strong>Criar › Assistente de Formulários</strong></li>
+          <li>Escolhe a tabela/consulta e os campos a incluir</li>
+          <li>Seleciona o <strong>esquema</strong> (Colunas, Tabular, Folha de Dados)</li>
+          <li>Escolhe o <strong>estilo</strong> e dá um nome ao formulário</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Vistas do Formulário</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Vista</th><th>Utilização</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Vista de Formulário</strong></td><td>Utilização normal — introdução e visualização de dados</td></tr>
+            <tr><td><strong>Vista de Estrutura</strong></td><td>Personalização avançada — mover, redimensionar e formatar controlos</td></tr>
+            <tr><td><strong>Vista de Esquema</strong></td><td>Personalização visual com pré-visualização dos dados reais</td></tr>
+            <tr><td><strong>Vista de Folha de Dados</strong></td><td>Apresenta os dados em formato de tabela (como a tabela original)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="tip-box">
+      <strong>💡 Formulário com subformulário:</strong> Para relações 1:N (ex: Cliente e as suas Encomendas), usa o <strong>Assistente de Formulários</strong> e seleciona campos de ambas as tabelas — o Access cria automaticamente um formulário principal com subformulário.
+    </div>
+  </section>
+
+  <!-- 7. RELATÓRIOS -->
+  <section id="relatorios">
+    <h2>📊 Relatórios</h2>
+    <p style="margin-bottom:20px; color:var(--text-light); font-size:0.93rem;">Os relatórios permitem apresentar os dados de forma formatada e pronta para impressão ou exportação.</p>
+
+    <div class="grid-2">
+      <div class="card">
+        <h3>Criar Relatório Automático</h3>
+        <ul class="steps">
+          <li>Seleciona a tabela ou consulta</li>
+          <li>Vai a <strong>Criar › Relatório</strong></li>
+          <li>O Access gera um relatório automático</li>
+          <li>Guarda com nome descritivo (ex: <code>rptVendasMensais</code>)</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Assistente de Relatórios</h3>
+        <ul class="steps">
+          <li>Vai a <strong>Criar › Assistente de Relatórios</strong></li>
+          <li>Escolhe os campos a incluir</li>
+          <li>Define <strong>agrupamentos</strong> e <strong>ordenação</strong></li>
+          <li>Escolhe o esquema e o estilo</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Funcionalidades dos Relatórios</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Funcionalidade</th><th>Descrição</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Agrupamento</strong></td><td>Agrupa registos por um campo (ex: por Departamento)</td></tr>
+            <tr><td><strong>Ordenação</strong></td><td>Ordena os registos dentro de cada grupo</td></tr>
+            <tr><td><strong>Totais e Subtotais</strong></td><td>Soma, média, contagem por grupo e total geral</td></tr>
+            <tr><td><strong>Cabeçalho/Rodapé</strong></td><td>Informação que aparece no início/fim de cada página ou grupo</td></tr>
+            <tr><td><strong>Exportar para PDF</strong></td><td>Dados Externos › PDF ou XPS — exporta o relatório para PDF</td></tr>
+            <tr><td><strong>Exportar para Excel</strong></td><td>Dados Externos › Excel — exporta os dados para uma folha de cálculo</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. NOMENCLATURA -->
+  <section id="nomenclatura">
+    <h2>🏷️ Convenções de Nomenclatura</h2>
+    <p style="margin-bottom:20px; color:var(--text-light); font-size:0.93rem;">Usar prefixos consistentes facilita a identificação dos objetos na barra de navegação do Access.</p>
+
+    <div class="naming-grid">
+      <div class="naming-card">
+        <div class="nc-prefix">tbl</div>
+        <h4>Tabela</h4>
+        <p>Armazena os dados</p>
+        <code>tblClientes</code>
+      </div>
+      <div class="naming-card">
+        <div class="nc-prefix">qry</div>
+        <h4>Consulta</h4>
+        <p>Extrai e filtra dados</p>
+        <code>qryClientesLisboa</code>
+      </div>
+      <div class="naming-card">
+        <div class="nc-prefix">frm</div>
+        <h4>Formulário</h4>
+        <p>Interface de introdução</p>
+        <code>frmClientes</code>
+      </div>
+      <div class="naming-card">
+        <div class="nc-prefix">rpt</div>
+        <h4>Relatório</h4>
+        <p>Apresentação formatada</p>
+        <code>rptVendasMensais</code>
+      </div>
+      <div class="naming-card">
+        <div class="nc-prefix">mcr</div>
+        <h4>Macro</h4>
+        <p>Automatização de tarefas</p>
+        <code>mcrAbrirFormulario</code>
+      </div>
+      <div class="naming-card">
+        <div class="nc-prefix">mdl</div>
+        <h4>Módulo VBA</h4>
+        <p>Código de programação</p>
+        <code>mdlUtilitarios</code>
+      </div>
+    </div>
+
+    <div class="tip-box" style="margin-top:20px;">
+      <strong>💡 Boas práticas de nomenclatura:</strong> Usa sempre <strong>PascalCase</strong> após o prefixo (primeira letra de cada palavra em maiúscula). Evita espaços, acentos e caracteres especiais nos nomes dos objetos.
+    </div>
+  </section>
+
+  <!-- 9. EXERCÍCIOS -->
+  <section id="exercicios">
+    <h2>📝 Exercícios Práticos</h2>
+
+    <div class="exercise-card">
+      <div class="exercise-header">🏢 Exercício 1 — Base de Dados de Fornecedores <span class="exercise-tag">Básico</span></div>
+      <div class="exercise-body">
+        <ol>
+          <li>Cria uma nova base de dados chamada <code>Fornecedores.accdb</code></li>
+          <li>Cria a tabela <code>tblFornecedores</code> com os campos: <strong>ID_Fornecedor</strong> (Numeração Auto., PK), Nome, NIF, Morada, Cidade, Telefone, E-mail, Ativo (Sim/Não)</li>
+          <li>Cria a tabela <code>tblProdutos</code> com os campos: <strong>ID_Produto</strong> (Numeração Auto., PK), Designação, Preço_Unitário (Moeda), Stock (Número), <strong>ID_Fornecedor</strong> (Número, FK)</li>
+          <li>Cria uma <strong>relação 1:N</strong> entre <code>tblFornecedores</code> e <code>tblProdutos</code> com integridade referencial</li>
+          <li>Introduz 5 fornecedores e 10 produtos</li>
+          <li>Cria uma consulta <code>qryProdutosFornecedor</code> que mostre: Nome do Fornecedor, Designação do Produto e Preço Unitário</li>
+          <li>Cria um formulário <code>frmFornecedores</code> para introdução de novos fornecedores</li>
+          <li>Cria um relatório <code>rptProdutosPreco</code> com a lista de produtos ordenada por preço (decrescente)</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-header">🏠 Exercício 2 — Garagem de Condomínio <span class="exercise-tag">Intermédio</span></div>
+      <div class="exercise-body">
+        <ol>
+          <li>Cria uma nova base de dados chamada <code>GaragemCondominio.accdb</code></li>
+          <li>Planifica e cria as tabelas: <code>tblCondóminos</code>, <code>tblVeículos</code> e <code>tblMarcas</code> com os campos e tipos de dados adequados</li>
+          <li>Define as chaves primárias e estrangeiras em cada tabela</li>
+          <li>Cria as relações entre as tabelas com integridade referencial</li>
+          <li>Introduz pelo menos 5 condóminos, 4 marcas e 8 veículos</li>
+          <li>Cria a consulta <code>qryVeiculosAtivos</code> que mostre apenas os veículos com autorização ativa, incluindo o nome do condómino e a marca</li>
+          <li>Cria a consulta <code>qryVeiculosPorMarca</code> com critério para filtrar por marca (usando parâmetro: <code>[Introduza a marca:]</code>)</li>
+          <li>Cria um formulário <code>frmCondóminos</code> com subformulário dos veículos de cada condómino</li>
+          <li>Cria um relatório <code>rptListaVeiculos</code> agrupado por condómino</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-header">🎓 Exercício 3 — Gestão de Formações <span class="exercise-tag">Avançado</span></div>
+      <div class="exercise-body">
+        <ol>
+          <li>Cria uma base de dados <code>GestaoFormacoes.accdb</code> para gerir formandos, formações e inscrições</li>
+          <li>Identifica as entidades necessárias e planifica as tabelas no papel antes de criar no Access</li>
+          <li>Cria todas as tabelas com os campos adequados, chaves primárias e relações</li>
+          <li>Introduz dados de teste: pelo menos 10 formandos, 5 formações e 15 inscrições</li>
+          <li>Cria uma consulta que mostre os formandos inscritos em cada formação com a data de inscrição</li>
+          <li>Cria uma consulta de totais que conte o número de inscrições por formação</li>
+          <li>Cria um formulário de inscrição com lista suspensa para selecionar o formando e a formação</li>
+          <li>Cria um relatório agrupado por formação com a lista de formandos inscritos e total de inscrições</li>
+          <li>Exporta o relatório para PDF</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <strong>UFCD 0695</strong> · Gestão Informatizada de Documentos · Access Completo · Edição 2026
+</footer>
+
+<script>
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('nav.top-nav a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 100) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.classList.remove('active');
+      if (a.getAttribute('href') === '#' + current) a.classList.add('active');
+    });
+  });
+</script>
+  </div>
   <script src="../assets/config.js"></script>
-  <script src="../assets/app.js?v=20260906-ufcd0695-base"></script>
+  <script src="../assets/app.js?v=20260914-conteudos"></script>
 </body>
 </html>

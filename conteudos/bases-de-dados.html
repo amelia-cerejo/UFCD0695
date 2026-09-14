@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+
+<html lang="pt">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Bases de Dados — Excel &amp; Access | UFCD 0695</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+<style>
+  :root {
+    --primary: #038387;
+    --primary-dark: #026669;
+    --primary-light: #e6f4f4;
+    --accent: #005a5e;
+    --text: #1a1a2e;
+    --text-light: #555;
+    --bg: #f8fafa;
+    --white: #ffffff;
+    --border: #d0e8e8;
+    --shadow: 0 2px 12px rgba(3,131,135,0.10);
+    --radius: 10px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
+
+  /* HEADER */
+  header {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    color: var(--white);
+    padding: 48px 24px 36px;
+    text-align: center;
+  }
+  header .badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.18);
+    border: 1px solid rgba(255,255,255,0.35);
+    border-radius: 20px;
+    padding: 4px 16px;
+    font-size: 0.78rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  header h1 { font-size: 2.1rem; font-weight: 700; margin-bottom: 8px; }
+  header p { font-size: 1.05rem; opacity: 0.88; max-width: 560px; margin: 0 auto; }
+
+  /* NAV */
+  nav.top-nav {
+    background: var(--white);
+    border-bottom: 2px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    overflow-x: auto;
+  }
+  nav.top-nav a {
+    display: block;
+    padding: 14px 28px;
+    color: var(--text-light);
+    text-decoration: none;
+    font-size: 0.92rem;
+    font-weight: 500;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+  nav.top-nav a:hover, nav.top-nav a.active {
+    color: var(--primary);
+    border-bottom-color: var(--primary);
+    background: var(--primary-light);
+  }
+
+  /* MAIN */
+  main { max-width: 960px; margin: 0 auto; padding: 40px 20px 60px; }
+
+  /* SECTION */
+  section { margin-bottom: 60px; scroll-margin-top: 70px; }
+  section h2 {
+    font-size: 1.45rem;
+    color: var(--primary-dark);
+    border-left: 5px solid var(--primary);
+    padding-left: 14px;
+    margin-bottom: 24px;
+  }
+
+  /* TABS */
+  .tabs { margin-bottom: 32px; }
+  .tab-buttons {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 0;
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 0;
+  }
+  .tab-btn {
+    padding: 10px 22px;
+    border: none;
+    background: none;
+    color: var(--text-light);
+    font-size: 0.93rem;
+    font-weight: 500;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -2px;
+    border-radius: 6px 6px 0 0;
+    transition: all 0.2s;
+  }
+  .tab-btn:hover { background: var(--primary-light); color: var(--primary); }
+  .tab-btn.active { color: var(--primary); border-bottom-color: var(--primary); background: var(--primary-light); }
+  .tab-panel { display: none; padding: 28px 0 0; }
+  .tab-panel.active { display: block; }
+
+  /* CARDS */
+  .card {
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 28px;
+    margin-bottom: 20px;
+    border: 1px solid var(--border);
+  }
+  .card h3 { color: var(--primary-dark); font-size: 1.08rem; margin-bottom: 12px; }
+
+  /* TABLE */
+  .table-wrap { overflow-x: auto; border-radius: var(--radius); box-shadow: var(--shadow); }
+  table { width: 100%; border-collapse: collapse; background: var(--white); font-size: 0.93rem; }
+  thead tr { background: var(--primary); color: var(--white); }
+  thead th { padding: 13px 16px; text-align: left; font-weight: 600; }
+  tbody tr:nth-child(even) { background: var(--primary-light); }
+  tbody tr:hover { background: #c8e8e8; }
+  tbody td { padding: 11px 16px; border-bottom: 1px solid var(--border); }
+  tbody td code {
+    background: #e8f5f5;
+    color: var(--accent);
+    padding: 2px 7px;
+    border-radius: 4px;
+    font-size: 0.88rem;
+    font-family: 'Consolas', monospace;
+  }
+
+  /* STEPS */
+  .steps { list-style: none; counter-reset: step; }
+  .steps li {
+    counter-increment: step;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .steps li:last-child { border-bottom: none; }
+  .steps li::before {
+    content: counter(step);
+    min-width: 32px;
+    height: 32px;
+    background: var(--primary);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+  }
+
+  /* COMPARE TABLE */
+  .compare-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 8px;
+  }
+  .compare-col {
+    background: var(--white);
+    border-radius: var(--radius);
+    border: 2px solid var(--border);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+  .compare-col .col-header {
+    background: var(--primary);
+    color: white;
+    padding: 14px 20px;
+    font-weight: 700;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .compare-col ul { list-style: none; padding: 16px 20px; }
+  .compare-col ul li {
+    padding: 7px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.92rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .compare-col ul li:last-child { border-bottom: none; }
+  .compare-col ul li::before { content: "✓"; color: var(--primary); font-weight: 700; flex-shrink: 0; }
+
+  /* TIPS */
+  .tip-box {
+    background: var(--primary-light);
+    border-left: 4px solid var(--primary);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    padding: 16px 20px;
+    margin: 16px 0;
+    font-size: 0.93rem;
+  }
+  .tip-box strong { color: var(--primary-dark); }
+
+  /* LINKS */
+  .links-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin-top: 8px;
+  }
+  .link-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 18px 20px;
+    text-decoration: none;
+    color: var(--text);
+    box-shadow: var(--shadow);
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .link-card:hover { border-color: var(--primary); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(3,131,135,0.15); }
+  .link-card .icon { font-size: 1.6rem; }
+  .link-card .link-text { font-size: 0.9rem; }
+  .link-card .link-text strong { display: block; color: var(--primary-dark); margin-bottom: 2px; }
+
+  /* FOOTER */
+  footer {
+    background: var(--accent);
+    color: rgba(255,255,255,0.8);
+    text-align: center;
+    padding: 24px;
+    font-size: 0.85rem;
+  }
+  footer strong { color: white; }
+
+  @media (max-width: 600px) {
+    header h1 { font-size: 1.5rem; }
+    .compare-grid { grid-template-columns: 1fr; }
+    nav.top-nav a { padding: 12px 16px; font-size: 0.85rem; }
+  }
+</style>
+</head>
+<body data-page="conteudo-estatico" data-content-theme="bases-de-dados">
+  <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  <aside class="sidebar" aria-label="Menu principal">
+    <a class="brand" href="../index.html#inicio"><span class="brand-mark">0695</span><span><strong>Gestão informatizada de documentos</strong></span></a>
+    <nav class="side-nav">
+      <a href="../index.html#inicio">Início</a>
+      <a href="../index.html#objetivos">Objetivos</a>
+      <a href="../index.html#metodologia">Metodologia</a>
+      <button class="nav-parent" type="button" aria-expanded="true" aria-controls="submenu-conteudos">Conteúdos <span class="nav-parent-arrow" aria-hidden="true">▾</span></button>
+      <div class="submenu open" id="submenu-conteudos"></div>
+      <button class="nav-parent" type="button" aria-expanded="false" aria-controls="submenu-atividades">Atividades <span class="nav-parent-arrow" aria-hidden="true">▾</span></button>
+      <div class="submenu activity-submenu" id="submenu-atividades"></div>
+      <button class="nav-parent" type="button" aria-expanded="false" aria-controls="submenu-avaliacao">Avaliação <span class="nav-parent-arrow" aria-hidden="true">▾</span></button>
+      <div class="submenu evaluation-submenu" id="submenu-avaliacao"></div>
+      <button class="nav-parent" type="button" aria-expanded="false" aria-controls="submenu-recursos">Recursos <span class="nav-parent-arrow" aria-hidden="true">▾</span></button>
+      <div class="submenu resource-submenu" id="submenu-recursos"></div>
+    </nav>
+  </aside>  <div class="page-shell imported-content-page">
+<header>
+<div class="badge">UFCD 0695 · Módulo 1 &amp; 2</div>
+<h1>📊 Bases de Dados</h1>
+<p>Excel e Access — conceitos, funções, boas práticas e planificação de bases de dados relacionais</p>
+</header>
+<nav class="top-nav" id="topNav">
+<a class="active" href="#introducao">Introdução</a>
+<a href="#excel">Excel</a>
+<a href="#access">Access</a>
+<a href="#comparar">Excel vs Access</a>
+<a href="#recursos">Recursos</a>
+</nav>
+<main>
+<!-- INTRODUÇÃO -->
+<section id="introducao">
+<h2>🗂️ O que é uma Base de Dados?</h2>
+<div class="card">
+<h3>Definição</h3>
+<p style="font-size:0.97rem; margin-bottom:14px;">
+      Uma <strong>base de dados</strong> é um conjunto organizado de informação armazenada de forma estruturada, que permite guardar, pesquisar, atualizar e gerir grandes volumes de dados de forma eficiente e fiável.
+    </p>
+<p style="font-size:0.97rem;">
+      Pensa numa base de dados como um <strong>arquivo digital muito bem organizado</strong> — em vez de papéis espalhados numa gaveta, tens toda a informação catalogada, pesquisável e sempre disponível.
+    </p>
+</div>
+<div class="card">
+<h3>Para que serve uma Base de Dados?</h3>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Necessidade</th><th>Sem Base de Dados</th><th>Com Base de Dados</th></tr></thead>
+<tbody>
+<tr><td><strong>Guardar informação</strong></td><td>Papéis, post-its, ficheiros soltos</td><td>Tudo num só local, organizado e seguro</td></tr>
+<tr><td><strong>Pesquisar dados</strong></td><td>Folhear manualmente pilhas de documentos</td><td>Resultado instantâneo com filtros e consultas</td></tr>
+<tr><td><strong>Atualizar registos</strong></td><td>Risco de esquecer ou duplicar alterações</td><td>Alteração num só local, refletida em todo o sistema</td></tr>
+<tr><td><strong>Partilhar informação</strong></td><td>Enviar ficheiros por e-mail, versões desatualizadas</td><td>Acesso simultâneo e sempre à versão mais recente</td></tr>
+<tr><td><strong>Gerar relatórios</strong></td><td>Trabalho manual demorado e sujeito a erros</td><td>Relatórios automáticos em segundos</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="card">
+<h3>Exemplos do Dia a Dia</h3>
+<div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(180px,1fr)); gap:14px; margin-top:4px;">
+<div style="background:var(--primary-light); border-radius:var(--radius); padding:16px; text-align:center;">
+<div style="font-size:1.8rem; margin-bottom:8px;">🏥</div>
+<strong style="color:var(--primary-dark); font-size:0.9rem;">Hospital</strong>
+<p style="font-size:0.8rem; color:var(--text-light); margin-top:4px;">Fichas de doentes, consultas, medicamentos, exames</p>
+</div>
+<div style="background:var(--primary-light); border-radius:var(--radius); padding:16px; text-align:center;">
+<div style="font-size:1.8rem; margin-bottom:8px;">🏫</div>
+<strong style="color:var(--primary-dark); font-size:0.9rem;">Escola</strong>
+<p style="font-size:0.8rem; color:var(--text-light); margin-top:4px;">Alunos, notas, turmas, professores, horários</p>
+</div>
+<div style="background:var(--primary-light); border-radius:var(--radius); padding:16px; text-align:center;">
+<div style="font-size:1.8rem; margin-bottom:8px;">🛒</div>
+<strong style="color:var(--primary-dark); font-size:0.9rem;">Supermercado</strong>
+<p style="font-size:0.8rem; color:var(--text-light); margin-top:4px;">Produtos, stock, preços, fornecedores, vendas</p>
+</div>
+<div style="background:var(--primary-light); border-radius:var(--radius); padding:16px; text-align:center;">
+<div style="font-size:1.8rem; margin-bottom:8px;">🏢</div>
+<strong style="color:var(--primary-dark); font-size:0.9rem;">Empresa</strong>
+<p style="font-size:0.8rem; color:var(--text-light); margin-top:4px;">Clientes, faturas, colaboradores, contratos</p>
+</div>
+<div style="background:var(--primary-light); border-radius:var(--radius); padding:16px; text-align:center;">
+<div style="font-size:1.8rem; margin-bottom:8px;">📚</div>
+<strong style="color:var(--primary-dark); font-size:0.9rem;">Biblioteca</strong>
+<p style="font-size:0.8rem; color:var(--text-light); margin-top:4px;">Livros, autores, empréstimos, sócios</p>
+</div>
+<div style="background:var(--primary-light); border-radius:var(--radius); padding:16px; text-align:center;">
+<div style="font-size:1.8rem; margin-bottom:8px;">🌐</div>
+<strong style="color:var(--primary-dark); font-size:0.9rem;">Internet</strong>
+<p style="font-size:0.8rem; color:var(--text-light); margin-top:4px;">Redes sociais, lojas online, motores de pesquisa</p>
+</div>
+</div>
+</div>
+<div class="card">
+<h3>Tipos de Bases de Dados</h3>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Tipo</th><th>Descrição</th><th>Exemplos</th></tr></thead>
+<tbody>
+<tr>
+<td><strong>Relacional</strong></td>
+<td>Dados organizados em tabelas relacionadas entre si. O tipo mais comum em ambiente empresarial.</td>
+<td>Microsoft Access, MySQL, SQL Server, Oracle</td>
+</tr>
+<tr>
+<td><strong>Folha de Cálculo</strong></td>
+<td>Dados em linhas e colunas. Simples e acessível, ideal para volumes menores.</td>
+<td>Microsoft Excel, Google Sheets</td>
+</tr>
+<tr>
+<td><strong>Documental</strong></td>
+<td>Armazena documentos (JSON, XML). Muito usada em aplicações web modernas.</td>
+<td>MongoDB, Firebase</td>
+</tr>
+<tr>
+<td><strong>Na Nuvem</strong></td>
+<td>Alojada em servidores remotos, acessível de qualquer lugar com internet.</td>
+<td>Google Drive, SharePoint, Airtable</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="card">
+<h3>Conceitos Essenciais</h3>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Conceito</th><th>Analogia do Mundo Real</th><th>Em Informática</th></tr></thead>
+<tbody>
+<tr><td><strong>Tabela</strong></td><td>Uma folha de papel com linhas e colunas</td><td>Estrutura que organiza dados por tema (ex: tblClientes)</td></tr>
+<tr><td><strong>Registo</strong></td><td>Uma linha preenchida — um cliente, um produto</td><td>Linha da tabela com todos os dados de uma entidade</td></tr>
+<tr><td><strong>Campo</strong></td><td>O cabeçalho de cada coluna — Nome, Morada, NIF</td><td>Coluna da tabela que representa um atributo</td></tr>
+<tr><td><strong>Chave Primária</strong></td><td>O número de contribuinte — único para cada pessoa</td><td>Campo que identifica inequivocamente cada registo</td></tr>
+<tr><td><strong>Relação</strong></td><td>Um cliente tem várias faturas</td><td>Ligação entre tabelas através de campos comuns</td></tr>
+<tr><td><strong>Consulta</strong></td><td>Pedir ao arquivo: "mostra-me todos os clientes de Lisboa"</td><td>Instrução para filtrar e extrair dados específicos</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="tip-box">
+<strong>💡 Nesta UFCD vais trabalhar com dois tipos:</strong> o <strong>Microsoft Excel</strong> para bases de dados simples em folha de cálculo, e o <strong>Microsoft Access</strong> para bases de dados relacionais com múltiplas tabelas ligadas entre si.
+  </div>
+</section>
+<!-- EXCEL -->
+<section id="excel">
+<h2>Microsoft Excel</h2>
+<div class="tabs">
+<div class="tab-buttons">
+<button class="tab-btn active" onclick="showTab('excel','conceitos')">📖 Conceitos</button>
+<button class="tab-btn" onclick="showTab('excel','funcoes')">⚡ Funções Essenciais</button>
+<button class="tab-btn" onclick="showTab('excel','praticas')">✅ Boas Práticas</button>
+</div>
+<!-- TAB: Conceitos -->
+<div class="tab-panel active" id="excel-conceitos">
+<div class="card">
+<h3>Estrutura do Excel</h3>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Elemento</th><th>Descrição</th><th>Exemplo</th></tr></thead>
+<tbody>
+<tr><td><strong>Livro (Workbook)</strong></td><td>O ficheiro Excel completo</td><td><code>.xlsx</code></td></tr>
+<tr><td><strong>Folha (Worksheet)</strong></td><td>Separador dentro do livro</td><td>Folha1, Despesas</td></tr>
+<tr><td><strong>Célula</strong></td><td>Unidade básica de dados</td><td><code>A1</code>, <code>B3</code></td></tr>
+<tr><td><strong>Intervalo</strong></td><td>Conjunto de células</td><td><code>A1:D10</code></td></tr>
+<tr><td><strong>Barra de Fórmulas</strong></td><td>Mostra/edita conteúdo da célula</td><td><code>=SOMA(A1:A10)</code></td></tr>
+<tr><td><strong>Friso (Ribbon)</strong></td><td>Barra de ferramentas com separadores</td><td>Base, Inserir, Dados…</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="card">
+<h3>Tipos de Dados</h3>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Tipo</th><th>Descrição</th><th>Alinhamento</th></tr></thead>
+<tbody>
+<tr><td><strong>Texto</strong></td><td>Nomes, descrições, códigos</td><td>Esquerda</td></tr>
+<tr><td><strong>Número</strong></td><td>Valores inteiros ou decimais</td><td>Direita</td></tr>
+<tr><td><strong>Data/Hora</strong></td><td>Formato DD/MM/AAAA</td><td>Direita</td></tr>
+<tr><td><strong>Lógico</strong></td><td>VERDADEIRO ou FALSO</td><td>Centro</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- TAB: Funções -->
+<div class="tab-panel" id="excel-funcoes">
+<div class="card">
+<h3>Funções Essenciais do Excel</h3>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Função</th><th>Sintaxe</th><th>Descrição</th></tr></thead>
+<tbody>
+<tr><td><strong>SOMA</strong></td><td><code>=SOMA(A1:A10)</code></td><td>Soma um intervalo de células</td></tr>
+<tr><td><strong>MÉDIA</strong></td><td><code>=MÉDIA(A1:A10)</code></td><td>Calcula a média aritmética</td></tr>
+<tr><td><strong>MÁXIMO</strong></td><td><code>=MÁXIMO(A1:A10)</code></td><td>Devolve o valor mais alto</td></tr>
+<tr><td><strong>MÍNIMO</strong></td><td><code>=MÍNIMO(A1:A10)</code></td><td>Devolve o valor mais baixo</td></tr>
+<tr><td><strong>CONTAR</strong></td><td><code>=CONTAR(A1:A10)</code></td><td>Conta células com números</td></tr>
+<tr><td><strong>CONTAR.VAL</strong></td><td><code>=CONTAR.VAL(A1:A10)</code></td><td>Conta células não vazias</td></tr>
+<tr><td><strong>SE</strong></td><td><code>=SE(A1&gt;10;"Sim";"Não")</code></td><td>Condição lógica</td></tr>
+<tr><td><strong>PROCV</strong></td><td><code>=PROCV(B1;D1:F10;2;0)</code></td><td>Procura um valor numa tabela</td></tr>
+<tr><td><strong>CONCATENAR</strong></td><td><code>=CONCATENAR(A1;" ";B1)</code></td><td>Une texto de várias células</td></tr>
+<tr><td><strong>HOJE</strong></td><td><code>=HOJE()</code></td><td>Devolve a data atual</td></tr>
+<tr><td><strong>SOMASE</strong></td><td><code>=SOMASE(A1:A10;"Sim";B1:B10)</code></td><td>Soma com critério</td></tr>
+<tr><td><strong>CONT.SE</strong></td><td><code>=CONT.SE(A1:A10;"Lisboa")</code></td><td>Conta com critério</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="tip-box">
+<strong>💡 Dica:</strong> As fórmulas começam sempre com o sinal <code>=</code>. Usa <strong>Ctrl+Enter</strong> para confirmar sem mover o cursor.
+        </div>
+</div>
+<!-- TAB: Boas Práticas -->
+<div class="tab-panel" id="excel-praticas">
+<div class="card">
+<h3>Boas Práticas de Introdução de Dados</h3>
+<ul class="steps">
+<li>Usa sempre a <strong>primeira linha para os cabeçalhos</strong> das colunas</li>
+<li>Não deixes <strong>linhas ou colunas em branco</strong> no meio dos dados</li>
+<li>Mantém um <strong>tipo de dado consistente</strong> em cada coluna</li>
+<li>Evita <strong>espaços extra</strong> antes ou depois do texto nas células</li>
+<li>Usa a <strong>validação de dados</strong> (Dados › Validação) para restringir entradas incorretas</li>
+<li>Converte os dados numa <strong>Tabela do Excel</strong> (Ctrl+T) para maior eficiência</li>
+</ul>
+</div>
+<div class="card">
+<h3>Atalhos de Teclado Essenciais</h3>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Atalho</th><th>Ação</th></tr></thead>
+<tbody>
+<tr><td><code>Ctrl+T</code></td><td>Criar Tabela do Excel</td></tr>
+<tr><td><code>Ctrl+Shift+L</code></td><td>Ativar/desativar Filtros</td></tr>
+<tr><td><code>Ctrl+1</code></td><td>Formatar Células</td></tr>
+<tr><td><code>Ctrl+Z</code></td><td>Desfazer</td></tr>
+<tr><td><code>F2</code></td><td>Editar célula selecionada</td></tr>
+<tr><td><code>Ctrl+Home</code></td><td>Ir para célula A1</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ACCESS -->
+<section id="access">
+<h2>Microsoft Access</h2>
+<div class="tabs">
+<div class="tab-buttons">
+<button class="tab-btn active" onclick="showTab('access','conceitos')">📖 Conceitos</button>
+<button class="tab-btn" onclick="showTab('access','planificacao')">📐 Planificação BD</button>
+<button class="tab-btn" onclick="showTab('access','praticas')">✅ Boas Práticas</button>
+</div>
+<!-- TAB: Conceitos Access -->
+<div class="tab-panel active" id="access-conceitos">
+<div class="card">
+<h3>Conceitos Fundamentais</h3>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Conceito</th><th>Definição</th></tr></thead>
+<tbody>
+<tr><td><strong>Base de Dados</strong></td><td>Conjunto organizado de dados relacionados entre si</td></tr>
+<tr><td><strong>Tabela</strong></td><td>Estrutura com linhas (registos) e colunas (campos)</td></tr>
+<tr><td><strong>Registo</strong></td><td>Uma linha da tabela — representa uma entidade</td></tr>
+<tr><td><strong>Campo</strong></td><td>Uma coluna da tabela — representa um atributo</td></tr>
+<tr><td><strong>Chave Primária (PK)</strong></td><td>Campo único que identifica cada registo</td></tr>
+<tr><td><strong>Chave Estrangeira (FK)</strong></td><td>Campo que referencia a PK de outra tabela</td></tr>
+<tr><td><strong>Relação</strong></td><td>Ligação entre tabelas através de campos comuns (1:1, 1:N, N:M)</td></tr>
+<tr><td><strong>Consulta (Query)</strong></td><td>Instrução para extrair e filtrar dados</td></tr>
+<tr><td><strong>Formulário</strong></td><td>Interface gráfica para introdução de dados</td></tr>
+<tr><td><strong>Relatório</strong></td><td>Apresentação formatada dos dados para impressão</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="card">
+<h3>Tipos de Dados no Access</h3>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Tipo</th><th>Utilização</th><th>Exemplo</th></tr></thead>
+<tbody>
+<tr><td><strong>Texto Curto</strong></td><td>Texto até 255 caracteres</td><td>Nome, Morada</td></tr>
+<tr><td><strong>Texto Longo</strong></td><td>Texto sem limite</td><td>Observações</td></tr>
+<tr><td><strong>Número</strong></td><td>Valores numéricos</td><td>Quantidade, Código</td></tr>
+<tr><td><strong>Data/Hora</strong></td><td>Datas e horas</td><td>Data de Nascimento</td></tr>
+<tr><td><strong>Moeda</strong></td><td>Valores monetários</td><td>Preço, Salário</td></tr>
+<tr><td><strong>Sim/Não</strong></td><td>Valores booleanos</td><td>Ativo, Pago</td></tr>
+<tr><td><strong>Numeração Auto.</strong></td><td>ID gerado automaticamente</td><td>ID_Cliente</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- TAB: Planificação -->
+<div class="tab-panel" id="access-planificacao">
+<div class="card">
+<h3>5 Passos para Planificar uma Base de Dados</h3>
+<ul class="steps">
+<li><strong>Definir o Objetivo</strong> — O que preciso de saber? Que informação vou gerir?</li>
+<li><strong>Identificar as Entidades (Tabelas)</strong> — Que "coisas" distintas preciso de registar? (ex: Clientes, Produtos, Encomendas)</li>
+<li><strong>Definir os Campos de cada Tabela</strong> — Que atributos tem cada entidade? Qual é a chave primária?</li>
+<li><strong>Definir as Relações</strong> — Como se ligam as tabelas? Qual o tipo de relação (1:N, N:M)?</li>
+<li><strong>Verificar a Planificação</strong> — Cada tabela tem PK? Há informação repetida? Todos os dados necessários estão contemplados?</li>
+</ul>
+</div>
+<div class="tip-box">
+<strong>📌 Regra de ouro:</strong> Só avança para o Access depois de validar a planificação no papel. Uma BD mal planificada é muito difícil de corrigir depois de criada.
+        </div>
+<div class="card">
+<h3>Exemplo — Garagem de Condomínio</h3>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Tabela</th><th>Campo</th><th>Tipo</th><th>Observações</th></tr></thead>
+<tbody>
+<tr><td><strong>tblCondóminos</strong></td><td>Fração</td><td>Texto Curto</td><td>🔑 Chave Primária</td></tr>
+<tr><td><strong>tblCondóminos</strong></td><td>Nome</td><td>Texto Curto</td><td></td></tr>
+<tr><td><strong>tblCondóminos</strong></td><td>Telefone</td><td>Texto Curto</td><td></td></tr>
+<tr><td><strong>tblVeículos</strong></td><td>Matrícula</td><td>Texto Curto</td><td>🔑 Chave Primária</td></tr>
+<tr><td><strong>tblVeículos</strong></td><td>Fração</td><td>Texto Curto</td><td>🔗 FK → tblCondóminos</td></tr>
+<tr><td><strong>tblVeículos</strong></td><td>Cód_Marca</td><td>Número</td><td>🔗 FK → tblMarcas</td></tr>
+<tr><td><strong>tblMarcas</strong></td><td>Cód_Marca</td><td>Numeração Auto.</td><td>🔑 Chave Primária</td></tr>
+<tr><td><strong>tblMarcas</strong></td><td>Designação</td><td>Texto Curto</td><td>Toyota, Renault…</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- TAB: Boas Práticas Access -->
+<div class="tab-panel" id="access-praticas">
+<div class="card">
+<h3>Operadores de Critério em Consultas</h3>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Operador</th><th>Significado</th><th>Exemplo</th></tr></thead>
+<tbody>
+<tr><td><code>=</code></td><td>Igual a</td><td><code>="Lisboa"</code></td></tr>
+<tr><td><code>&lt;&gt;</code></td><td>Diferente de</td><td><code>&lt;&gt;"Inativo"</code></td></tr>
+<tr><td><code>&gt;</code></td><td>Maior que</td><td><code>&gt;100</code></td></tr>
+<tr><td><code>Entre...E</code></td><td>Intervalo de valores</td><td><code>Entre 01/01/2024 E 31/12/2024</code></td></tr>
+<tr><td><code>Como</code></td><td>Padrão de texto</td><td><code>Como "A*"</code></td></tr>
+<tr><td><code>É Nulo</code></td><td>Campo vazio</td><td><code>É Nulo</code></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="card">
+<h3>Convenções de Nomenclatura</h3>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Objeto</th><th>Prefixo</th><th>Exemplo</th></tr></thead>
+<tbody>
+<tr><td>Tabela</td><td><code>tbl</code></td><td><code>tblClientes</code></td></tr>
+<tr><td>Consulta</td><td><code>qry</code></td><td><code>qryClientesLisboa</code></td></tr>
+<tr><td>Formulário</td><td><code>frm</code></td><td><code>frmClientes</code></td></tr>
+<tr><td>Relatório</td><td><code>rpt</code></td><td><code>rptVendasMensais</code></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- COMPARAR -->
+<section id="comparar">
+<h2>Excel vs Access — Quando usar cada um?</h2>
+<div class="compare-grid">
+<div class="compare-col">
+<div class="col-header">📊 Excel</div>
+<ul>
+<li>Cálculos e análise numérica</li>
+<li>Gráficos e visualizações</li>
+<li>Dados simples numa só tabela</li>
+<li>Relatórios financeiros</li>
+<li>Até ~10.000 registos</li>
+<li>Uso individual ou pequena equipa</li>
+<li>Tabelas dinâmicas e dashboards</li>
+</ul>
+</div>
+<div class="compare-col">
+<div class="col-header">🗄️ Access</div>
+<ul>
+<li>Dados com relações entre tabelas</li>
+<li>Grandes volumes de registos</li>
+<li>Formulários de introdução de dados</li>
+<li>Consultas complexas (SQL)</li>
+<li>Múltiplos utilizadores simultâneos</li>
+<li>Relatórios estruturados para impressão</li>
+<li>Integridade referencial garantida</li>
+</ul>
+</div>
+</div>
+<div class="tip-box" style="margin-top:20px;">
+<strong>💡 Regra prática:</strong> Se precisas de <em>calcular</em>, usa o Excel. Se precisas de <em>gerir e relacionar</em> informação, usa o Access.
+    </div>
+</section>
+<!-- RECURSOS -->
+<section id="recursos">
+<h2>Recursos e Suporte Oficial</h2>
+<div class="links-grid">
+<a class="link-card" href="https://support.microsoft.com/pt-pt/excel" rel="noopener" target="_blank">
+<span class="icon">📊</span>
+<div class="link-text"><strong>Suporte Excel</strong>Microsoft Support PT</div>
+</a>
+<a class="link-card" href="https://support.microsoft.com/pt-pt/access" rel="noopener" target="_blank">
+<span class="icon">🗄️</span>
+<div class="link-text"><strong>Suporte Access</strong>Microsoft Support PT</div>
+</a>
+<a class="link-card" href="https://support.microsoft.com/pt-pt/office/fun%C3%A7%C3%B5es-do-excel-por-categoria-5f91f4e9-7b42-46d2-9bd1-63f26a86c0eb" rel="noopener" target="_blank">
+<span class="icon">⚡</span>
+<div class="link-text"><strong>Funções Excel</strong>Referência completa</div>
+</a>
+<a class="link-card" href="https://templates.office.com/" rel="noopener" target="_blank">
+<span class="icon">📁</span>
+<div class="link-text"><strong>Modelos Office</strong>Templates gratuitos</div>
+</a>
+</div>
+</section>
+</main>
+<footer>
+<strong>UFCD 0695</strong> · Gestão Informatizada de Documentos · Edição 2026
+</footer>
+<script>
+  function showTab(group, tab) {
+    document.querySelectorAll('#' + group + ' .tab-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('#' + group + ' .tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(group + '-' + tab).classList.add('active');
+    event.target.classList.add('active');
+  }
+
+  // Highlight nav on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('nav.top-nav a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 100) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.classList.remove('active');
+      if (a.getAttribute('href') === '#' + current) a.classList.add('active');
+    });
+  });
+</script>
+  </div>
+  <script src="../assets/config.js"></script>
+  <script src="../assets/app.js?v=20260914-conteudos-v2"></script>
+</body>
+</html>

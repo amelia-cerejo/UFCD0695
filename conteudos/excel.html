@@ -1,11 +1,348 @@
-<!doctype html>
-<html lang="pt-PT">
+<!DOCTYPE html>
+<html lang="pt">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Bases de dados — Excel · UFCD 0695</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Excel Completo | UFCD 0695</title>
   <link rel="stylesheet" href="../assets/styles.css">
-  <link rel="stylesheet" href="conteudo.css">
+<style>
+  :root {
+    --primary: #038387;
+    --primary-dark: #026669;
+    --primary-light: #e6f4f4;
+    --accent: #005a5e;
+    --text: #1a1a2e;
+    --text-light: #555;
+    --bg: #f8fafa;
+    --white: #ffffff;
+    --border: #d0e8e8;
+    --shadow: 0 2px 12px rgba(3,131,135,0.10);
+    --radius: 10px;
+    --excel-green: #217346;
+    --excel-light: #e8f5ee;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
+
+  /* HEADER */
+  header {
+    background: linear-gradient(135deg, var(--excel-green) 0%, #145230 100%);
+    color: var(--white);
+    padding: 48px 24px 36px;
+    text-align: center;
+  }
+  header .badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.18);
+    border: 1px solid rgba(255,255,255,0.35);
+    border-radius: 20px;
+    padding: 4px 16px;
+    font-size: 0.78rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  header h1 { font-size: 2.1rem; font-weight: 700; margin-bottom: 8px; }
+  header p { font-size: 1.05rem; opacity: 0.88; max-width: 600px; margin: 0 auto; }
+
+  /* NAV */
+  nav.top-nav {
+    background: var(--white);
+    border-bottom: 2px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  nav.top-nav::-webkit-scrollbar { display: none; }
+  nav.top-nav a {
+    display: block;
+    padding: 13px 18px;
+    color: var(--text-light);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+  nav.top-nav a:hover, nav.top-nav a.active {
+    color: var(--excel-green);
+    border-bottom-color: var(--excel-green);
+    background: var(--excel-light);
+  }
+
+  /* MAIN */
+  main { max-width: 980px; margin: 0 auto; padding: 40px 20px 60px; }
+
+  /* SECTION */
+  section { margin-bottom: 64px; scroll-margin-top: 70px; }
+  section > h2 {
+    font-size: 1.45rem;
+    color: var(--excel-green);
+    border-left: 5px solid var(--excel-green);
+    padding-left: 14px;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  /* CARD */
+  .card {
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 26px 28px;
+    margin-bottom: 20px;
+    border: 1px solid var(--border);
+  }
+  .card h3 { color: var(--excel-green); font-size: 1.05rem; margin-bottom: 14px; }
+
+  /* TABLE */
+  .table-wrap { overflow-x: auto; border-radius: var(--radius); box-shadow: var(--shadow); margin-bottom: 4px; }
+  table { width: 100%; border-collapse: collapse; background: var(--white); font-size: 0.91rem; }
+  thead tr { background: var(--excel-green); color: var(--white); }
+  thead th { padding: 12px 15px; text-align: left; font-weight: 600; }
+  tbody tr:nth-child(even) { background: var(--excel-light); }
+  tbody tr:hover { background: #c5e8d4; }
+  tbody td { padding: 10px 15px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  tbody td code {
+    background: #e0f2e9;
+    color: #145230;
+    padding: 2px 7px;
+    border-radius: 4px;
+    font-size: 0.86rem;
+    font-family: 'Consolas', monospace;
+  }
+
+  /* STEPS */
+  .steps { list-style: none; counter-reset: step; }
+  .steps li {
+    counter-increment: step;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 11px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.93rem;
+  }
+  .steps li:last-child { border-bottom: none; }
+  .steps li::before {
+    content: counter(step);
+    min-width: 30px;
+    height: 30px;
+    background: var(--excel-green);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.88rem;
+    flex-shrink: 0;
+  }
+
+  /* TIP / WARN / INFO BOXES */
+  .tip-box {
+    background: var(--excel-light);
+    border-left: 4px solid var(--excel-green);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    padding: 14px 18px;
+    margin: 14px 0;
+    font-size: 0.92rem;
+  }
+  .tip-box strong { color: var(--excel-green); }
+  .warn-box {
+    background: #fff8e1;
+    border-left: 4px solid #f59e0b;
+    border-radius: 0 var(--radius) var(--radius) 0;
+    padding: 14px 18px;
+    margin: 14px 0;
+    font-size: 0.92rem;
+  }
+  .warn-box strong { color: #92400e; }
+  .info-box {
+    background: #eff6ff;
+    border-left: 4px solid #3b82f6;
+    border-radius: 0 var(--radius) var(--radius) 0;
+    padding: 14px 18px;
+    margin: 14px 0;
+    font-size: 0.92rem;
+  }
+  .info-box strong { color: #1e40af; }
+
+  /* VERSION ALERT */
+  .version-alert {
+    background: #fef3c7;
+    border: 2px dashed #f59e0b;
+    border-radius: var(--radius);
+    padding: 16px 20px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 0.91rem;
+  }
+  .version-alert .va-icon { font-size: 1.5rem; flex-shrink: 0; }
+  .version-alert strong { color: #92400e; display: block; margin-bottom: 4px; }
+
+  /* GRID 2 COL */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+  }
+
+  /* GRID 3 COL */
+  .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  /* FORMAT CARDS */
+  .format-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 18px;
+    box-shadow: var(--shadow);
+  }
+  .format-card h4 { color: var(--excel-green); font-size: 0.93rem; margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
+  .format-card p { font-size: 0.85rem; color: var(--text-light); margin-bottom: 8px; }
+  .format-card code { background: #e0f2e9; color: #145230; padding: 2px 7px; border-radius: 4px; font-size: 0.84rem; font-family: 'Consolas', monospace; }
+
+  /* CHART CARDS */
+  .chart-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 14px;
+  }
+  .chart-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 18px 14px;
+    text-align: center;
+    box-shadow: var(--shadow);
+    transition: transform 0.2s;
+  }
+  .chart-card:hover { transform: translateY(-3px); border-color: var(--excel-green); }
+  .chart-card .chart-icon { font-size: 2rem; margin-bottom: 8px; }
+  .chart-card h4 { color: var(--excel-green); font-size: 0.9rem; margin-bottom: 4px; }
+  .chart-card p { font-size: 0.78rem; color: var(--text-light); }
+
+  /* ERROR TABLE */
+  .error-badge {
+    display: inline-block;
+    background: #fee2e2;
+    color: #991b1b;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-family: 'Consolas', monospace;
+    font-size: 0.86rem;
+    font-weight: 600;
+  }
+  .fix-badge {
+    display: inline-block;
+    background: #d1fae5;
+    color: #065f46;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.82rem;
+  }
+
+  /* EXERCISE CARDS */
+  .exercise-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    margin-bottom: 18px;
+  }
+  .exercise-header {
+    background: var(--excel-green);
+    color: white;
+    padding: 13px 20px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .exercise-body { padding: 18px 20px; }
+  .exercise-body ol { padding-left: 20px; font-size: 0.91rem; }
+  .exercise-body ol li { padding: 4px 0; }
+  .exercise-tag {
+    display: inline-block;
+    background: var(--excel-light);
+    color: var(--excel-green);
+    border: 1px solid #a7d7b8;
+    border-radius: 12px;
+    padding: 2px 10px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-left: 8px;
+  }
+
+  /* SHORTCUT TABLE */
+  .shortcut-section .table-wrap table tbody td:first-child code {
+    background: #1a1a2e;
+    color: #7dd3fc;
+    font-weight: 600;
+  }
+
+  /* PIVOT STEPS */
+  .pivot-flow {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin: 16px 0;
+  }
+  .pivot-step {
+    flex: 1;
+    min-width: 130px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px 12px;
+    text-align: center;
+    box-shadow: var(--shadow);
+  }
+  .pivot-step .ps-num {
+    width: 28px; height: 28px;
+    background: var(--excel-green);
+    color: white;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 0.85rem;
+    margin: 0 auto 8px;
+  }
+  .pivot-step .ps-icon { font-size: 1.5rem; margin-bottom: 6px; }
+  .pivot-step h4 { font-size: 0.85rem; color: var(--excel-green); }
+
+  /* FOOTER */
+  footer {
+    background: #145230;
+    color: rgba(255,255,255,0.8);
+    text-align: center;
+    padding: 24px;
+    font-size: 0.85rem;
+  }
+  footer strong { color: white; }
+
+  @media (max-width: 700px) {
+    header h1 { font-size: 1.5rem; }
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    nav.top-nav a { padding: 11px 12px; font-size: 0.8rem; }
+  }
+</style>
 </head>
 <body data-page="conteudo-estatico" data-content-theme="excel">
   <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false"><span></span><span></span><span></span></button>
@@ -24,29 +361,612 @@
       <button class="nav-parent" type="button" aria-expanded="false" aria-controls="submenu-recursos">Recursos <span class="nav-parent-arrow" aria-hidden="true">▾</span></button>
       <div class="submenu resource-submenu" id="submenu-recursos"></div>
     </nav>
-  </aside>
-  <main class="page-shell">
-    <div class="page-layout">
-      <aside class="content-sidebar"><div class="sidebar-card"><div class="sidebar-card-header">📋 Neste Conteúdo</div><div class="sidebar-card-body"><ul class="toc-list"><li><a href="#sec1"><span class="toc-num">1</span> Estruturar informação</a></li>
-<li><a href="#sec2"><span class="toc-num">2</span> Tratar e localizar dados</a></li>
-<li><a href="#sec3"><span class="toc-num">3</span> Preparar para utilização documental</a></li></ul></div></div></aside>
-      <div class="content">
-        <div class="content-hero"><div class="hero-icon">📊</div><div><h2>Bases de dados — Excel</h2><p>Organização e tratamento de informação em Excel como apoio à gestão documental.</p></div></div>
-        <div class="section-block" id="sec1">
-<div class="section-block-header"><span class="s-icon">📊</span><h3>1. Estruturar informação</h3></div>
-<div class="section-block-body"><p>Organizar dados em tabelas com campos e registos consistentes.</p><ul><li>Definir cabeçalhos claros e únicos.</li><li>Manter formatos coerentes.</li><li>Evitar duplicações e linhas vazias desnecessárias.</li></ul></div>
-</div><div class="section-block" id="sec2">
-<div class="section-block-header"><span class="s-icon">📊</span><h3>2. Tratar e localizar dados</h3></div>
-<div class="section-block-body"><p>Utilizar funcionalidades que facilitem a consulta, o controlo e a atualização da informação.</p><ul><li>Ordenar e filtrar listas.</li><li>Aplicar validação de dados.</li><li>Utilizar fórmulas e funções adequadas.</li></ul></div>
-</div><div class="section-block" id="sec3">
-<div class="section-block-header"><span class="s-icon">📊</span><h3>3. Preparar para utilização documental</h3></div>
-<div class="section-block-body"><p>Apresentar, imprimir ou exportar informação de forma legível e controlada.</p><ul><li>Aplicar formatação consistente.</li><li>Preparar a impressão.</li><li>Guardar e exportar com nomenclatura adequada.</li></ul></div>
-</div>
-        <div class="box box-info"><strong>Enquadramento:</strong> este conteúdo integra o referencial da UFCD 0695 — Gestão informatizada de documentos.</div>
+  </aside>  <div class="page-shell imported-content-page">
+<header>
+  <div class="badge">UFCD 0695 · Módulo 1 · Excel Completo</div>
+  <h1>📊 Microsoft Excel</h1>
+  <p>Guia completo — formatação, tabelas, funções, gráficos, tabelas dinâmicas, validação, erros e exercícios práticos</p>
+</header>
+
+<nav class="top-nav" id="topNav">
+  <a href="#formatacao" class="active">Formatação</a>
+  <a href="#tabelas">Tabelas</a>
+  <a href="#cond">Format. Condicional</a>
+  <a href="#funcoes">Funções</a>
+  <a href="#graficos">Gráficos</a>
+  <a href="#dinamicas">Tab. Dinâmicas</a>
+  <a href="#validacao">Validação</a>
+  <a href="#erros">Erros</a>
+  <a href="#exercicios">Exercícios</a>
+  <a href="#atalhos">Atalhos</a>
+</nav>
+
+<main>
+
+  <!-- 1. FORMATAÇÃO -->
+  <section id="formatacao">
+    <h2>🎨 Formatação de Células</h2>
+    <p style="margin-bottom:20px; color:var(--text-light); font-size:0.93rem;">Acede à formatação completa com <strong>Ctrl+1</strong> ou clicando com o botão direito › <strong>Formatar Células</strong>.</p>
+
+    <div class="grid-2">
+      <div class="format-card">
+        <h4>🔢 Número e Moeda</h4>
+        <p>Define casas decimais, separador de milhares e símbolo de moeda.</p>
+        <code>€ 1.234,56</code> &nbsp; <code>1 234,560</code>
+      </div>
+      <div class="format-card">
+        <h4>📅 Data e Hora</h4>
+        <p>Escolhe o formato de apresentação da data.</p>
+        <code>DD/MM/AAAA</code> &nbsp; <code>DD-MMM-AA</code>
+      </div>
+      <div class="format-card">
+        <h4>📐 Alinhamento</h4>
+        <p>Horizontal, vertical, orientação do texto e moldar texto na célula.</p>
+        <code>Moldar Texto</code> &nbsp; <code>Mesclar Células</code>
+      </div>
+      <div class="format-card">
+        <h4>🖊️ Tipo de Letra</h4>
+        <p>Tipo, tamanho, negrito, itálico, sublinhado, cor do texto e cor de fundo.</p>
+        <code>Ctrl+N</code> &nbsp; <code>Ctrl+I</code> &nbsp; <code>Ctrl+S</code>
+      </div>
+      <div class="format-card">
+        <h4>🔲 Limites (Bordas)</h4>
+        <p>Adiciona bordas às células para estruturar visualmente a tabela.</p>
+        <code>Todos os Limites</code> &nbsp; <code>Limite Exterior</code>
+      </div>
+      <div class="format-card">
+        <h4>🔒 Proteção</h4>
+        <p>Bloqueia células para impedir edição após proteger a folha.</p>
+        <code>Rever › Proteger Folha</code>
       </div>
     </div>
-  </main>
+
+    <div class="tip-box" style="margin-top:8px;">
+      <strong>💡 Dica rápida:</strong> Para aplicar o formato <strong>Moeda €</strong> rapidamente, seleciona as células e usa o botão <code>€</code> no separador <strong>Base › Número</strong>.
+    </div>
+  </section>
+
+  <!-- 2. TABELAS -->
+  <section id="tabelas">
+    <h2>📋 Tabelas do Excel</h2>
+
+    <div class="card">
+      <h3>Como criar uma Tabela</h3>
+      <ul class="steps">
+        <li>Clica numa célula <strong>dentro dos dados</strong></li>
+        <li>Vai a <strong>Inserir › Tabela</strong> ou usa o atalho <strong>Ctrl+T</strong></li>
+        <li>Confirma o intervalo e se a tabela tem cabeçalhos</li>
+        <li>Escolhe um <strong>estilo de tabela</strong> no separador Estrutura da Tabela</li>
+        <li>Dá um <strong>nome descritivo</strong> à tabela (ex: <code>tblVendas</code>)</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>Vantagens das Tabelas do Excel</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Funcionalidade</th><th>Descrição</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Filtros automáticos</strong></td><td>Setas de filtro já incluídas em todos os cabeçalhos</td></tr>
+            <tr><td><strong>Formatação automática</strong></td><td>Cores alternadas nas linhas para melhor leitura</td></tr>
+            <tr><td><strong>Expansão automática</strong></td><td>Fórmulas e formatação estendem-se a novas linhas</td></tr>
+            <tr><td><strong>Referências estruturadas</strong></td><td><code>=SOMA(tblVendas[Valor])</code> em vez de <code>=SOMA(C2:C100)</code></td></tr>
+            <tr><td><strong>Linha de totais</strong></td><td>Adiciona totais automáticos com funções à escolha</td></tr>
+            <tr><td><strong>Segmentação de dados</strong></td><td>Filtros visuais interativos (Slicers)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Ordenar e Filtrar</h3>
+      <div class="grid-2">
+        <div>
+          <p style="font-size:0.92rem; margin-bottom:10px;"><strong>Ordenar:</strong></p>
+          <ul class="steps">
+            <li>Seleciona uma célula na coluna a ordenar</li>
+            <li>Vai a <strong>Dados › Ordenar</strong></li>
+            <li>Escolhe coluna, critério e ordem (A→Z ou Z→A)</li>
+            <li>Adiciona níveis para ordenação múltipla</li>
+          </ul>
+        </div>
+        <div>
+          <p style="font-size:0.92rem; margin-bottom:10px;"><strong>Filtrar:</strong></p>
+          <ul class="steps">
+            <li>Clica numa célula dentro dos dados</li>
+            <li>Usa <strong>Ctrl+Shift+L</strong> para ativar filtros</li>
+            <li>Clica na seta do cabeçalho para filtrar</li>
+            <li>Usa "Filtro de Texto/Número" para critérios avançados</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. FORMATAÇÃO CONDICIONAL -->
+  <section id="cond">
+    <h2>🌈 Formatação Condicional</h2>
+    <p style="margin-bottom:20px; color:var(--text-light); font-size:0.93rem;">Destaca automaticamente células com base no seu valor. Acede em <strong>Base › Formatação Condicional</strong>.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Tipo de Regra</th><th>Quando usar</th><th>Exemplo</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Realçar Regras de Células</strong></td><td>Comparar com um valor fixo</td><td>Valores &gt; 1000 a verde</td></tr>
+          <tr><td><strong>Regras de Início/Fim</strong></td><td>Destacar os maiores ou menores</td><td>Top 10 valores a amarelo</td></tr>
+          <tr><td><strong>Barras de Dados</strong></td><td>Visualizar proporção dentro da célula</td><td>Barra azul proporcional ao valor</td></tr>
+          <tr><td><strong>Escalas de Cor</strong></td><td>Gradiente de cor por intervalo</td><td>Verde (alto) → Vermelho (baixo)</td></tr>
+          <tr><td><strong>Conjuntos de Ícones</strong></td><td>Indicadores visuais rápidos</td><td>✅ ⚠️ ❌ por critério</td></tr>
+          <tr><td><strong>Nova Regra (Fórmula)</strong></td><td>Critérios personalizados complexos</td><td>Linha inteira a vermelho se "Não Pago"</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card" style="margin-top:20px;">
+      <h3>Exemplo Prático — Destacar despesas não pagas</h3>
+      <ul class="steps">
+        <li>Seleciona o intervalo de dados (ex: <code>A2:E20</code>)</li>
+        <li>Vai a <strong>Base › Formatação Condicional › Nova Regra</strong></li>
+        <li>Escolhe <strong>"Utilizar uma fórmula para determinar as células a formatar"</strong></li>
+        <li>Escreve a fórmula: <code>=$E2="Não"</code> (coluna E = coluna "Pago")</li>
+        <li>Clica em <strong>Formatar</strong> e escolhe fundo vermelho claro</li>
+        <li>Confirma com <strong>OK</strong></li>
+      </ul>
+    </div>
+
+    <div class="tip-box">
+      <strong>💡 Atenção ao $ na fórmula:</strong> Usa <code>=$E2</code> (coluna fixa, linha variável) para que a regra se aplique a toda a linha com base no valor da coluna E.
+    </div>
+  </section>
+
+  <!-- 4. FUNÇÕES -->
+  <section id="funcoes">
+    <h2>⚡ Funções Avançadas</h2>
+
+    <div class="card">
+      <h3>Funções com Critérios</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Função</th><th>Sintaxe</th><th>Descrição</th></tr></thead>
+          <tbody>
+            <tr><td><strong>SOMASE</strong></td><td><code>=SOMASE(intervalo;critério;soma)</code></td><td>Soma células que cumprem uma condição</td></tr>
+            <tr><td><strong>SOMASES</strong></td><td><code>=SOMASES(soma;int1;crit1;int2;crit2)</code></td><td>Soma com múltiplos critérios</td></tr>
+            <tr><td><strong>CONT.SE</strong></td><td><code>=CONT.SE(intervalo;"Lisboa")</code></td><td>Conta células que cumprem uma condição</td></tr>
+            <tr><td><strong>CONT.SES</strong></td><td><code>=CONT.SES(int1;crit1;int2;crit2)</code></td><td>Conta com múltiplos critérios</td></tr>
+            <tr><td><strong>MÉDIASE</strong></td><td><code>=MÉDIASE(intervalo;critério;média)</code></td><td>Média com critério</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Funções de Pesquisa</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Função</th><th>Sintaxe</th><th>Descrição</th></tr></thead>
+          <tbody>
+            <tr><td><strong>PROCV</strong></td><td><code>=PROCV(valor;tabela;col;0)</code></td><td>Procura vertical (coluna mais à esquerda). Clássico.</td></tr>
+            <tr><td><strong>PROCH</strong></td><td><code>=PROCH(valor;tabela;linha;0)</code></td><td>Procura horizontal (linha de cima)</td></tr>
+            <tr><td><strong>PROCX</strong></td><td><code>=PROCX(valor;pesquisa;retorno)</code></td><td>Versão moderna do PROCV — mais flexível ✨</td></tr>
+            <tr><td><strong>ÍNDICE</strong></td><td><code>=ÍNDICE(intervalo;linha;col)</code></td><td>Devolve o valor numa posição específica</td></tr>
+            <tr><td><strong>CORRESP</strong></td><td><code>=CORRESP(valor;intervalo;0)</code></td><td>Devolve a posição de um valor num intervalo</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="info-box">
+        <strong>ℹ️ PROCX vs PROCV:</strong> O PROCX é mais poderoso — procura em qualquer direção, não precisa que a coluna de pesquisa seja a primeira, e tem melhor tratamento de erros. Disponível no Excel 2021 e Microsoft 365.
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Função SE — Simples e Aninhada</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Tipo</th><th>Exemplo</th><th>Resultado</th></tr></thead>
+          <tbody>
+            <tr><td><strong>SE simples</strong></td><td><code>=SE(A1&gt;=10;"Aprovado";"Reprovado")</code></td><td>Aprovado ou Reprovado</td></tr>
+            <tr><td><strong>SE aninhado</strong></td><td><code>=SE(A1&gt;=18;"Excelente";SE(A1&gt;=10;"Aprovado";"Reprovado"))</code></td><td>3 resultados possíveis</td></tr>
+            <tr><td><strong>SE com E</strong></td><td><code>=SE(E(A1&gt;=10;B1="Sim");"OK";"Não OK")</code></td><td>Ambas as condições têm de ser verdadeiras</td></tr>
+            <tr><td><strong>SE com OU</strong></td><td><code>=SE(OU(A1="Lisboa";A1="Porto");"Norte/Sul";"Outro")</code></td><td>Basta uma condição ser verdadeira</td></tr>
+            <tr><td><strong>SEERRO</strong></td><td><code>=SEERRO(PROCV(...);"Não encontrado")</code></td><td>Substitui erros por texto amigável</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Outras Funções Úteis</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Função</th><th>Sintaxe</th><th>Descrição</th></tr></thead>
+          <tbody>
+            <tr><td><strong>TEXTO</strong></td><td><code>=TEXTO(A1;"DD/MM/AAAA")</code></td><td>Converte valor para texto formatado</td></tr>
+            <tr><td><strong>ESQUERDA / DIREITA</strong></td><td><code>=ESQUERDA(A1;3)</code></td><td>Extrai caracteres do início/fim do texto</td></tr>
+            <tr><td><strong>NÚM.CARACT</strong></td><td><code>=NÚM.CARACT(A1)</code></td><td>Conta o número de caracteres</td></tr>
+            <tr><td><strong>ARRED</strong></td><td><code>=ARRED(A1;2)</code></td><td>Arredonda para N casas decimais</td></tr>
+            <tr><td><strong>HOJE / AGORA</strong></td><td><code>=HOJE()</code> / <code>=AGORA()</code></td><td>Data atual / Data e hora atual</td></tr>
+            <tr><td><strong>ANO / MÊS / DIA</strong></td><td><code>=ANO(A1)</code></td><td>Extrai componentes de uma data</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. GRÁFICOS -->
+  <section id="graficos">
+    <h2>📈 Gráficos</h2>
+
+    <div class="chart-grid" style="margin-bottom:20px;">
+      <div class="chart-card">
+        <div class="chart-icon">📊</div>
+        <h4>Barras / Colunas</h4>
+        <p>Comparar valores entre categorias</p>
+      </div>
+      <div class="chart-card">
+        <div class="chart-icon">📉</div>
+        <h4>Linhas</h4>
+        <p>Mostrar tendências ao longo do tempo</p>
+      </div>
+      <div class="chart-card">
+        <div class="chart-icon">🥧</div>
+        <h4>Circular (Pizza)</h4>
+        <p>Mostrar proporções de um todo (máx. 6 fatias)</p>
+      </div>
+      <div class="chart-card">
+        <div class="chart-icon">🔵</div>
+        <h4>Dispersão (XY)</h4>
+        <p>Correlação entre duas variáveis numéricas</p>
+      </div>
+      <div class="chart-card">
+        <div class="chart-icon">📦</div>
+        <h4>Área</h4>
+        <p>Tendência com ênfase no volume acumulado</p>
+      </div>
+      <div class="chart-card">
+        <div class="chart-icon">🌡️</div>
+        <h4>Combinado</h4>
+        <p>Dois tipos de gráfico no mesmo eixo</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Como criar um Gráfico</h3>
+      <ul class="steps">
+        <li>Seleciona os <strong>dados a representar</strong> (incluindo cabeçalhos)</li>
+        <li>Vai a <strong>Inserir › Gráficos</strong> e escolhe o tipo</li>
+        <li>O gráfico é inserido na folha — arrasta para a posição desejada</li>
+        <li>Usa as <strong>Ferramentas de Gráfico</strong> (separadores Design e Formato) para personalizar</li>
+        <li>Adiciona <strong>título, etiquetas de dados e legenda</strong> conforme necessário</li>
+      </ul>
+    </div>
+
+    <div class="tip-box">
+      <strong>💡 Atalho rápido:</strong> Seleciona os dados e prime <strong>Alt+F1</strong> para inserir um gráfico de colunas instantaneamente na folha atual, ou <strong>F11</strong> para criar numa folha separada.
+    </div>
+  </section>
+
+  <!-- 6. TABELAS DINÂMICAS -->
+  <section id="dinamicas">
+    <h2>🔄 Tabelas Dinâmicas</h2>
+    <p style="margin-bottom:20px; color:var(--text-light); font-size:0.93rem;">As Tabelas Dinâmicas permitem resumir, analisar e explorar grandes volumes de dados de forma interativa, sem escrever fórmulas.</p>
+
+    <div class="pivot-flow">
+      <div class="pivot-step">
+        <div class="ps-num">1</div>
+        <div class="ps-icon">📋</div>
+        <h4>Preparar dados</h4>
+      </div>
+      <div class="pivot-step">
+        <div class="ps-num">2</div>
+        <div class="ps-icon">➕</div>
+        <h4>Inserir TD</h4>
+      </div>
+      <div class="pivot-step">
+        <div class="ps-num">3</div>
+        <div class="ps-icon">🖱️</div>
+        <h4>Arrastar campos</h4>
+      </div>
+      <div class="pivot-step">
+        <div class="ps-num">4</div>
+        <div class="ps-icon">🔍</div>
+        <h4>Filtrar e agrupar</h4>
+      </div>
+      <div class="pivot-step">
+        <div class="ps-num">5</div>
+        <div class="ps-icon">🔄</div>
+        <h4>Atualizar dados</h4>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Criar uma Tabela Dinâmica</h3>
+      <ul class="steps">
+        <li>Clica numa célula dentro dos dados (idealmente numa Tabela do Excel)</li>
+        <li>Vai a <strong>Inserir › Tabela Dinâmica</strong></li>
+        <li>Escolhe se a TD fica numa nova folha ou na folha atual</li>
+        <li>No painel direito, <strong>arrasta os campos</strong> para as áreas: Filtros, Colunas, Linhas e Valores</li>
+        <li>Clica com o botão direito nos valores para alterar o tipo de cálculo (Soma, Média, Contagem…)</li>
+        <li>Para atualizar após alterar os dados originais: clica com o botão direito › <strong>Atualizar</strong></li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>Áreas da Tabela Dinâmica</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Área</th><th>Função</th><th>Exemplo</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Filtros</strong></td><td>Filtra toda a TD por um campo</td><td>Ano, Região</td></tr>
+            <tr><td><strong>Colunas</strong></td><td>Cria colunas para cada valor único do campo</td><td>Trimestre, Mês</td></tr>
+            <tr><td><strong>Linhas</strong></td><td>Cria linhas para cada valor único do campo</td><td>Produto, Vendedor</td></tr>
+            <tr><td><strong>Valores</strong></td><td>O que é calculado (Soma, Média, Contagem…)</td><td>Total de Vendas, Nº de Encomendas</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. VALIDAÇÃO -->
+  <section id="validacao">
+    <h2>✅ Validação de Dados</h2>
+    <p style="margin-bottom:20px; color:var(--text-light); font-size:0.93rem;">A validação de dados restringe o tipo ou intervalo de valores que podem ser introduzidos numa célula, reduzindo erros de introdução.</p>
+
+    <div class="card">
+      <h3>Como configurar a Validação de Dados</h3>
+      <ul class="steps">
+        <li>Seleciona as células onde queres aplicar a validação</li>
+        <li>Vai a <strong>Dados › Validação de Dados</strong></li>
+        <li>Em "Permitir", escolhe o tipo de validação</li>
+        <li>Define os critérios (mínimo, máximo, lista, etc.)</li>
+        <li>No separador <strong>"Mensagem de Entrada"</strong>, adiciona uma dica para o utilizador</li>
+        <li>No separador <strong>"Alerta de Erro"</strong>, define a mensagem de erro</li>
+      </ul>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Tipo de Validação</th><th>Descrição</th><th>Exemplo</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Número Inteiro</strong></td><td>Aceita apenas números inteiros num intervalo</td><td>Entre 1 e 100</td></tr>
+          <tr><td><strong>Decimal</strong></td><td>Aceita números com casas decimais</td><td>Entre 0,00 e 9999,99</td></tr>
+          <tr><td><strong>Lista</strong></td><td>Cria uma lista suspensa (dropdown)</td><td>Sim;Não;Pendente</td></tr>
+          <tr><td><strong>Data</strong></td><td>Aceita apenas datas num intervalo</td><td>Entre 01/01/2024 e 31/12/2026</td></tr>
+          <tr><td><strong>Comprimento do Texto</strong></td><td>Limita o número de caracteres</td><td>Máximo 9 caracteres (NIF)</td></tr>
+          <tr><td><strong>Personalizado</strong></td><td>Usa uma fórmula como critério</td><td><code>=NÚM.CARACT(A1)=9</code></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="tip-box" style="margin-top:16px;">
+      <strong>💡 Lista suspensa a partir de um intervalo:</strong> Em vez de escrever os valores separados por ponto e vírgula, podes apontar para um intervalo de células (ex: <code>=$G$1:$G$5</code>) — assim a lista atualiza automaticamente quando alteras os valores.
+    </div>
+  </section>
+
+  <!-- 8. ERROS -->
+  <section id="erros">
+    <h2>🚨 Erros Comuns e Como Corrigir</h2>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Erro</th><th>Causa</th><th>Solução</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><span class="error-badge">#DIV/0!</span></td>
+            <td>Divisão por zero ou por célula vazia</td>
+            <td><span class="fix-badge">Usa =SEERRO(A1/B1;0) para substituir por 0</span></td>
+          </tr>
+          <tr>
+            <td><span class="error-badge">#VALOR!</span></td>
+            <td>Tipo de dado errado (ex: texto numa fórmula numérica)</td>
+            <td><span class="fix-badge">Verifica se as células têm o tipo de dado correto</span></td>
+          </tr>
+          <tr>
+            <td><span class="error-badge">#REF!</span></td>
+            <td>Referência inválida (célula eliminada ou movida)</td>
+            <td><span class="fix-badge">Corrige a fórmula para apontar para o intervalo correto</span></td>
+          </tr>
+          <tr>
+            <td><span class="error-badge">#NOME?</span></td>
+            <td>Nome de função mal escrito ou não reconhecido</td>
+            <td><span class="fix-badge">Verifica a ortografia da função (ex: SOMA e não SOMA())</span></td>
+          </tr>
+          <tr>
+            <td><span class="error-badge">#N/D</span></td>
+            <td>Valor não encontrado (comum no PROCV/PROCX)</td>
+            <td><span class="fix-badge">Usa =SEERRO(PROCV(...);"Não encontrado")</span></td>
+          </tr>
+          <tr>
+            <td><span class="error-badge">#NÚM!</span></td>
+            <td>Valor numérico inválido (ex: raiz de número negativo)</td>
+            <td><span class="fix-badge">Verifica os valores de entrada da fórmula</span></td>
+          </tr>
+          <tr>
+            <td><span class="error-badge">######</span></td>
+            <td>Coluna demasiado estreita para mostrar o valor</td>
+            <td><span class="fix-badge">Alarga a coluna — duplo clique na borda do cabeçalho</span></td>
+          </tr>
+          <tr>
+            <td><span class="error-badge">#NULO!</span></td>
+            <td>Interseção de dois intervalos que não se cruzam</td>
+            <td><span class="fix-badge">Verifica os operadores de intervalo na fórmula</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="tip-box" style="margin-top:16px;">
+      <strong>💡 Ferramenta de diagnóstico:</strong> Usa <strong>Fórmulas › Verificar Erros</strong> para o Excel identificar e explicar os erros na folha automaticamente.
+    </div>
+  </section>
+
+  <!-- 9. EXERCÍCIOS -->
+  <section id="exercicios">
+    <h2>📝 Exercícios Práticos</h2>
+
+    <div class="exercise-card">
+      <div class="exercise-header">📋 Exercício 1 — Lista de Contactos <span class="exercise-tag">Básico</span></div>
+      <div class="exercise-body">
+        <ol>
+          <li>Cria um novo livro Excel e guarda-o como <code>Contactos_Empresa.xlsx</code></li>
+          <li>Na Folha1, cria uma tabela com as colunas: <strong>Nome, Apelido, Departamento, Telefone, E-mail, Data de Entrada</strong></li>
+          <li>Introduz 10 registos fictícios com dados coerentes</li>
+          <li>Formata a coluna "Data de Entrada" como data (<code>DD/MM/AAAA</code>)</li>
+          <li>Converte o intervalo numa <strong>Tabela do Excel</strong> e aplica um estilo</li>
+          <li>Ordena por <strong>Departamento (A→Z)</strong> e depois por <strong>Apelido (A→Z)</strong></li>
+          <li>Filtra para mostrar apenas os colaboradores do departamento <strong>"Recursos Humanos"</strong></li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-header">💰 Exercício 2 — Controlo de Despesas <span class="exercise-tag">Intermédio</span></div>
+      <div class="exercise-body">
+        <ol>
+          <li>Cria uma nova folha chamada <code>Despesas_Mensais</code></li>
+          <li>Cria colunas: <strong>Data, Categoria, Descrição, Valor (€), Pago (Sim/Não)</strong></li>
+          <li>Adiciona <strong>validação de dados</strong> na coluna "Pago" com lista: <em>Sim;Não</em></li>
+          <li>Introduz 15 registos de despesas variadas</li>
+          <li>Usa <code>=SOMA()</code> para calcular o total de despesas</li>
+          <li>Usa <code>=SOMASE()</code> para somar apenas as despesas pagas</li>
+          <li>Aplica <strong>formatação condicional</strong> para destacar a vermelho as despesas não pagas</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-header">📊 Exercício 3 — Análise de Vendas com Tabela Dinâmica <span class="exercise-tag">Avançado</span></div>
+      <div class="exercise-body">
+        <ol>
+          <li>Cria uma folha com dados de vendas: <strong>Data, Vendedor, Produto, Região, Quantidade, Preço Unitário</strong></li>
+          <li>Adiciona uma coluna <strong>Total</strong> com a fórmula <code>=Quantidade*Preço Unitário</code></li>
+          <li>Converte os dados numa <strong>Tabela do Excel</strong></li>
+          <li>Cria uma <strong>Tabela Dinâmica</strong> que mostre o total de vendas por Vendedor e por Região</li>
+          <li>Adiciona um <strong>Gráfico de Colunas</strong> baseado na Tabela Dinâmica</li>
+          <li>Usa <strong>PROCV</strong> ou <strong>PROCX</strong> para pesquisar o total de vendas de um vendedor específico</li>
+          <li>Aplica <strong>formatação condicional com escala de cor</strong> nos totais</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. ATALHOS -->
+  <section id="atalhos" class="shortcut-section">
+    <h2>⌨️ Atalhos de Teclado</h2>
+
+    <div class="version-alert">
+      <div class="va-icon">⚠️</div>
+      <div>
+        <strong>Atenção — Compatibilidade de Versões</strong>
+        Os atalhos abaixo são válidos para o <strong>Microsoft Excel em Windows</strong>. Alguns atalhos podem variar consoante a versão do Excel (2016, 2019, 2021, Microsoft 365) e o idioma do sistema operativo. Em <strong>Mac</strong>, substitui <kbd>Ctrl</kbd> por <kbd>⌘ Cmd</kbd> na maioria dos casos. Verifica sempre na tua versão em caso de dúvida.
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Navegação e Seleção</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Atalho</th><th>Ação</th></tr></thead>
+          <tbody>
+            <tr><td><code>Ctrl+Home</code></td><td>Ir para a célula A1</td></tr>
+            <tr><td><code>Ctrl+End</code></td><td>Ir para a última célula com dados</td></tr>
+            <tr><td><code>Ctrl+Setas</code></td><td>Saltar para o limite do bloco de dados</td></tr>
+            <tr><td><code>Ctrl+Shift+Setas</code></td><td>Selecionar até ao limite do bloco</td></tr>
+            <tr><td><code>Ctrl+A</code></td><td>Selecionar toda a folha</td></tr>
+            <tr><td><code>Ctrl+Shift+End</code></td><td>Selecionar até à última célula com dados</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Edição e Formatação</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Atalho</th><th>Ação</th></tr></thead>
+          <tbody>
+            <tr><td><code>F2</code></td><td>Editar a célula selecionada</td></tr>
+            <tr><td><code>Ctrl+Z</code></td><td>Desfazer</td></tr>
+            <tr><td><code>Ctrl+Y</code></td><td>Refazer</td></tr>
+            <tr><td><code>Ctrl+C / Ctrl+V</code></td><td>Copiar / Colar</td></tr>
+            <tr><td><code>Ctrl+X</code></td><td>Cortar</td></tr>
+            <tr><td><code>Ctrl+D</code></td><td>Preencher para baixo (copiar célula acima)</td></tr>
+            <tr><td><code>Ctrl+R</code></td><td>Preencher para a direita</td></tr>
+            <tr><td><code>Ctrl+1</code></td><td>Abrir Formatar Células</td></tr>
+            <tr><td><code>Ctrl+N</code></td><td>Negrito</td></tr>
+            <tr><td><code>Ctrl+I</code></td><td>Itálico</td></tr>
+            <tr><td><code>Ctrl+S</code></td><td>Sublinhado</td></tr>
+            <tr><td><code>Alt+Enter</code></td><td>Nova linha dentro da mesma célula</td></tr>
+            <tr><td><code>Delete</code></td><td>Apagar conteúdo da célula (mantém formatação)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Fórmulas e Dados</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Atalho</th><th>Ação</th></tr></thead>
+          <tbody>
+            <tr><td><code>F4</code></td><td>Alternar referência absoluta/relativa ($A$1 → A$1 → $A1 → A1)</td></tr>
+            <tr><td><code>Ctrl+`</code></td><td>Mostrar/ocultar fórmulas na folha</td></tr>
+            <tr><td><code>Ctrl+Shift+L</code></td><td>Ativar/desativar Filtros Automáticos</td></tr>
+            <tr><td><code>Ctrl+T</code></td><td>Criar Tabela do Excel</td></tr>
+            <tr><td><code>Alt+=</code></td><td>Inserir SOMA automática</td></tr>
+            <tr><td><code>Ctrl+Shift+:</code></td><td>Inserir hora atual</td></tr>
+            <tr><td><code>Ctrl+;</code></td><td>Inserir data atual</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Ficheiro e Folhas</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Atalho</th><th>Ação</th></tr></thead>
+          <tbody>
+            <tr><td><code>Ctrl+S</code></td><td>Guardar</td></tr>
+            <tr><td><code>Ctrl+Shift+S</code></td><td>Guardar Como</td></tr>
+            <tr><td><code>Ctrl+P</code></td><td>Imprimir</td></tr>
+            <tr><td><code>Ctrl+F</code></td><td>Localizar</td></tr>
+            <tr><td><code>Ctrl+H</code></td><td>Localizar e Substituir</td></tr>
+            <tr><td><code>Ctrl+Page Down</code></td><td>Ir para a folha seguinte</td></tr>
+            <tr><td><code>Ctrl+Page Up</code></td><td>Ir para a folha anterior</td></tr>
+            <tr><td><code>F11</code></td><td>Criar gráfico numa nova folha</td></tr>
+            <tr><td><code>Alt+F1</code></td><td>Criar gráfico na folha atual</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="warn-box">
+      <strong>⚠️ Nota sobre versões:</strong> Alguns atalhos como <code>Ctrl+Shift+S</code> (Guardar Como) podem não funcionar em todas as versões do Excel ou podem estar atribuídos a outras funções dependendo da versão (2016, 2019, 2021, Microsoft 365) e das definições do sistema. Em caso de dúvida, usa sempre o menu <strong>Ficheiro</strong> ou o <strong>Friso (Ribbon)</strong> como alternativa fiável.
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <strong>UFCD 0695</strong> · Gestão Informatizada de Documentos · Excel Completo · Edição 2026
+</footer>
+
+<script>
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('nav.top-nav a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 100) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.classList.remove('active');
+      if (a.getAttribute('href') === '#' + current) a.classList.add('active');
+    });
+  });
+</script>
+  </div>
   <script src="../assets/config.js"></script>
-  <script src="../assets/app.js?v=20260906-ufcd0695-base"></script>
+  <script src="../assets/app.js?v=20260914-conteudos"></script>
 </body>
 </html>

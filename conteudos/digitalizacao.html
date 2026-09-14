@@ -1,11 +1,97 @@
-<!doctype html>
-<html lang="pt-PT">
+<!DOCTYPE html>
+
+<html lang="pt">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Digitalização · UFCD 0695</title>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Digitalização — UFCD 0695</title>
   <link rel="stylesheet" href="../assets/styles.css">
-  <link rel="stylesheet" href="conteudo.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --verde: #038387; --verde2: #14B8A6; --verde3: #025E63;
+    --fundo: #F0FDFA; --texto: #374151; --subtexto: #6B7280;
+    --branco: #ffffff; --borda: #D1D5DB;
+  }
+  body { font-family: 'Segoe UI', Calibri, sans-serif; background: var(--fundo); color: var(--texto); line-height: 1.7; }
+
+  header { background: linear-gradient(135deg, var(--verde3) 0%, var(--verde) 60%, var(--verde2) 100%); color: white; padding: 2.5rem 2rem 2rem; position: relative; overflow: hidden; }
+  header::before { content:''; position:absolute; top:-40px; right:-40px; width:200px; height:200px; background:rgba(255,255,255,0.06); border-radius:50%; }
+  .header-badge { display:inline-block; background:rgba(255,255,255,0.18); border:1px solid rgba(255,255,255,0.3); border-radius:20px; padding:0.25rem 0.9rem; font-size:0.78rem; letter-spacing:0.05em; text-transform:uppercase; margin-bottom:0.8rem; }
+  header h1 { font-size:2.2rem; font-weight:700; margin-bottom:0.4rem; }
+  header p { font-size:1rem; opacity:0.88; max-width:600px; }
+  .header-icons { position:absolute; right:2.5rem; top:50%; transform:translateY(-50%); font-size:4rem; opacity:0.15; }
+
+  nav.topic-nav { background:var(--branco); border-bottom:2px solid var(--borda); padding:0 2rem; display:flex; gap:0; position:sticky; top:0; z-index:100; box-shadow:0 2px 8px rgba(0,0,0,0.06); }
+  nav.topic-nav a { display:block; padding:1rem 1.4rem; text-decoration:none; color:var(--subtexto); font-size:0.9rem; font-weight:500; border-bottom:3px solid transparent; transition:all 0.2s; }
+  nav.topic-nav a:hover, nav.topic-nav a.active { color:var(--verde); border-bottom-color:var(--verde); }
+
+  main { max-width:960px; margin:0 auto; padding:2.5rem 1.5rem 4rem; }
+
+  .section-title { display:flex; align-items:center; gap:0.75rem; margin:2.5rem 0 1.2rem; }
+  .section-title .icon { width:40px; height:40px; background:var(--verde); border-radius:10px; display:flex; align-items:center; justify-content:center; color:white; font-size:1.2rem; flex-shrink:0; }
+  .section-title h2 { font-size:1.4rem; font-weight:700; color:var(--verde3); }
+
+  .intro-box { background:var(--branco); border-left:5px solid var(--verde); border-radius:0 12px 12px 0; padding:1.4rem 1.6rem; margin-bottom:2rem; box-shadow:0 2px 8px rgba(3,131,135,0.08); }
+  .intro-box p { color:var(--texto); font-size:1rem; }
+
+  .img-banner { width:100%; height:220px; object-fit:cover; border-radius:14px; margin-bottom:2rem; box-shadow:0 4px 16px rgba(0,0,0,0.12); }
+
+  .cards-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:1.2rem; margin-bottom:2rem; }
+  .card { background:var(--branco); border-radius:14px; padding:1.4rem; box-shadow:0 2px 10px rgba(0,0,0,0.07); border-top:4px solid var(--verde); transition:transform 0.2s, box-shadow 0.2s; }
+  .card:hover { transform:translateY(-3px); box-shadow:0 6px 20px rgba(3,131,135,0.15); }
+  .card h3 { font-size:1rem; font-weight:700; color:var(--verde3); margin-bottom:0.6rem; }
+  .card p, .card li { font-size:0.9rem; color:var(--subtexto); line-height:1.6; }
+  .card ul { padding-left:1.2rem; }
+  .card li { margin-bottom:0.3rem; }
+
+  .steps { margin-bottom:2rem; }
+  .step { display:flex; gap:1rem; margin-bottom:1rem; background:var(--branco); border-radius:12px; padding:1rem 1.2rem; box-shadow:0 1px 6px rgba(0,0,0,0.06); align-items:flex-start; }
+  .step-num { width:32px; height:32px; background:var(--verde); color:white; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:0.9rem; flex-shrink:0; }
+  .step-content h4 { font-size:0.95rem; font-weight:700; color:var(--verde3); margin-bottom:0.2rem; }
+  .step-content p { font-size:0.88rem; color:var(--subtexto); }
+
+  .tip { background:#ECFDF5; border:1px solid #6EE7B7; border-radius:12px; padding:1rem 1.2rem; margin-bottom:1.5rem; display:flex; gap:0.75rem; align-items:flex-start; }
+  .tip-icon { font-size:1.3rem; flex-shrink:0; }
+  .tip p { font-size:0.9rem; color:#065F46; }
+
+  .links-box { background:var(--branco); border-radius:14px; padding:1.4rem; box-shadow:0 2px 10px rgba(0,0,0,0.07); margin-bottom:2rem; }
+  .links-box h3 { font-size:1rem; font-weight:700; color:var(--verde3); margin-bottom:0.8rem; }
+  .link-item { display:flex; align-items:center; gap:0.6rem; padding:0.5rem 0; border-bottom:1px solid var(--borda); text-decoration:none; color:var(--verde); font-size:0.9rem; transition:color 0.2s; }
+  .link-item:last-child { border-bottom:none; }
+  .link-item:hover { color:var(--verde3); }
+  .link-item span { font-size:1rem; }
+
+  code { background:#E0F7F7; color:var(--verde3); padding:0.15rem 0.4rem; border-radius:4px; font-family:Consolas, monospace; font-size:0.85rem; }
+
+  .table-wrap { overflow-x:auto; margin-bottom:2rem; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.07); }
+  table { width:100%; border-collapse:collapse; background:var(--branco); font-size:0.9rem; }
+  thead tr { background:var(--verde); color:white; }
+  thead th { padding:0.9rem 1rem; text-align:left; font-weight:600; }
+  tbody tr:nth-child(even) { background:var(--fundo); }
+  tbody td { padding:0.75rem 1rem; border-bottom:1px solid var(--borda); color:var(--texto); }
+
+  .divider { height:2px; background:linear-gradient(to right, var(--verde), transparent); margin:2rem 0; border-radius:2px; }
+  .highlight { color:var(--verde); font-weight:700; }
+
+  /* OCR flow */
+  .ocr-flow { display:flex; align-items:center; gap:0.5rem; margin-bottom:2rem; flex-wrap:wrap; }
+  .ocr-step { background:var(--branco); border:2px solid var(--verde); border-radius:10px; padding:0.8rem 1rem; text-align:center; flex:1; min-width:120px; }
+  .ocr-step .os-icon { font-size:1.8rem; margin-bottom:0.3rem; }
+  .ocr-step p { font-size:0.8rem; color:var(--verde3); font-weight:600; }
+  .ocr-arrow { font-size:1.5rem; color:var(--verde2); flex-shrink:0; }
+
+  /* Nomenclatura */
+  .nome-exemplo { background:var(--verde3); color:white; border-radius:10px; padding:1rem 1.4rem; font-family:Consolas, monospace; font-size:0.95rem; margin-bottom:1rem; letter-spacing:0.02em; }
+  .nome-partes { display:flex; gap:0.5rem; flex-wrap:wrap; margin-bottom:1.5rem; }
+  .nome-parte { background:var(--branco); border:2px solid var(--verde); border-radius:8px; padding:0.4rem 0.8rem; font-size:0.82rem; }
+  .nome-parte strong { color:var(--verde3); display:block; font-size:0.75rem; }
+
+  footer { background:var(--verde3); color:rgba(255,255,255,0.8); text-align:center; padding:1.5rem; font-size:0.85rem; }
+  footer strong { color:white; }
+
+  @media (max-width:600px) { header h1 { font-size:1.6rem; } .header-icons { display:none; } nav.topic-nav { overflow-x:auto; } nav.topic-nav a { white-space:nowrap; } .ocr-arrow { display:none; } }
+</style>
 </head>
 <body data-page="conteudo-estatico" data-content-theme="digitalizacao">
   <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false"><span></span><span></span><span></span></button>
@@ -24,29 +110,293 @@
       <button class="nav-parent" type="button" aria-expanded="false" aria-controls="submenu-recursos">Recursos <span class="nav-parent-arrow" aria-hidden="true">▾</span></button>
       <div class="submenu resource-submenu" id="submenu-recursos"></div>
     </nav>
-  </aside>
-  <main class="page-shell">
-    <div class="page-layout">
-      <aside class="content-sidebar"><div class="sidebar-card"><div class="sidebar-card-header">📋 Neste Conteúdo</div><div class="sidebar-card-body"><ul class="toc-list"><li><a href="#sec1"><span class="toc-num">1</span> Preparar documentos</a></li>
-<li><a href="#sec2"><span class="toc-num">2</span> Configurar e verificar</a></li>
-<li><a href="#sec3"><span class="toc-num">3</span> Arquivar digitalmente</a></li></ul></div></div></aside>
-      <div class="content">
-        <div class="content-hero"><div class="hero-icon">🖨️</div><div><h2>Digitalização</h2><p>Conversão de documentos físicos em ficheiros digitais legíveis e corretamente organizados.</p></div></div>
-        <div class="section-block" id="sec1">
-<div class="section-block-header"><span class="s-icon">🖨️</span><h3>1. Preparar documentos</h3></div>
-<div class="section-block-body"><p>Organizar os documentos antes da captura digital.</p><ul><li>Confirmar a ordem das páginas.</li><li>Remover elementos que prejudiquem a digitalização.</li><li>Definir previamente o destino do ficheiro.</li></ul></div>
-</div><div class="section-block" id="sec2">
-<div class="section-block-header"><span class="s-icon">🖨️</span><h3>2. Configurar e verificar</h3></div>
-<div class="section-block-body"><p>Escolher parâmetros adequados e controlar a qualidade do resultado.</p><ul><li>Ajustar resolução e orientação.</li><li>Escolher o formato adequado.</li><li>Verificar se todas as páginas estão legíveis.</li></ul></div>
-</div><div class="section-block" id="sec3">
-<div class="section-block-header"><span class="s-icon">🖨️</span><h3>3. Arquivar digitalmente</h3></div>
-<div class="section-block-body"><p>Integrar o ficheiro digitalizado no sistema de organização documental.</p><ul><li>Aplicar nomenclatura definida.</li><li>Classificar corretamente.</li><li>Confirmar localização, acesso e legibilidade.</li></ul></div>
+  </aside>  <div class="page-shell imported-content-page">
+<header>
+<div class="header-badge">UFCD 0695 · Gestão Informatizada de Documentos</div>
+<h1>🖨️ Digitalização de Documentos</h1>
+<p>Converter documentos físicos em formato digital — equipamentos, OCR e organização</p>
+<div class="header-icons">🖨️</div>
+</header>
+<!-- Navegação entre páginas -->
+<div style="background:#025E63; padding:0.5rem 2rem; display:flex; gap:0.5rem; align-items:center; flex-wrap:wrap;">
+  <span style="color:rgba(255,255,255,0.6); font-size:0.8rem; margin-right:0.5rem;">UFCD 0695:</span>
+  <a href="bases-de-dados.html" style="color:rgba(255,255,255,0.75); text-decoration:none; font-size:0.85rem; padding:0.3rem 0.9rem; border-radius:20px;">🗄️ Bases de Dados</a>
+  <a href="pdf.html" style="color:rgba(255,255,255,0.75); text-decoration:none; font-size:0.85rem; padding:0.3rem 0.9rem; border-radius:20px;">📄 PDF</a>
+  <a href="digitalizacao.html" style="color:white; text-decoration:none; font-size:0.85rem; font-weight:700; background:rgba(255,255,255,0.2); padding:0.3rem 0.9rem; border-radius:20px;">🖨️ Digitalização</a>
 </div>
-        <div class="box box-info"><strong>Enquadramento:</strong> este conteúdo integra o referencial da UFCD 0695 — Gestão informatizada de documentos.</div>
-      </div>
-    </div>
-  </main>
+<nav class="topic-nav">
+<a class="active" href="#conceito">📖 Conceito</a>
+<a href="#equipamentos">🖨️ Equipamentos</a>
+<a href="#configuracoes">⚙️ Configurações</a>
+<a href="#ocr">🔍 OCR</a>
+<a href="#organizacao">📁 Organização</a>
+<a href="#recursos">🔗 Recursos</a>
+</nav>
+<main>
+<div class="intro-box">
+<p>A <strong>digitalização</strong> é o processo de converter documentos físicos (papel) em formato digital. É uma etapa fundamental na transição para o <span class="highlight">escritório sem papel</span> (paperless office) e na criação de arquivos digitais organizados, pesquisáveis e seguros.</p>
+</div>
+<img alt="Digitalização de documentos" class="img-banner" src="https://bradfordsystems.com/wp-content/uploads/2025/09/IMS-document-scanning.jpg"/>
+<!-- CONCEITO -->
+<div id="conceito">
+<div class="section-title">
+<div class="icon">📖</div>
+<h2>O que é a Digitalização?</h2>
+</div>
+<div class="cards-grid">
+<div class="card">
+<h3>🎯 Definição</h3>
+<p>Processo de conversão de documentos em papel (ou outros suportes físicos) em ficheiros digitais, através de um scanner ou câmara.</p>
+</div>
+<div class="card">
+<h3>✅ Vantagens</h3>
+<ul>
+<li>Acesso rápido e pesquisa de texto</li>
+<li>Partilha fácil por email ou nuvem</li>
+<li>Preservação do documento original</li>
+<li>Redução de espaço físico</li>
+<li>Segurança com cópias de segurança</li>
+</ul>
+</div>
+<div class="card">
+<h3>📋 Etapas do processo</h3>
+<ul>
+<li>Preparação do documento (remover agrafos)</li>
+<li>Digitalização com scanner</li>
+<li>Aplicação de OCR (se necessário)</li>
+<li>Verificação da qualidade</li>
+<li>Nomenclatura e arquivo</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="divider"></div>
+<!-- EQUIPAMENTOS -->
+<div id="equipamentos">
+<div class="section-title">
+<div class="icon">🖨️</div>
+<h2>Tipos de Equipamentos</h2>
+</div>
+<div class="cards-grid">
+<div class="card">
+<h3>🖥️ Scanner de Mesa (Flatbed)</h3>
+<p>O documento é colocado sobre um vidro plano. Ideal para documentos frágeis, fotografias e livros. Produz imagens de alta qualidade.</p>
+</div>
+<div class="card">
+<h3>📄 Scanner com ADF</h3>
+<p><strong>Automatic Document Feeder</strong> — alimentador automático que permite digitalizar múltiplas páginas sem intervenção. Ideal para grandes volumes.</p>
+</div>
+<div class="card">
+<h3>📱 Scanner Portátil</h3>
+<p>Compacto e sem fios. Útil para trabalho em campo ou quando é necessário digitalizar documentos fora do escritório.</p>
+</div>
+<div class="card">
+<h3>🖨️ Impressora Multifunções</h3>
+<p>Combina impressão, cópia, digitalização e fax. A solução mais comum nos escritórios. Muitas têm ADF integrado.</p>
+</div>
+</div>
+<img alt="Digitalização de documentos em papel" class="img-banner" src="https://www.erecordsusa.com/wp-content/uploads/2023/09/image-11.png"/>
+</div>
+<div class="divider"></div>
+<!-- CONFIGURAÇÕES -->
+<div id="configuracoes">
+<div class="section-title">
+<div class="icon">⚙️</div>
+<h2>Configurações de Digitalização</h2>
+</div>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Parâmetro</th><th>Valor Recomendado</th><th>Utilização</th></tr></thead>
+<tbody>
+<tr><td><strong>Resolução</strong></td><td>200–300 dpi</td><td>Documentos de texto para arquivo</td></tr>
+<tr><td><strong>Resolução</strong></td><td>600 dpi</td><td>Fotografias e documentos com detalhe fino</td></tr>
+<tr><td><strong>Modo de Cor</strong></td><td>Preto e Branco</td><td>Documentos de texto simples (menor tamanho)</td></tr>
+<tr><td><strong>Modo de Cor</strong></td><td>Escala de Cinzentos</td><td>Documentos com imagens a preto e branco</td></tr>
+<tr><td><strong>Modo de Cor</strong></td><td>Cor</td><td>Documentos com cor, fotografias</td></tr>
+<tr><td><strong>Formato</strong></td><td>PDF</td><td>Arquivo e partilha de documentos</td></tr>
+<tr><td><strong>Formato</strong></td><td>TIFF</td><td>Arquivo de alta qualidade (maior tamanho)</td></tr>
+<tr><td><strong>Formato</strong></td><td>JPEG</td><td>Fotografias e imagens (menor qualidade)</td></tr>
+</tbody>
+</table>
+</div>
+<div class="tip">
+<div class="tip-icon">💡</div>
+<p><strong>Regra prática:</strong> Para documentos de texto do dia a dia, usa <strong>300 dpi + Preto e Branco + PDF</strong>. Este conjunto garante boa qualidade com ficheiros de tamanho reduzido.</p>
+</div>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Formato</th><th>Vantagens</th><th>Desvantagens</th></tr></thead>
+<tbody>
+<tr><td><strong>PDF</strong></td><td>Universal, suporta OCR, múltiplas páginas</td><td>—</td></tr>
+<tr><td><strong>PDF/A</strong></td><td>Normalizado para arquivo de longo prazo</td><td>Maior tamanho</td></tr>
+<tr><td><strong>TIFF</strong></td><td>Alta qualidade, sem compressão com perda</td><td>Ficheiros muito grandes</td></tr>
+<tr><td><strong>JPEG</strong></td><td>Ficheiros pequenos</td><td>Perda de qualidade, não suporta OCR</td></tr>
+<tr><td><strong>PNG</strong></td><td>Sem perda, bom para texto e gráficos</td><td>Maior que JPEG</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="divider"></div>
+<!-- OCR -->
+<div id="ocr">
+<div class="section-title">
+<div class="icon">🔍</div>
+<h2>OCR — Reconhecimento Ótico de Caracteres</h2>
+</div>
+<div class="intro-box">
+<p>O <strong>OCR (Optical Character Recognition)</strong> é uma tecnologia que converte imagens de texto em <span class="highlight">texto editável e pesquisável</span>. É essencial para tornar os documentos digitalizados verdadeiramente úteis — permitindo pesquisar palavras, copiar texto e editar o conteúdo.</p>
+</div>
+<div class="section-title" style="margin-top:1rem;">
+<div class="icon" style="background:var(--verde2); width:32px; height:32px; font-size:1rem;">🔄</div>
+<h2 style="font-size:1.1rem;">Como funciona o OCR</h2>
+</div>
+<div class="ocr-flow">
+<div class="ocr-step"><div class="os-icon">📄</div><p>Documento em papel</p></div>
+<div class="ocr-arrow">→</div>
+<div class="ocr-step"><div class="os-icon">🖨️</div><p>Scanner captura imagem</p></div>
+<div class="ocr-arrow">→</div>
+<div class="ocr-step"><div class="os-icon">🔍</div><p>OCR analisa caracteres</p></div>
+<div class="ocr-arrow">→</div>
+<div class="ocr-step"><div class="os-icon">📝</div><p>Texto editável e pesquisável</p></div>
+</div>
+<div class="cards-grid">
+<div class="card">
+<h3>🔴 Adobe Acrobat</h3>
+<p><strong>Ferramentas → Melhorar Digitalização → Reconhecer Texto.</strong> Excelente qualidade, suporta múltiplos idiomas incluindo português.</p>
+</div>
+<div class="card">
+<h3>🟡 Microsoft OneNote</h3>
+<p>Clica com o botão direito numa imagem → <strong>Copiar Texto da Imagem.</strong> Solução rápida e gratuita para textos simples.</p>
+</div>
+<div class="card">
+<h3>🔵 Google Drive</h3>
+<p>Faz upload de uma imagem ou PDF e abre com <strong>Google Docs</strong> — o texto é reconhecido automaticamente. Gratuito.</p>
+</div>
+<div class="card">
+<h3>🟢 ABBYY FineReader</h3>
+<p>Software profissional de OCR com elevada precisão. Suporta múltiplos formatos de saída (Word, Excel, PDF pesquisável).</p>
+</div>
+</div>
+<div class="section-title" style="margin-top:1rem;">
+<div class="icon" style="background:var(--verde2); width:32px; height:32px; font-size:1rem;">✅</div>
+<h2 style="font-size:1.1rem;">Dicas para melhor qualidade OCR</h2>
+</div>
+<div class="steps">
+<div class="step"><div class="step-num">1</div><div class="step-content"><h4>Resolução mínima de 300 dpi</h4><p>Abaixo de 300 dpi, o OCR pode não reconhecer corretamente os caracteres, especialmente em fontes pequenas.</p></div></div>
+<div class="step"><div class="step-num">2</div><div class="step-content"><h4>Usar modo preto e branco ou escala de cinzentos</h4><p>Para documentos de texto, estes modos produzem melhor contraste e facilitam o reconhecimento de caracteres.</p></div></div>
+<div class="step"><div class="step-num">3</div><div class="step-content"><h4>Alinhar bem o documento no scanner</h4><p>Documentos inclinados reduzem a precisão do OCR. Muitos softwares têm correção automática de inclinação.</p></div></div>
+<div class="step"><div class="step-num">4</div><div class="step-content"><h4>Evitar dobras, manchas ou rasgões</h4><p>Danos físicos no documento original afetam diretamente a qualidade do OCR. Prepara o documento antes de digitalizar.</p></div></div>
+<div class="step"><div class="step-num">5</div><div class="step-content"><h4>Escolher o idioma correto</h4><p>Nas definições do OCR, seleciona sempre o idioma do documento (ex.: Português) para melhor reconhecimento.</p></div></div>
+</div>
+<img alt="OCR — Reconhecimento Ótico de Caracteres" class="img-banner" src="https://digi-texx.com/wp-content/uploads/2025/02/optical-character-recognition-2-1536x864.png"/>
+</div>
+<div class="divider"></div>
+<!-- ORGANIZAÇÃO -->
+<div id="organizacao">
+<div class="section-title">
+<div class="icon">📁</div>
+<h2>Arquivo e Organização Digital</h2>
+</div>
+<div class="intro-box">
+<p>Digitalizar documentos é apenas o primeiro passo. A <span class="highlight">organização e o arquivo correto</span> são igualmente importantes para garantir que a informação pode ser encontrada rapidamente quando necessário.</p>
+</div>
+<div class="section-title" style="margin-top:1rem;">
+<div class="icon" style="background:var(--verde2); width:32px; height:32px; font-size:1rem;">📝</div>
+<h2 style="font-size:1.1rem;">Convenção de Nomenclatura</h2>
+</div>
+<p style="margin-bottom:1rem; color:var(--subtexto);">Adota uma convenção consistente para todos os ficheiros digitalizados. O formato recomendado é:</p>
+<div class="nome-exemplo">AAAA-MM-DD_TipoDocumento_Entidade_Referencia.pdf</div>
+<div class="nome-partes">
+<div class="nome-parte"><strong>AAAA-MM-DD</strong>Data (permite ordenação cronológica)</div>
+<div class="nome-parte"><strong>TipoDocumento</strong>Fatura, Contrato, Relatório...</div>
+<div class="nome-parte"><strong>Entidade</strong>Nome do cliente ou fornecedor</div>
+<div class="nome-parte"><strong>Referencia</strong>Número do documento</div>
+</div>
+<div class="tip">
+<div class="tip-icon">💡</div>
+<p><strong>Exemplo:</strong> <code>2026-02-27_Fatura_FornecedorXYZ_F2026-0123.pdf</code> — ao ordenar por nome, os ficheiros ficam automaticamente em ordem cronológica.</p>
+</div>
+<div class="section-title" style="margin-top:1rem;">
+<div class="icon" style="background:var(--verde2); width:32px; height:32px; font-size:1rem;">🗂️</div>
+<h2 style="font-size:1.1rem;">Estrutura de Pastas Recomendada</h2>
+</div>
+<div class="cards-grid">
+<div class="card">
+<h3>📅 Por Ano e Tipo</h3>
+<ul>
+<li>📁 2026</li>
+<li>  📁 Faturas</li>
+<li>  📁 Contratos</li>
+<li>  📁 Correspondência</li>
+<li>  📁 Relatórios</li>
+</ul>
+</div>
+<div class="card">
+<h3>🏢 Por Entidade</h3>
+<ul>
+<li>📁 Clientes</li>
+<li>  📁 ClienteABC</li>
+<li>  📁 ClienteXYZ</li>
+<li>📁 Fornecedores</li>
+<li>  📁 FornecedorABC</li>
+</ul>
+</div>
+<div class="card">
+<h3>📋 Por Projeto</h3>
+<ul>
+<li>📁 Projeto_Alpha</li>
+<li>  📁 Contratos</li>
+<li>  📁 Faturas</li>
+<li>  📁 Relatórios</li>
+<li>  📁 Correspondência</li>
+</ul>
+</div>
+</div>
+<div class="tip">
+<div class="tip-icon">💡</div>
+<p>Usa sempre <strong>letras sem acentos e sem espaços</strong> nos nomes de ficheiros e pastas para garantir compatibilidade entre diferentes sistemas operativos e plataformas de partilha.</p>
+</div>
+</div>
+<div class="divider"></div>
+<!-- RECURSOS -->
+<div id="recursos">
+<div class="section-title">
+<div class="icon">🔗</div>
+<h2>Recursos e Links Úteis</h2>
+</div>
+<div class="links-box">
+<h3>🔍 OCR — Ferramentas</h3>
+<a class="link-item" href="https://helpx.adobe.com/pt/acrobat/using/scan-documents-pdf.html" target="_blank"><span>🔴</span> Adobe Acrobat — Digitalizar e aplicar OCR</a>
+<a class="link-item" href="https://drive.google.com" target="_blank"><span>🔵</span> Google Drive — OCR gratuito ao abrir com Google Docs</a>
+<a class="link-item" href="https://www.abbyy.com/finereader/" target="_blank"><span>🟢</span> ABBYY FineReader — Software profissional de OCR</a>
+</div>
+<div class="links-box">
+<h3>📁 Gestão Documental</h3>
+<a class="link-item" href="https://support.microsoft.com/pt-pt/office/organizar-ficheiros-e-pastas-no-onedrive-d3977f4e-2f5e-4b5e-9e5e-2f5e4b5e9e5e" target="_blank"><span>☁️</span> OneDrive — Organizar ficheiros na nuvem</a>
+<a class="link-item" href="https://www.google.com/drive/" target="_blank"><span>🔵</span> Google Drive — Armazenamento e partilha</a>
+</div>
+<div class="links-box">
+<h3>📚 Normas e Referências</h3>
+<a class="link-item" href="https://catalogo.snq.gov.pt/ufcdDetalhe/7188" target="_blank"><span>🏛️</span> UFCD 0695 — Ficha oficial no CNQ</a>
+<a class="link-item" href="https://www.iso.org/standard/38920.html" target="_blank"><span>📋</span> ISO 19005 — Norma PDF/A para arquivo</a>
+</div>
+</div>
+</main>
+<footer>
+<strong>UFCD 0695 — Gestão Informatizada de Documentos</strong> · Digitalização · Equipamentos, OCR e Organização<br/>
+  «Organizar informação para trabalhar melhor»
+</footer>
+<script>
+  const navLinks = document.querySelectorAll('.topic-nav a');
+  const sections = document.querySelectorAll('[id]');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 100) current = s.id; });
+    navLinks.forEach(a => { a.classList.remove('active'); if (a.getAttribute('href') === '#' + current) a.classList.add('active'); });
+  });
+</script>
+  </div>
   <script src="../assets/config.js"></script>
-  <script src="../assets/app.js?v=20260906-ufcd0695-base"></script>
+  <script src="../assets/app.js?v=20260914-conteudos"></script>
 </body>
 </html>
