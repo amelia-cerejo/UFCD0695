@@ -877,13 +877,14 @@ function renderPortfolioMenuLink() {
 
     const link = document.createElement("a");
     link.className = "portfolio-site-link";
-    link.href = "https://26109-e-portfolio.netlify.app/";
-    link.textContent = "Site dos E-Portefólios";
-    link.target = "_top";
+    link.href = "https://e-portfolio-ufcs.netlify.app/";
+    link.textContent = "E-Portfólio";
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
 
     if (window.location.pathname.endsWith("/atividades/identidade-visual.html")) {
       link.classList.add("active");
-      link.href = "https://26109-e-portfolio.netlify.app/";
+      link.href = "https://e-portfolio-ufcs.netlify.app/";
     }
 
     menu.appendChild(link);
@@ -943,7 +944,7 @@ function obterConstituicaoVisibilidadeSite() {
 
   adicionarSecao("menuPrincipal");
   mainMenuItems.forEach((item, index) => {
-    const url = item.key === "inicio" ? "index.html#inicio" : item.key === "eportfolio" ? "https://26109-e-portfolio.netlify.app/" : `index.html#${item.key}`;
+    const url = item.key === "inicio" ? "index.html#inicio" : item.key === "eportfolio" ? "https://e-portfolio-ufcs.netlify.app/" : `index.html#${item.key}`;
     adicionarItem("menuPrincipal", `menu-${item.key}`, item.label, url, "menu", 2 + index);
   });
 
