@@ -877,14 +877,12 @@ function renderPortfolioMenuLink() {
 
     const link = document.createElement("a");
     link.className = "portfolio-site-link";
-    link.href = "https://e-portfolio-ufcs.netlify.app/";
+    link.href = `${getBasePath()}e-portfolio.html`;
     link.textContent = "E-Portfólio";
-    link.target = "_blank";
-    link.rel = "noopener noreferrer";
 
-    if (window.location.pathname.endsWith("/atividades/identidade-visual.html")) {
+    if (window.location.pathname.endsWith("/e-portfolio.html")) {
       link.classList.add("active");
-      link.href = "https://e-portfolio-ufcs.netlify.app/";
+      link.href = `${getBasePath()}e-portfolio.html`;
     }
 
     menu.appendChild(link);
@@ -944,7 +942,7 @@ function obterConstituicaoVisibilidadeSite() {
 
   adicionarSecao("menuPrincipal");
   mainMenuItems.forEach((item, index) => {
-    const url = item.key === "inicio" ? "index.html#inicio" : item.key === "eportfolio" ? "https://e-portfolio-ufcs.netlify.app/" : `index.html#${item.key}`;
+    const url = item.key === "inicio" ? "index.html#inicio" : item.key === "eportfolio" ? "e-portfolio.html" : `index.html#${item.key}`;
     adicionarItem("menuPrincipal", `menu-${item.key}`, item.label, url, "menu", 2 + index);
   });
 
@@ -1382,7 +1380,7 @@ function renderResourceMenus() {
 
         if (!children.length) {
           if (resource.gptUrl) {
-            return `<a href="${resource.gptUrl}" target="_blank" rel="noopener noreferrer">${resource.title}</a>`;
+            return `<a href="${resource.gptUrl}">${resource.title}</a>`;
           }
           return `<a href="${getBasePath()}${resource.url}" class="${isActive ? "active" : ""}">${resource.title}</a>`;
         }
@@ -2977,8 +2975,8 @@ function renderActivityPage() {
                 </ul>
               </div>
               <div class="embed-fallback resource-action-row align-right">
-                <a class="small-button" href="https://drive.google.com/drive/folders/1FoY5IChKIUe-S4qHVWpYwQhpfEWKsyVS" target="_blank" rel="noopener">Abrir pasta Trabalhos Individuais</a>
-                <a class="small-button" href="${getBasePath()}assets/pdfs/TIs.pdf" target="_blank" rel="noopener">Abrir guia geral das TI</a>
+                <a class="small-button" href="https://drive.google.com/drive/folders/1FoY5IChKIUe-S4qHVWpYwQhpfEWKsyVS">Abrir pasta Trabalhos Individuais</a>
+                <a class="small-button" href="${getBasePath()}assets/pdfs/TIs.pdf">Abrir guia geral das TI</a>
               </div>
             </div>
           </details>
@@ -3051,10 +3049,10 @@ function renderActivityPage() {
             <p>O trabalho parte de uma base inicial que contém a folha <code>Listas_Apoio</code>. Cada grupo deve fazer uma cópia para a pasta da respetiva sala e organizar aí todos os elementos do projeto.</p>
             <p>Cada elemento será responsável por um formulário e por duas folhas de cálculo. Os dados utilizados devem ser fictícios, mas realistas e coerentes.</p>
             <div class="embed-fallback resource-action-row">
-              <a class="small-button" href="https://drive.google.com/drive/folders/1K-w7rpT_LZ-zeCmkAPkFReAXOUwBGdyU" target="_blank" rel="noopener">Abrir pasta dos projetos</a>
-              <a class="small-button" href="https://docs.google.com/spreadsheets/d/1IZR2u_oDYCT2sN8IJ5EiZ8VrMTHq_-eo2M14uQZGCyY/edit?gid=1002#gid=1002" target="_blank" rel="noopener">Abrir base no Google Sheets</a>
+              <a class="small-button" href="https://drive.google.com/drive/folders/1K-w7rpT_LZ-zeCmkAPkFReAXOUwBGdyU">Abrir pasta dos projetos</a>
+              <a class="small-button" href="https://docs.google.com/spreadsheets/d/1IZR2u_oDYCT2sN8IJ5EiZ8VrMTHq_-eo2M14uQZGCyY/edit?gid=1002#gid=1002">Abrir base no Google Sheets</a>
               <a class="small-button" href="${getBasePath()}assets/ficheiros/Excel/Base_de_Dados.xlsx" download>Descarregar base de dados</a>
-              <a class="small-button orange" href="${getBasePath()}assets/pdfs/UFCD0695_Projeto_Final_Enunciado_Geral.pdf" target="_blank" rel="noopener">Abrir PDF geral</a>
+              <a class="small-button orange" href="${getBasePath()}assets/pdfs/UFCD0695_Projeto_Final_Enunciado_Geral.pdf">Abrir PDF geral</a>
             </div>
           </article>
 
@@ -3102,7 +3100,7 @@ function renderActivityPage() {
               </div>
               <div class="task-block"><strong>Resultado esperado</strong><p>A pasta do grupo contém a base, os quatro formulários, as folhas de respostas e as quatro tabelas-base completas e validadas.</p></div>
               <div class="embed-fallback resource-action-row align-right">
-                <a class="small-button orange" href="${getBasePath()}assets/pdfs/UFCD0695_Projeto_Final_Fase1.pdf" target="_blank" rel="noopener">Abrir PDF da 1.ª fase</a>
+                <a class="small-button orange" href="${getBasePath()}assets/pdfs/UFCD0695_Projeto_Final_Fase1.pdf">Abrir PDF da 1.ª fase</a>
               </div>
             </div>
           </details>` : ""}
@@ -3132,7 +3130,7 @@ function renderActivityPage() {
               </div>
               <div class="task-block"><strong>Resultado esperado</strong><p>A base do grupo fica com oito tabelas preenchidas e relacionadas, prontas para a análise final.</p></div>
               <div class="embed-fallback resource-action-row align-right">
-                <a class="small-button orange" href="${getBasePath()}assets/pdfs/UFCD0695_Projeto_Final_Fase2.pdf" target="_blank" rel="noopener">Abrir PDF da 2.ª fase</a>
+                <a class="small-button orange" href="${getBasePath()}assets/pdfs/UFCD0695_Projeto_Final_Fase2.pdf">Abrir PDF da 2.ª fase</a>
               </div>
             </div>
           </details>` : ""}
@@ -3156,7 +3154,7 @@ function renderActivityPage() {
               </div>
               <div class="task-block"><strong>Apresentação</strong><p>Todos os elementos participam e explicam a organização da base, os problemas encontrados, os indicadores principais, as relações entre as tabelas e as conclusões retiradas.</p></div>
               <div class="embed-fallback resource-action-row align-right">
-                <a class="small-button orange" href="${getBasePath()}assets/pdfs/UFCD0695_Projeto_Final_Fase_Final.pdf" target="_blank" rel="noopener">Abrir PDF da fase final</a>
+                <a class="small-button orange" href="${getBasePath()}assets/pdfs/UFCD0695_Projeto_Final_Fase_Final.pdf">Abrir PDF da fase final</a>
               </div>
             </div>
           </details>
@@ -3288,7 +3286,7 @@ function renderActivityPage() {
                 title="${activity.embedTitle || activity.title}"></iframe>
             </div>
             <div class="embed-fallback resource-action-row align-right">
-              <a class="small-button" href="${activity.embedUrl}" target="_blank" rel="noopener">Abrir avaliação diretamente</a>
+              <a class="small-button" href="${activity.embedUrl}">Abrir avaliação diretamente</a>
             </div>
           </article>
         ` : `
@@ -3358,7 +3356,7 @@ function renderResourcePage() {
           <div class="section-heading task-page-heading">
             <p class="eyebrow">Recursos</p>
             <h1 class="resource-title-with-icon">
-              <a href="${resource.gptUrl}" target="_blank" rel="noopener noreferrer">
+              <a href="${resource.gptUrl}">
                 ${resource.menuIcon ? `<img src="${getBasePath()}${resource.menuIcon}" alt="" aria-hidden="true">` : ""}
                 <span>${resource.displayTitle || resource.title}</span>
               </a>
@@ -3387,9 +3385,9 @@ function renderResourcePage() {
             <article class="card group-task-card">
               <p class="eyebrow">Acesso</p>
               <h3>Abrir assistente</h3>
-              <p>O assistente abre numa nova aba do navegador. Poderá ser necessário iniciar sessão no ChatGPT.</p>
+              <p>O assistente abre no separador atual. Poderá ser necessário iniciar sessão no ChatGPT.</p>
               <div class="embed-fallback resource-action-row align-right">
-                <a class="small-button" href="${resource.gptUrl}" target="_blank" rel="noopener noreferrer">Abrir assistente</a>
+                <a class="small-button" href="${resource.gptUrl}">Abrir assistente</a>
               </div>
             </article>
           </div>
@@ -3495,7 +3493,7 @@ function renderResourcePage() {
             <h3>Ajuda oficial do Excel</h3>
             <p>A Microsoft pode bloquear a visualização dentro da página por política de segurança. Se a área abaixo não carregar, abre o recurso diretamente.</p>
             <div class="embed-fallback resource-action-row align-right">
-              <a class="small-button" href="${resource.externalUrl}" target="_blank" rel="noopener">Abrir suporte Microsoft Excel</a>
+              <a class="small-button" href="${resource.externalUrl}">Abrir suporte Microsoft Excel</a>
             </div>
           </article>
         </div>
