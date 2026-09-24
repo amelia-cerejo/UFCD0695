@@ -96,10 +96,10 @@ const projectFinalPhases = [
 const evaluations = [
   { id: "avaliacao-diagnostica", title: "Avaliação Diagnóstica", menuTitle: "Diagnóstica", intro: "Avaliação inicial dos conhecimentos sobre gestão informatizada de documentos, bases de dados, PDF e digitalização.", url: "avaliacoes/avaliacao-diagnostica.html", children: ["resultados-diagnostica"], embedUrl: "https://avaliacoes-formacao.netlify.app/ufcd-0695/00-diagnostico.html", embedTitle: "DIAG_1" },
   { id: "resultados-diagnostica", parentId: "avaliacao-diagnostica", title: "Resultados da Avaliação Diagnóstica", menuTitle: "Resultados", intro: "Leitura global das respostas recolhidas na avaliação diagnóstica.", url: "avaliacoes/resultados-diagnostica.html" },
-  { id: "avaliacao-sumativa", title: "Avaliação Sumativa", menuTitle: "Sumativa", intro: "Avaliação final das aprendizagens da UFCD 0778.", url: "avaliacoes/avaliacao-sumativa.html", embedUrl: "https://avaliacoes-formacao.netlify.app/ufcd-0778/02-sumativa.html", embedTitle: "SUM_1" },
-  { id: "autoavaliacao-final", title: "Autoavaliação Final", menuTitle: "Autoavaliação", intro: "Reflexão final sobre as competências desenvolvidas, comparável com a avaliação diagnóstica.", url: "avaliacoes/autoavaliacao-final.html", embedUrl: "https://avaliacoes-formacao.netlify.app/ufcd-0778/04-autoavaliacao-final.html", embedTitle: "AUTO_1" },
-  { id: "avaliacao-entre-pares", title: "Avaliação Entre Pares - Auditoria", menuTitle: "Entre pares", intro: "Auditoria de qualidade ao projeto final de um colega.", url: "avaliacoes/avaliacao-entre-pares.html", embedUrl: "https://avaliacoes-formacao.netlify.app/ufcd-0778/03-entre-pares.html", embedTitle: "Auditoria de qualidade" },
-  { id: "avaliacao-formacao", title: "Avaliação da Formação", menuTitle: "Formação", intro: "Feedback sobre a qualidade da formação, separado da autoavaliação das aprendizagens.", url: "avaliacoes/avaliacao-formacao.html", embedUrl: "https://avaliacoes-formacao.netlify.app/avaliacao-formacao.html?codigo_ufcd=0778", embedTitle: "Avaliação da formação" }
+  { id: "avaliacao-sumativa", title: "Avaliação Sumativa", menuTitle: "Sumativa", intro: "Avaliação final das aprendizagens da UFCD 0695.", url: "avaliacoes/avaliacao-sumativa.html", embedUrl: "https://avaliacoes-formacao.netlify.app/ufcd-0695/02-sumativa.html", embedTitle: "SUM_1" },
+  { id: "autoavaliacao-final", title: "Autoavaliação Final", menuTitle: "Autoavaliação", intro: "Reflexão final sobre as competências desenvolvidas, comparável com a avaliação diagnóstica.", url: "avaliacoes/autoavaliacao-final.html", embedUrl: "https://avaliacoes-formacao.netlify.app/ufcd-0695/04-autoavaliacao-final.html", embedTitle: "AUTO_1" },
+  { id: "avaliacao-entre-pares", title: "Avaliação Entre Pares", menuTitle: "Entre pares", intro: "Avaliação colaborativa entre colegas.", url: "avaliacoes/avaliacao-entre-pares.html", embedUrl: "https://avaliacoes-formacao.netlify.app/ufcd-0695/03-entre-pares.html", embedTitle: "Avaliação colaborativa" },
+  { id: "avaliacao-formacao", title: "Avaliação da Formação", menuTitle: "Formação", intro: "Feedback sobre a qualidade da formação, separado da autoavaliação das aprendizagens.", url: "avaliacoes/avaliacao-formacao.html", embedUrl: "https://avaliacoes-formacao.netlify.app/avaliacao-formacao.html?codigo_ufcd=0695", embedTitle: "Avaliação da formação" }
 ];
 
 const groupTasks = [
@@ -829,7 +829,7 @@ function getBasePath() {
 }
 
 function construirUrlEmbedAvaliacao(embedUrl) {
-  if (/\/ufcd-0778\//.test(embedUrl)) return embedUrl;
+  if (/\/ufcd-(?:0695|0778)\//.test(embedUrl)) return embedUrl;
   if (!embedUrl || !APPS_SCRIPT_SPREADSHEET_ID) return embedUrl;
 
   try {
@@ -3284,9 +3284,6 @@ function renderActivityPage() {
                 loading="lazy"
                 referrerpolicy="unsafe-url"
                 title="${activity.embedTitle || activity.title}"></iframe>
-            </div>
-            <div class="embed-fallback resource-action-row align-right">
-              <a class="small-button" href="${activity.embedUrl}">Abrir avaliação diretamente</a>
             </div>
           </article>
         ` : `
